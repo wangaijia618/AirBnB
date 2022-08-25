@@ -81,7 +81,7 @@ information.
 * Require Authentication: false
 * Request
   * Method: POST
-  * URL: users/login
+  * URL: /users/login
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -626,7 +626,7 @@ Returns all the reviews written by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: reviews/:userId
+  * URL: /reviews/:userId
   * Body: none
 
 * Successful Response
@@ -681,7 +681,7 @@ Returns all the reviews that belong to a spot specified by id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: reviews/:spotId
+  * URL: /reviews/:spotId
   * Body: none
 
 * Successful Response
@@ -737,7 +737,7 @@ Create and return a new review for a spot specified by id.
 * Require Authentication: true
 * Request
   * Method: POST
-  * URL: reviews/:spotId
+  * URL: /reviews/:spotId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -983,7 +983,7 @@ Return all the bookings that the current user has made.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: bookings/:userId
+  * URL: /bookings/:userId
   * Body: none
 
 * Successful Response
@@ -1028,7 +1028,7 @@ Return all the bookings for a spot specified by id.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: bookings/:spotId
+  * URL: /bookings/:spotId
   * Body: none
 
 * Successful Response: If you ARE NOT the owner of the spot.
