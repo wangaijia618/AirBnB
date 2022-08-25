@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-![airbnbschema](https://user-images.githubusercontent.com/104793402/186541111-be06ebf8-bce8-4dd0-a065-964341a79dbc.png)
+![airbnbschemaSep](https://user-images.githubusercontent.com/104793402/186729813-24969c73-12f5-4000-b981-86637430308a.png)
 
 
 
