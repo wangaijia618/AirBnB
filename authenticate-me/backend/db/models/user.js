@@ -66,6 +66,14 @@ module.exports = (sequelize, DataTypes) => {
           len: [3, 256]
         }
       },
+      firstName: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
       hashedPassword: {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
