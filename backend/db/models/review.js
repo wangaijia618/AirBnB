@@ -28,6 +28,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     spotId: {
       type: DataTypes.INTEGER,
+    },
+    review: {
+      type: DataTypes.TEXT
+    },
+    stars:{
+      type: DataTypes.INTEGER
     }
   }, {
     sequelize,

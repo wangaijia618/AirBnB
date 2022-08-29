@@ -14,6 +14,12 @@ module.exports = {
       spotId: {
         type: Sequelize.INTEGER
       },
+      review: {
+        type: Sequelize.TEXT
+      },
+      stars:{
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
