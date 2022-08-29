@@ -9,18 +9,23 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       reviewId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {model: 'Reviews'},
+        onDelete: 'CASCADE'
       },
       url: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
   },
