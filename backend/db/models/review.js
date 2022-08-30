@@ -41,3 +41,6 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Review;
 };
+
+
+
