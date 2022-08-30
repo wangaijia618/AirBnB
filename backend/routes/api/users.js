@@ -3,6 +3,7 @@ const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { nextTick } = require('process');
 const router = express.Router();
 
 const validateSignup = [
@@ -30,13 +31,32 @@ router.post(
     '/',
     validateSignup,
     async (req, res) => {
-      const { email, password, username } = req.body;
-      const user = await User.signup({ email, username, password });
+      const { firstName, lastName, email, password, username } = req.body;
+      const validateUsername = await User.findOne({
+        where: {username}
+      })
+      if(validateUsername) {
+        const err = new Error('User already exists')
+        err.status = 403
+        err. errors = {username: "User with that username already exists"}
+        return nextTick(err)
+      };
+      const validateEmail = await User.findOne({
+        where: {email}
+      })
+      if(validateEmail) {
+        const err = new Error('User alreadu exists')
+        err.status = 403
+        err.errors = { username: "User with that email already exists"}
+        return next(err)
+      };
+      const user = await User.signup({ firstName, lastName, email, username, password });
 
-      await setTokenCookie(res, user);
-
+      const token = await setTokenCookie(res, user);
+      const userData = user.toSafeObject()
+      userData.token = token
       return res.json({
-        user
+        userData
       });
     }
   );
