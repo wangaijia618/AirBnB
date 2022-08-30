@@ -42,7 +42,7 @@ module.exports = {
         userId: 4,
         spotId: 3,
       }
-    ])
+    ],{})
   },
 
 
