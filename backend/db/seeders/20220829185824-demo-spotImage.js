@@ -26,7 +26,7 @@ module.exports = {
         {
           spotId: 3,
           url: 'https://a0.muscache.com/im/pictures/7d223ee4-c329-4508-bf53-dd82002a8878.jpg?im_w=1200',
-          preview: false
+          preview: true
         },
         {
           spotId: 4,
@@ -36,7 +36,7 @@ module.exports = {
         {
           spotId: 5,
           url: 'https://a0.muscache.com/im/pictures/b4f8e3d5-91e7-4f9c-ba02-a8d46872941d.jpg?im_w=960',
-          preview: false
+          preview: true
         },
 
       ],{})
