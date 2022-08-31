@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Review.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     userId: {
       type:DataTypes.INTEGER,
     },
@@ -41,6 +45,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Review;
 };
-
-
-
