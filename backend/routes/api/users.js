@@ -70,4 +70,8 @@ router.post('/', validateSignup, async (req, res) => {
     }
   );
 
+  // {
+//   "credential": "john.smith@gmail.com",
+//   "password": "secret password"
+// }
 module.exports = router;

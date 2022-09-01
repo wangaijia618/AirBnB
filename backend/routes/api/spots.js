@@ -3,8 +3,7 @@ const express = require('express')
 
 const { setTokenCookie, restoreUser, requireAuth, } = require('../../utils/auth');
 const router = express.Router();
-// const { check } = require('express-validator');
-// const { handleValidationErrors } = require('../../utils/validation');
+
 const { Op } = require('sequelize');
 const { User, Spot, Booking, SpotImage, Review, sequelize } = require('../../db/models');
 //sequelize.Sequelize.DataTypes.postgres.DECIMAL.parse = parseFloat;
@@ -13,17 +12,64 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { create } = require('domain');
 
+
+//middleware
+const validateSpot = [
+    check('page')
+      .optional()
+      .isInt({min:1})
+      .withMessage("Page must be greater than or equal to 0"),
+    check('size')
+      .optional()
+      .isInt({ min: 0})
+      .withMessage("Size must be greater than or equal to 0"),
+    check('minLat')
+      .optional()
+      .isDecimal()
+      .withMessage("Minimum latitude is invalid"),
+    check('maxLat')
+      .optional()
+      .isDecimal()
+      .withMessage("Maximum latitude is invalid"),
+      check('minLng')
+      .optional()
+      .isDecimal()
+      .withMessage("Maximum longitude is invalid"),
+      check('maxLng')
+      .optional()
+      .isDecimal()
+      .withMessage("Minimum longitude is invalid"),
+      check('minPrice')
+      .optional()
+      .isInt({ min: 0})
+      .withMessage( "Maximum price must be greater than or equal to 0"),
+      check('maxPrice')
+      .optional()
+      .isInt({ min: 0})
+      .withMessage( "Minimum price must be greater than or equal to 0"),
+    handleValidationErrors
+  ];
 // Get all Spots
-router.get('/', async (req, res, next) => {
+router.get('/', validateSpot, async (req, res, next) => {
+
+    let {size, page} = req.query
+
+    if(!page) page = 1
+    if(!size) size = 20
+
+    page = parseInt(page);
+    size = parseInt(size);
+
+    const pagination = {}
+
+    if(page >= 1 && size >= 1){
+        pagination.limit = size
+        pagination.offset = size * (page - 1)
+
+    }
 
     const allSpots = await Spot.findAll({
-        // include: {
-        //     model: SpotImage,
-        //     where: {
-        //         preview: true
-        //     },
-        //     attributes: ['url']
-        // }
+        ...pagination
     })
     let spot = []
 
@@ -47,16 +93,21 @@ router.get('/', async (req, res, next) => {
     //         }
 
     //    } else {
-          data = {
-            ...el.toJSON(),
-            avgRating: allRating[0].avgRating,
-            previewImage: imageUrl.url
-        }
+        let data = el.toJSON()
+        data.avgRating= allRating[0].avgRating
+        data.previewImage = imageUrl.url
+        //   data = {
+        //     ...el.toJSON(),
+        //     avgRating: allRating[0].avgRating,
+        //     previewImage: imageUrl.url
+        // }
 
         spot.push(data)
              }
             res.json({
-        Spots: spot
+        Spots: spot,
+        page:page,
+        size:size
 
     })
 });
@@ -160,7 +211,54 @@ router.get('/:spotId', async (req, res, next) => {
 });
 
 //Create a Spot
-router.post('/', restoreUser, requireAuth, async(req, res, next) =>{
+const spotValid = [
+    check('address')
+       .exists({ checkFalsy: true })
+       .notEmpty()
+       .isLength({ min: 1 })
+       .withMessage('Street address is required'),
+    check('city')
+       .exists({ checkFalsy: true })
+       .notEmpty()
+       .isLength({ min: 1 })
+       .withMessage('City is required'),
+    check('state')
+       .exists({ checkFalsy: true })
+       .notEmpty()
+       .isLength({ min: 1 })
+       .withMessage('State is required'),
+    check('country')
+       .exists({ checkFalsy: true })
+       .notEmpty()
+       .isLength({ min: 1 })
+       .withMessage('Country is required'),
+    check('lat')
+       .exists({ checkFalsy: true })
+       .notEmpty()
+       .isFloat({min:-90, max:90})
+       .withMessage('Latitude is not valid'),
+    check('lng')
+       .exists({ checkFalsy: true })
+       .notEmpty()
+       .isFloat({min:-180, max:180})
+       .withMessage('Longitude is not valid'),
+    check('name')
+       .exists({ checkFalsy: true })
+       .notEmpty()
+       .isLength({ min: 1, max:50 })
+       .withMessage('Name must be less than 50 characters'),
+    check('description')
+       .exists({ checkFalsy: true })
+       .notEmpty()
+       .isLength({ min: 1 })
+       .withMessage('Description is required'),
+    check('price')
+       .exists({ checkFalsy: true })
+       .notEmpty()
+       .withMessage('Price per day is required'),
+    handleValidationErrors
+    ]
+router.post('/', spotValid, restoreUser, requireAuth, async(req, res, next) =>{
     const {address, city, state, country, lat, lng, name, description, price} = req.body;
     const {user} = req
     const spots = await Spot.create({
@@ -286,7 +384,19 @@ router.get('/:spotId/reviews', async(req, res, next)=>{
 })
 
 //create a review for a spot based on the spot's id
-router.post('/:spotId/reviews', restoreUser, requireAuth, async(req, res, next) => {
+const reviewChecker = [
+    check('review')
+   .exists({ checkFalsy: true })
+   .notEmpty()
+   .withMessage('Review text is required'),
+   check('stars')
+   .exists({ checkFalsy: true })
+   .notEmpty()
+   .isInt({min:1, max: 5})
+   .withMessage('Stars must be an integer from 1 to 5'),
+   handleValidationErrors
+]
+router.post('/:spotId/reviews', reviewChecker, restoreUser, requireAuth, async(req, res, next) => {
     const {spotId} = req.params
     const{user} = req
     const{review, stars} = req.body
@@ -408,7 +518,6 @@ router.get('/:spotId/bookings', requireAuth, async(req, res, next) => {
                 ]
             }
         })
-    })
 
     if(bookingConflict) {
         res.statusCode = 403
@@ -436,7 +545,7 @@ router.get('/:spotId/bookings', requireAuth, async(req, res, next) => {
               })
         }
 
-
+    })
 
 
 
