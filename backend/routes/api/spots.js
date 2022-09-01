@@ -94,7 +94,7 @@ router.get('/', validateSpot, async (req, res, next) => {
 
     //    } else {
         let data = el.toJSON()
-        data.avgRating= allRating[0].avgRating
+        data.avgRating= allRating[0].avgRating.toFixed(1)
         data.previewImage = imageUrl.url
         //   data = {
         //     ...el.toJSON(),
