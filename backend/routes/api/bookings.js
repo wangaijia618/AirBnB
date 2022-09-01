@@ -36,10 +36,10 @@ router.get('/current', requireAuth, async(req, res, next) => {
     }
 
     for(let i=0; i< allBooking.length; i++){
-        allBooking[i].dataValues.Spot = allSpot
+        allBookings[i].dataValues.Spot = allSpot
     }
 
-    res.json({ Bookings: allBooking });
+    res.json({ Bookings: allBookings });
 })
 
 //Edit a Booking
