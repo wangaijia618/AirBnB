@@ -5,7 +5,7 @@ const { setTokenCookie, restoreUser, requireAuth, } = require('../../utils/auth'
 const router = express.Router();
 
 const { Op } = require('sequelize');
-const { User, Spot, Booking, SpotImage, Review, sequelize } = require('../../db/models');
+const { User, Spot, Booking, SpotImage, Review, ReviewImage, sequelize } = require('../../db/models');
 //sequelize.Sequelize.DataTypes.postgres.DECIMAL.parse = parseFloat;
 
 const { check } = require('express-validator');
@@ -21,8 +21,8 @@ const validateSpot = [
       .withMessage("Page must be greater than or equal to 0"),
     check('size')
       .optional()
-      .isInt({ min: 0})
-      .withMessage("Size must be greater than or equal to 0"),
+      .isInt({ min: 1})
+      .withMessage("Size must be greater than or equal to 1"),
     check('minLat')
       .optional()
       .isDecimal()
@@ -280,7 +280,7 @@ router.post('/', spotValid, restoreUser, requireAuth, async(req, res, next) =>{
 //Add an Image to a Spot based on th Spot based on the Spot's id
 router.post('/:spotId/images', restoreUser, requireAuth, async(req, res, next) => {
     const {spotId} = req.params
-    const{url} = req.body
+    const{url, preview} = req.body
     const{user} = req
 
     const findSpotId = await Spot.findByPk(spotId)
@@ -294,7 +294,7 @@ router.post('/:spotId/images', restoreUser, requireAuth, async(req, res, next) =
         const addImageToSpot = await SpotImage.create({
             "spotId": spotId,
             "url": url,
-            "preview": true
+            preview
             //"userId": user.id
         })
         // SpotImage.save()
@@ -358,7 +358,6 @@ router.delete('/:spotId', async(req, res, next) => {
 //get all reviews by a Spot's id
 router.get('/:spotId/reviews', async(req, res, next)=>{
     const {spotId} = req.params
-
     const spotReview = await Spot.findByPk(spotId)
     if(!spotReview){
         res.statusCode = 404,
@@ -374,15 +373,18 @@ router.get('/:spotId/reviews', async(req, res, next)=>{
         include:[
             {model: User,
             attributes: ['id', 'firstName', 'lastName']
-        },
-            {model: SpotImage,
-             attributs: ['id','url']
-            }
+        }
         ]
-    })
-    res.json({Reviews: allReviews})
-})
+      })
+    //   for(let review of allReviews) {
+        let reviewImage = await ReviewImage.findByPk(spotId, {attributes:['id','url'] })
+        //  let data = allReviews.toJSON()
+        // data.ReviewImages = reviewImage
+    //    result.push(data)
 
+
+    res.json({Reviews: allReviews , ReviewImages: reviewImage})
+})
 //create a review for a spot based on the spot's id
 const reviewChecker = [
     check('review')
@@ -439,12 +441,12 @@ router.get('/:spotId/bookings', requireAuth, async(req, res, next) => {
     if(!spot) {
         res.statusCode = 404,
         res.json({
-            "message": "User already has a review for this spot",
-            "statusCode": 403
-        })
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+          })
     }
-    console.log('this is spot.owner id', spot.ownerId)
-    console.log ('this is user id', user.id)
+    // console.log('this is spot.owner id', spot.ownerId)
+    // console.log ('this is user id', user.id)
 
         if(spot.ownerId !== user.id){
             const notOwnerBooking = await Booking.findAll({
