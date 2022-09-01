@@ -12,34 +12,41 @@ const { Spot, User, Review, Booking, SpotImage, ReviewImage, sequelize } = requi
 
 //get all of the current User's bookings
 router.get('/current', requireAuth, async(req, res, next) => {
+    let obj
     const {user} = req
-    const allBookings = await Booking.findAll({
+    let result = []
+    const allBooking = await Booking.findAll({
         where:{
             userId: user.id
+        },
+        include: {
+            model: Spot,
+            attributes: {
+                exclude: ['createdAt', 'updatedAt', 'description']
+            }
         }
     })
-    const allSpot = await Spot.findAll({
-        where: {
-            ownerId: user.id
-        },
-        attributes: {exclude: ['createdAt', 'updatedAt'] },
-        raw: true
-    })
+    // const allSpot = await Spot.findAll({
+    //     where: {
+    //         ownerId: user.id
+    //     },
+    //     attributes: {exclude: ['createdAt', 'updatedAt'] },
+    //     raw: true
+    // })
 
-    let imageUrl = await Image.findOne({
-            where: { userId: user.id },
+
+    for(let j=0; j< allBooking.length; j++){
+       obj = allBooking[j].toJSON()
+        let imageUrl = await SpotImage.findByPk(
+            allBooking[j].spotId ,{
+                where: {preview: true},
             attributes: ['url']
         })
-
-    for(let i=0; i< allSpot.length; i++){
-        allSpot[i].previewImage = imageUrl.dataValues.url
-    }
-
-    for(let i=0; i< allBooking.length; i++){
-        allBookings[i].dataValues.Spot = allSpot
-    }
-
-    res.json({ Bookings: allBookings });
+        obj.Spot.previewImage = imageUrl.url
+    result.push(obj)
+//   result.push(allBookings, allSpot)
+}
+    res.json({ Bookings: result});
 })
 
 //Edit a Booking

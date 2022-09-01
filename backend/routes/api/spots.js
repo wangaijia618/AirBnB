@@ -310,8 +310,8 @@ router.post('/:spotId/images', restoreUser, requireAuth, async(req, res, next) =
 })
 
 //edit a Spot
-router.put('/spotId', restoreUser, requireAuth, async(req, res, next) => {
-    const {address, city, state, country, lat, lng, name, description, price, previewImage} = req.body
+router.put('/:spotId', restoreUser, spotValid, requireAuth, async(req, res, next) => {
+    const {address, city, state, country, lat, lng, name, description, price} = req.body
     const {spotId} = req.params
     const spotedit = await Spot.findByPk(spotId)
     if(!spotedit) {
@@ -330,12 +330,13 @@ router.put('/spotId', restoreUser, requireAuth, async(req, res, next) => {
         lng,
         name,
         description,
-        price,
-        previewImage
+        price
     })
     await spotedit.save()
     res.json(spotedit)
 })
+
+
 
 //delete a Spot
 router.delete('/:spotId', async(req, res, next) => {
@@ -403,6 +404,7 @@ router.post('/:spotId/reviews', reviewChecker, restoreUser, requireAuth, async(r
     const{user} = req
     const{review, stars} = req.body
     const newReview = await Spot.findByPk(spotId)
+    // let json = newReview.toJSON()
     if(!newReview) {
         res.statusCode = 404
         return res.json({
@@ -412,12 +414,11 @@ router.post('/:spotId/reviews', reviewChecker, restoreUser, requireAuth, async(r
     }
     const reviewConflict = await Review.findAll({
         where:{
-            [Op.and]: [
-                {userId: user.id}, {spotId: spotId}
-            ]
+            [Op.and]: [{ userId: user.id }, { spotId: spotId }],
         }
+
     })
-    if(reviewConflict) {
+    if(reviewConflict.length >=1) {
         res.statusCode = 403
         return res.json({
             "message": "User already has a review for this spot",
@@ -521,7 +522,7 @@ router.get('/:spotId/bookings', requireAuth, async(req, res, next) => {
             }
         })
 
-    if(bookingConflict) {
+    if(bookingConflict.length >= 1) {
         res.statusCode = 403
         res.json({
             "message": "Sorry, this spot is already booked for the specified dates",
