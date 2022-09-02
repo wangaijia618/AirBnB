@@ -404,17 +404,22 @@ router.get('/:spotId/reviews', async(req, res, next)=>{
         include:[
             {model: User,
             attributes: ['id', 'firstName', 'lastName']
+        },
+           {model: ReviewImage,
+            attributes: ['id','url']
         }
+
         ]
       })
     //   for(let review of allReviews) {
-        let reviewImage = await ReviewImage.findByPk(spotId, {attributes:['id','url'] })
+        // let reviewImage = await ReviewImage.findByPk(spotId, {attributes:['id','url'] })
         //  let data = allReviews.toJSON()
         // data.ReviewImages = reviewImage
     //    result.push(data)
+   
 
 
-    res.json({Reviews: allReviews , ReviewImages: reviewImage})
+    res.json({Reviews: allReviews})
 })
 //create a review for a spot based on the spot's id
 const reviewChecker = [
