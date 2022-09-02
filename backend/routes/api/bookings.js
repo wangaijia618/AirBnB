@@ -66,7 +66,7 @@ router.put('/:bookingId', restoreUser, requireAuth, async (req, res, next) =>{
    if(editBooking.userId !== user.id) {
     res.status(403)
     res.json({
-        "message": "You must be the current user!!!",
+        "message": "Booking must belong to the current user",
         "statusCode": 403
     })
    }

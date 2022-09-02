@@ -601,7 +601,7 @@ router.get('/:spotId/bookings', requireAuth, async(req, res, next) => {
         } else {
             res.statusCode = 403
             res.json({
-                "message": "You can't booking your own Spot!!!",
+                "message": "Spot must belong to the current user",
                 "statusCode": 403,
               })
         }
