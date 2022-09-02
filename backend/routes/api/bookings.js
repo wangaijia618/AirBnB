@@ -57,7 +57,7 @@ router.put('/:bookingId', restoreUser, requireAuth, async (req, res, next) =>{
    const editBooking = await Booking.findByPk(bookingId)
 
    if(!editBooking){
-    res.statusCode = 404,
+    res.statusCode = 404
     res.json({
         "message": "Booking couldn't be found",
         "statusCode": 404
@@ -71,7 +71,7 @@ router.put('/:bookingId', restoreUser, requireAuth, async (req, res, next) =>{
     })
    }
    if (endDate < startDate || !endDate || !startDate) {
-    res.statusCode = 400,
+    res.statusCode = 400
         res.json({
             "message": "Validation error",
             "statusCode": 400,
@@ -83,7 +83,7 @@ router.put('/:bookingId', restoreUser, requireAuth, async (req, res, next) =>{
 let today = new Date().toISOString().slice(0, 10)
 
 if (startDate < today || endDate < today || startDate > endDate) {
-    res.statusCode = 403,
+    res.statusCode = 403
         res.json({
             "message": "Past bookings can't be modified",
             "statusCode": 403
@@ -148,20 +148,20 @@ router.delete('/:bookingId', requireAuth, async(req, res, next) => {
 
     const deleteBooking = await Booking.findByPk(bookingId)
     if(!deleteBooking){
-        res.statusCode = 404,
+        res.statusCode = 404
         res.json({
             "message": "Booking couldn't be found",
             "statusCode": 404
           })
     }
     if(deleteBooking.startDate < today ||  deleteBooking.endDate < today){
-        res.statusCode = 403,
+        res.statusCode = 403
         res.json({
             "message": "Bookings that have been started can't be deleted",
             "statusCode": 403
         })
 
-} else if (deleteBooking.userId === user.id || deleteSpotBooking.ownerId === user.id){
+} else if (deleteBooking.userId === user.id){
 
     await deleteBooking.destroy()
 

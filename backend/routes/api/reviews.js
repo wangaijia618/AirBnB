@@ -63,9 +63,9 @@ router.post('/:reviewId/images', restoreUser, requireAuth, async(req, res, next)
     const{url, previewImage} = req.body
     const findReview = await Review.findByPk(reviewId)
     if(!findReview) {
-        res.statusCode = 404,
+        res.statusCode = 404
         res.json({
-            "message": "Spot couldn't be found",
+            "message": "Review couldn't be found",
             "statusCode": 404
         })
     }
@@ -79,7 +79,7 @@ router.post('/:reviewId/images', restoreUser, requireAuth, async(req, res, next)
     } else {
         const imagecount = await ReviewImage.count({where: {reviewId}})
         if(imagecount > 10){
-            res.statusCode = 403.
+            res.statusCode = 403
             res.json({
                 "message": "Maximum number of images for this resource was reached",
                 "statusCode": 403
@@ -120,7 +120,7 @@ router.put('/:reviewId', reviewChecker, restoreUser, requireAuth, async(req, res
 
     const reviewEdit = await Review.findByPk(reviewId)
     if(!reviewEdit) {
-        res.statusCode = 404,
+        res.statusCode = 404
         res.json({
             "message": "Review couldn't be found",
             "statusCode": 404
@@ -147,7 +147,7 @@ router.delete('/:reviewId', restoreUser, requireAuth, async(req, res, next) => {
     const {user} = req
     const deleteReview = await Review.findByPk(reviewId)
     if(!deleteReview) {
-        res.statusCode = 404,
+        res.statusCode = 404
         res.json({
             "message": "Review couldn't be found",
             "statusCode": 404
