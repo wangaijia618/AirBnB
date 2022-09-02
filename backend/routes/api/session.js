@@ -10,13 +10,14 @@ const validateLogin = [
   check('credential')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('Please provide a valid email or username.'),
+    .withMessage("Email or username is required"),
   check('password')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a password.'),
+    .withMessage("Password is required"),
   handleValidationErrors
 ];
-
+// "credential": "Email or username is required",
+// "password": "Password is required"
 // Log in
 router.post(
     '/',
@@ -32,10 +33,11 @@ router.post(
         return next(err);
       }
 
-      await setTokenCookie(res, user);
-
+      let token = await setTokenCookie(res, user);
+      const userData = user.toSafeObject()
+      userData.token = token
       return res.json({
-        user
+        userData
       });
     }
   );
