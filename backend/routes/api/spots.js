@@ -11,6 +11,7 @@ const { User, Spot, Booking, SpotImage, Review, ReviewImage, sequelize } = requi
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { create } = require('domain');
+//empty space
 
 
 //middleware
@@ -416,7 +417,7 @@ router.get('/:spotId/reviews', async(req, res, next)=>{
         //  let data = allReviews.toJSON()
         // data.ReviewImages = reviewImage
     //    result.push(data)
-   
+
 
 
     res.json({Reviews: allReviews})
