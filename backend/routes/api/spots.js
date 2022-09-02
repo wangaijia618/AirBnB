@@ -18,7 +18,7 @@ const validateSpot = [
     check('page')
       .optional()
       .isInt({min:1})
-      .withMessage("Page must be greater than or equal to 0"),
+      .withMessage("Page must be greater than or equal to 1"),
     check('size')
       .optional()
       .isInt({ min: 1})
