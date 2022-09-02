@@ -384,34 +384,6 @@ router.delete('/:spotId', requireAuth, async(req, res, next) => {
 
 
 })
-// const { spotId } = req.params
-// const { user } = req
-
-// const spot = await Spot.findByPk(spotId)
-
-// if (!spot) {
-//   res.status(404)
-//   return res.json({
-//     "message": "Spot couldn't be found",
-//     "statusCode": 404
-//   })
-
-// } else {
-//   if (spot.ownerId !== user.id) {
-//     res.status(403)
-//     return res.json({
-//       "message": "This is NOT your property!!",
-//       "statusCode": 403
-//     })
-//   }
-
-//   await spot.destroy()
-//   return res.json({
-//     "message": "Successfully deleted",
-//     "statusCode": 200
-//   })
-// }
-// })
 
 
 //get all reviews by a Spot's id
