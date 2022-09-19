@@ -69,6 +69,7 @@ router.get(
           user: user.toSafeObject()
         });
       } else return res.json({});
+      //  } else res.json({});
     }
   );
 
