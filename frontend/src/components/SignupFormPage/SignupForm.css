@@ -1,10 +1,10 @@
-.Sign_up_container{
+.sign_up_container{
     text-align: center;
     font-size: 25px;
     margin-top: 30px;
 }
 
-.Sign_up_words{
+.sign_up_words{
     text-align: center;
     font-size: 30px;
     margin-top: 30px;
@@ -15,71 +15,75 @@ input:focus {
   }
 
 
-.Firstname{
+.firstname{
     margin: 5px;
 }
 
-.Firstname_Input{
+.firstname_input{
     border-radius: 15px;
     height: 25px;
     width: 180px;
 }
 
 
-.Lastname{
+.lastname{
     margin: 5px;
 }
 
-.Lastname_input{
+.lastname_input{
     margin-left: 2px;
     border-radius: 15px;
     height: 25px;
     width: 180px;
 }
 
-.Email{
+.email{
     margin: 5px;
     margin-right: 7px;
 }
 
-.Email_input{
+.email_input{
     margin-left: 50px;
     border-radius: 15px;
     height: 25px;
     width: 180px;
 }
 
-.Username{
+.username{
     margin: 5px;
 
 }
 
-.Username_input{
+.username_input{
     margin-right: 1px;
     border-radius: 15px;
     height: 25px;
     width: 180px;
 }
+.password{
+    /* margin-right: 88px; */
+    margin: 5px;
+}
 
-.Signup_Password_input{
-    margin-left: 6px;
+.password_input{
+    /* margin-left: 6px; */
     border-radius: 15px;
     height: 25px;
     width: 180px;
 
 }
-.Confirm_Password{
+.confirm_password{
     margin-right: 88px;
     margin-top: 5px;
 }
 
-.Confirm_Password_input{
+.confirm_password_input{
     border-radius: 15px;
     height: 25px;
     width: 180px;
 }
 
-.Sign_up_Button{
+.signup_button{
     width: 180px;
     margin-left: 110px;
     margin-top: 12px;
@@ -94,12 +98,12 @@ input:focus {
     font-size: 16px;
 }
 
-.Sign_up_Button:hover{
+.signup_Button:hover{
     background-color:red;
     color:white;
 }
 
-.Sign_up_errorlist{
+.signup_errors{
     list-style: none;
     color:red
 }
