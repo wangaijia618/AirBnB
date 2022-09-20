@@ -26,31 +26,46 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
+
+        <div className="website_title">
+        <i class="fa-solid fa-bug"></i>
+        AirDnd
+        </div>
+        <div className="login_error_container">
       <ul>
         {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
+          <li div className="login_errors" key={idx}>{error}</li>
         ))}
       </ul>
+      </div>
+      <div className="login_container">
+        <div className="username_email">
       <label>
-        Username or Email
+        Username or Email:
         <input
+        className="login_input"
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
         />
       </label>
+       </div>
+         <div className="password">
       <label>
-        Password
+        Password:
         <input
+        className="login_input"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
-      <button type="submit">Log In</button>
+      </div>
+      <button className="login_button" type="submit">Log In</button>
+</div>
     </form>
   );
 }
