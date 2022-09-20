@@ -20,10 +20,6 @@ function Navigation({ isLoaded }){
   // };
 
 
-  // const openMenu = () => {
-
-  // };
-
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -49,7 +45,7 @@ function Navigation({ isLoaded }){
     <div className='Parent_navbar'>
     <div className='Navbar_container'>
       <div className='home_logo'>
-      <NavLink exact to={'/'} className='home_link' >
+      <NavLink exact to='/' className='home_link' >
         <i className="fa-solid fa-bug"></i>
         <div className="airdnd">AirDnd</div>
         </NavLink>

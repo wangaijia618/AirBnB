@@ -18,7 +18,7 @@ const SpotBrowser = () => {
       <div className='firstDiv'></div>
       <div className='spotBox'>
         {spotsObj?.map(spot => (
-          <SpotBox key={spot?.id} spot={spot}/>
+          <SpotBox key={spot.id} spot={spot}/>
         )
           )}
       </div>
@@ -26,5 +26,6 @@ const SpotBrowser = () => {
    )
   )
 }
+
 
 export default SpotBrowser;

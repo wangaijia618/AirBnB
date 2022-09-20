@@ -31,34 +31,11 @@ return (
     <Navigation isLoaded={isLoaded} />
     {isLoaded && (
       <Switch>
-        {/* no need signup, already using modal */}
-        {/* <Route path="/signup">
-          <SignupFormModal />
-        </Route> */}
 
-        <Route path="/">
+        <Route exact path="/">
             <SpotBrowser />
           </Route>
 
-      {/*     <Route exact path="/spots/current">
-            <SpotOwner />
-          </Route>
-
-          <Route exact path="/spots/:spotId">
-            <SpotDetail />
-          </Route> */}
-
-          {/* <Route exact path="/spots" component={CreateSpotForm}/>
-           <CreateSpotForm />
-          </Route> */}
-
-          {/* <Route exact path="/spots/:spotId/edit" component={EditSpotForm}/>
-            {/* <EditSpotForm />
-          </Route> */}
-{/*
-          <Route exact path={'/reviews/current'}>
-            <ReviewsUser />
-          </Route> */}
       </Switch>
     )}
   </>
