@@ -106,7 +106,8 @@ export const removeSpot = (spotId) => async (dispatch) => {
 
     if (response.ok) {
       const spot = await response.json();
-      dispatch(goodbyeSpot(spotId));
+      dispatch(deleteSpot(spot));
+      //spot or spotId
 
     }
   };
@@ -128,7 +129,7 @@ const spotReducer = (state = initialState, action) => {
                 newState[action.spots.id] = action.spots
                 return newState
         case CREATE_SPOT:
-            newState - {...state}
+            newState = {...state}
             newState[action.spots.id] = action.spots
             return newState
         case UPDATE_SPOT:

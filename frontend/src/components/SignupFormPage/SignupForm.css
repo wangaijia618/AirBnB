@@ -2,6 +2,7 @@
     text-align: center;
     font-size: 25px;
     margin-top: 30px;
+    /* margin-left:80px */
 }
 
 .sign_up_words{
@@ -20,6 +21,7 @@ input:focus {
 }
 
 .firstname_input{
+    margin-left: 12px;
     border-radius: 15px;
     height: 25px;
     width: 180px;
@@ -31,19 +33,19 @@ input:focus {
 }
 
 .lastname_input{
-    margin-left: 2px;
+    margin-left: 12px;
     border-radius: 15px;
     height: 25px;
     width: 180px;
+
 }
 
-.email{
+/* .email{
     margin: 5px;
-    margin-right: 7px;
-}
+} */
 
 .email_input{
-    margin-left: 50px;
+    margin-left: 55px;
     border-radius: 15px;
     height: 25px;
     width: 180px;
@@ -55,18 +57,18 @@ input:focus {
 }
 
 .username_input{
-    margin-right: 1px;
+    margin-left: 12px;
     border-radius: 15px;
     height: 25px;
     width: 180px;
 }
-.password{
-    /* margin-right: 88px; */
+/* .password{
+
     margin: 5px;
-}
+} */
 
 .password_input{
-    /* margin-left: 6px; */
+    margin-left: 12px;
     border-radius: 15px;
     height: 25px;
     width: 180px;
@@ -78,6 +80,7 @@ input:focus {
 }
 
 .confirm_password_input{
+    margin-left: 12px;
     border-radius: 15px;
     height: 25px;
     width: 180px;
@@ -85,8 +88,8 @@ input:focus {
 
 .signup_button{
     width: 180px;
-    margin-left: 110px;
-    margin-top: 12px;
+    margin-left: 180px;
+    margin-top: 42px;
     background-color: rgb(232, 63, 92);
     color:white;
     border: 0;
