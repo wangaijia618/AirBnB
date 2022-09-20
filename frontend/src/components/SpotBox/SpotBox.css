@@ -1,0 +1,72 @@
+.firstDiv {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+  }
+
+  .spotBox {
+    /* border: 1px red solid; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 3px;
+  }
+
+  .imgDiv {
+    height: 300px;
+    width: 320px;
+    display: flex;
+    margin-left: 20px;
+  }
+
+  .imgSpot {
+    height: 100%;
+    width: 100%;
+    border-radius: 16px;
+  }
+
+  .priceSpot,
+  .citySpot,
+  .starSpot {
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+    color: black;
+    padding-left: 30px;
+  }
+  .eachSpot {
+    text-decoration: none;
+  }
+
+  .citySpot,
+  .priceSpot {
+    font-weight: 500;
+  }
+
+  .citySpot {
+    margin-top: 5px;
+  }
+
+  .nightSpot {
+    margin-bottom: 10px;
+  }
+
+  .locationReviews {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .starSpot {
+    margin-right: 10px;
+    margin-top: 3px;
+  }
+
+  .priceNight {
+    display: flex;
+  }
+
+  .nightSpot {
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+    color: black;
+    margin-left: 5px;
+  }

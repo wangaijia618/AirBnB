@@ -6,6 +6,8 @@ const CREATE_SPOT = "spots/CREATE_SPOT";
 const UPDATE_SPOT = "spots/UPDATE_SPOT"
 const DELETE_SPOT = "spots/DELETE_SPOT"
 
+export const allSpotsArray = (state) => Object.values(state.spots);
+export const allSpotsObj = state => state.spots
 //action creator
 //get all spots
 const readAllSpots = (spots) => {
@@ -56,6 +58,7 @@ export const getAllSpots = () => async(dispatch) => {
         const spots = await response.json()
         dispatch(readAllSpots(spots.Spots))
     }
+
 }
 
 //get one spot thunk
@@ -105,8 +108,8 @@ export const removeSpot = (spotId) => async (dispatch) => {
     });
 
     if (response.ok) {
-      const spot = await response.json();
-      dispatch(deleteSpot(spot));
+      //const spot = await response.json();
+      dispatch(deleteSpot(spotId));
       //spot or spotId
 
     }
