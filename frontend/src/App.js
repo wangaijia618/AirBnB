@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 // import LoginFormPage from "./components/LoginFormModal/LoginForm";
-import SignupFormPage from "./components/SignupFormPage";
+// import SignupFormModal from "./components/SignupFormModal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation"
-// import SpotsBrowser from "./components/Spots/SpotsBrowser";
+import SpotBrowser from "./components/SpotBrowser";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -30,13 +31,14 @@ return (
     <Navigation isLoaded={isLoaded} />
     {isLoaded && (
       <Switch>
-        <Route path="/signup">
-          <SignupFormPage />
-        </Route>
+        {/* no need signup, already using modal */}
+        {/* <Route path="/signup">
+          <SignupFormModal />
+        </Route> */}
 
-        {/* <Route exact path="/">
-            <SpotsBrowser />
-          </Route> */}
+        <Route path="/">
+            <SpotBrowser />
+          </Route>
 
       {/*     <Route exact path="/spots/current">
             <SpotOwner />
@@ -46,8 +48,8 @@ return (
             <SpotDetail />
           </Route> */}
 
-          {/* <Route exact path="/spots" component={CreateSpotForm}/> */}
-            {/* <CreateSpotForm />
+          {/* <Route exact path="/spots" component={CreateSpotForm}/>
+           <CreateSpotForm />
           </Route> */}
 
           {/* <Route exact path="/spots/:spotId/edit" component={EditSpotForm}/>

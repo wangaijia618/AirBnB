@@ -16,7 +16,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
- if(sessionUser) return <Redirect to="/" />;
+//  if(sessionUser) return <Redirect to="/" />;
 
 
   const handleSubmit = (e) => {
@@ -34,7 +34,7 @@ function SignupFormPage() {
 
   return (
     <div>
-    <h3 className="sign_up_words">Please Sign up</h3>
+    <h3 className="sign_up_words">Sign up</h3>
     <form className ="sign_up_container" onSubmit={handleSubmit}>
       <ul className="sign_up_errors">
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
