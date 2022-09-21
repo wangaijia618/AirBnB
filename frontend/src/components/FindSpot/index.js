@@ -67,7 +67,7 @@ if (sessionUser && spot) {
              )}
       </div>
           <div className='imgDivfs'>
-         <img className='imageSpotfs' src={spot.previewImages} alt="Image Is Not Available"/> </div>
+         <img className='imageSpotfs' src={spot?.previewImage} alt="Image Is Not Available"/> </div>
            {/* <div className='single-spot-img'>
 
                {oneSpotById.SpotImages.map(img => {
