@@ -7,23 +7,25 @@ import SpotBox from '../SpotBox';
 
 const SpotBrowser = () => {
   const dispatch = useDispatch();
-  const spotsObj = useSelector(allSpotsArray);
+  // const spotsObj = useSelector(allSpotsArray);
+  const spots = useSelector(state => Object.values(state.spots))
   useEffect(() => {
-    dispatch(getAllSpots(spotsObj))
+    dispatch(getAllSpots())
+  //  dispatch(getAllSpots(spotsObj))
   },[dispatch])
 
   return (
-    spotsObj && (
+
       <>
       <div className='firstDiv'></div>
       <div className='spotBox'>
-        {spotsObj?.map(spot => (
+        {spots?.map(spot => (
           <SpotBox key={spot.id} spot={spot}/>
         )
           )}
       </div>
     </>
-   )
+
   )
 }
 

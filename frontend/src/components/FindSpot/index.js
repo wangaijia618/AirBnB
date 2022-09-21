@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import {getOneSpot, allSpotsObj, removeSpot} from '../../store/spots';
 // import {allReviewsArray, getAllReviewsBySpot} from '../../store/reviews';
-// import CreateReviewModal from '../CreateReviewModal';
+//  import CreateReviewModal from '../CreateReviewModal';
 // import EditSpotModal from "../EditSpotModal";
 // import UserReview from '../UserReview';
 import "./FindSpot.css";
@@ -14,10 +14,17 @@ const FindSpot = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const spotsObj = useSelector(allSpotsObj);
-
+//   const oneSpotById = useSelector(state => state.spots.singleSpot)
 //   const reviewsObj = useSelector(allReviewsArray);
+
+// const spotData = useSelector(state => state.spots.singleSpot)
+// const spotdata = spotData.spotId
+// const spotImgArr = spotData.SpotImages
+
   const [isLoaded, setIsLoaded] = useState(false)
-  const spot = spotsObj[Number(spotId)];
+  //in use
+    const spot = spotsObj[Number(spotId)];
+
   const sessionUser = useSelector(state => state.session.user);
   useEffect(() => {
     dispatch(getOneSpot(spotId))
@@ -47,9 +54,9 @@ if (sessionUser && spot) {
            <div className='ratingSpot'>
             <div className='outsideStar'>
            <div className="fa-solid fa-star"/>
-            {/* </div> */}
-           {/* {spot?.avgRating} · {spot?.city} ~{spot?.countReviews} reviews */}
-            <div key={spot?.id} className='stateSpot'>  , {spot?.state}, {spot?.country}</div>
+         <div></div>
+           <div>{spot?.avgRating} ·  {spot?.city} , {spot?.countReviews} </div>
+            <div key={spot?.id} className='stateSpot'>   {spot?.state}, {spot?.country}</div>
            </div>
            </div>
             {currentUser && (
@@ -60,17 +67,22 @@ if (sessionUser && spot) {
              )}
       </div>
           <div className='imgDivfs'>
-           <img className='imageSpotfs' src={spot?.preview} alt="Image Is Not Available"/>
-           </div>
+         <img className='imageSpotfs' src={spot.previewImages} alt="Image Is Not Available"/> </div>
+           {/* <div className='single-spot-img'>
+
+               {oneSpotById.SpotImages.map(img => {
+                   (<img key={img.id} src={img.url} />)
+               })}
+           </div> */}
            <div className='bottomText'>
             <div className='priceNightfs'>
            <div className='pricesSpot'>${spot?.price}</div>
            <div className='nightsSpot'>night</div>
             </div>
            <div className='descriptSpot'>{spot?.description}</div>
-           {/* <div className='createReviewSpot'>
-             {sessionUser && <CreateReviewModal spotId={spotId}/>}
-           </div> */}
+           <div className='createReviewSpot'>
+             {/* {sessionUser && <CreateReviewModal spotId={spotId}/>} */}
+           </div>
            <div className='emptyBorder'/>
            <div className='bottomAvgCount'>
            <div className="fa-solid fa-star bigStar"/>

@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation"
 import SpotBrowser from "./components/SpotBrowser";
 import FindSpot from "./components/FindSpot";
 import CreateNewSpot from "./components/CreateSpot";
+import EditSpotForm from "./components/EditSpotForm";
 
 
 function App() {
@@ -40,8 +41,12 @@ return (
           <Route path="/spots/:spotId">
             <FindSpot/>
           </Route>
-          <Route exact path="/spots" component={CreateNewSpot}/>
-
+          <Route path='/newspot'>
+            <CreateNewSpot />
+          </Route>
+          <Route path="/spots/:spotId/edit">
+            <EditSpotForm />
+          </Route>
       </Switch>
     )}
   </>
