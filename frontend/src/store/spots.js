@@ -114,23 +114,47 @@ export const removeSpot = (spotId) => async (dispatch) => {
 
     }
   };
+  export const createImage = (imageUrl, spotId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots/${spotId}/images`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(imageUrl)
+    })
+    if (res.ok) {
+      dispatch(getOneSpot(spotId))
+    }
+    return res;
+  }
 
   //reducer
-const initialState = {}
+const initialState = {
+    // allSpots: {},
+    // singleSpot: {SpotImages: []}
+}
 const spotReducer = (state = initialState, action) => {
     let newState={}
     switch(action.type) {
         case READ_ALL_SPOTS:
+            // newState = { ...state, allSpots: { ...action.spots } }
+            // return newState
             const allSpots = {}
             action.spots.forEach(spot => {
-                allSpots[spot.id] = spot
+              allSpots[spot.id] = spot
             })
             newState = {...state, ...allSpots}
             return newState;
         case READ_ONE_SPOT:
-            newState = {...state}
-                newState[action.spots.id] = action.spots
-                return newState
+            newState = { ...state };
+            newState[action.spotId] = action.spot;
+            return newState;
+            // newState = { ...state };
+            // newState.singleSpot = action.spot;
+            // return newState;
+            // newState = {
+            //     ...state,
+            //     singleSpot: { ...state.singleSpot, SpotImages: [...action.spot.SpotImages]}
+            // }
+            // return newState
         case CREATE_SPOT:
             newState = {...state}
             newState[action.spots.id] = action.spots

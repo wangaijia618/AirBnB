@@ -43,9 +43,9 @@ function ProfileButton({ user }) {
       { showMenu && (
         <ul className="profile-dropdown">
          <li className="username"><i className="fa-solid fa-user-check"></i> {user.username}</li>
-          <li className="email"><i className="fa-solid fa-at"></i> {user.email}</li>
+          <li className="email"><i className="fa-regular fa-envelope"></i> {user.email}</li>
           <li>
-          <button className="Logout_button" onClick={logout}><i className="fa-solid fa-plug-circle-xmark"></i>Log Out</button>
+          <button className="Logout_button" onClick={logout}><i className="fa-solid fa-arrow-right-from-bracket"></i>Log Out</button>
           </li>
         </ul>
       )

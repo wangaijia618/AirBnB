@@ -94,7 +94,7 @@ input:focus {
     margin-left: 180px;
     margin-top: 42px;
     background-color: rgb(232, 63, 92);
-    color:white;
+    color: white;
     border: 0;
     height: 23px;
     border-radius: 20px;
@@ -112,4 +112,7 @@ input:focus {
 .signup_errors{
     list-style: none;
     color:red
+}
+.signupButton {
+   margin: 8px
 }

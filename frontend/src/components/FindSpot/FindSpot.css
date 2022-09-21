@@ -1,0 +1,149 @@
+.nameSpot {
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    padding: 10px;
+  }
+
+  .ratingSpot {
+    font-weight: 500;
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .editDeleteSpot {
+    padding: 10px;
+  }
+
+  .stateSpot {
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+    font-weight: 500;
+
+  }
+
+  .fa-star {
+    font-size: 15px;
+    margin-top: 4px;
+    padding-right: 3px;
+  }
+
+  .imgDivfs {
+    display:flex;
+    justify-content: center;
+    height: 600px;
+    width: 100%;
+  }
+
+  .imageSpotfs {
+    height: 100%;
+    width: 50%;
+    border-radius: 20px;
+  }
+
+
+
+  .deleteButton {
+    background-color: rgb(233, 0, 0);
+    color: white;
+    border: white solid 1px;
+    border-radius: 18px;
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    height: 40px;
+    width: 85px;
+
+  }
+
+  .deleteButton:hover {
+    cursor: pointer;
+    font-size: 17px;
+    height: 40px;
+    width: 90px;
+  }
+
+  .pricesSpot,
+  .nightsSpot,
+  .descriptSpot {
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+  }
+
+  .descriptSpot {
+    font-size: 18px;
+  }
+
+  .pricesSpot {
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  .nightsSpot {
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+  }
+
+  .descriptSpot {
+    margin-bottom: 10px;
+  }
+
+  .editDeleteSpot,
+  .imgDiv,
+  .createReviewSpot,
+  .descriptSpot {
+    display: flex;
+    justify-content: center;
+  }
+
+  .priceNightfs {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 25%;
+    margin-top: 5px;
+  }
+
+  .emptyBorder {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border: solid 1px rgb(230, 230, 230);
+  }
+
+  .allReviewSpot {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 0.5%;
+    margin-left: 24.5%;
+    width: 52%;
+
+  }
+
+  .nameSpot {
+
+    margin-left: 25%;
+  }
+
+  .outsideStar {
+    display: flex;
+    justify-content: flex-start;
+    margin-right: 32%;
+  }
+
+  .bigStar {
+    font-size: 23px;
+  }
+
+  .bottomAvgCount {
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+    font-size: 23px;
+    margin-left: 25%;
+  }
