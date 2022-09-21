@@ -5,7 +5,14 @@
 
 }
 
-
+.airdnd {
+    display: inline-block;
+    margin: 10px;
+    font-size: 30px;
+    font-family: monospace;
+    color: red;
+    text-shadow: pink 2px 2px
+}
 .profile-dropdown > li {
     list-style: none;
     margin: 5px;
@@ -15,7 +22,7 @@
 .Parent_navbar{
     position: sticky;
     top: 0;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px inset lightgray;
     background-color: white;
 }
 
@@ -25,6 +32,7 @@
     list-style: none;
     margin-left: 46px;
     margin-right: 28px;
+    margin-top:30px;
     padding:0px;
 }
 
@@ -36,18 +44,20 @@
 
 .email{
    font-size: 23px;
+   margin: 5px;
 }
 
 
 .username:hover{
     background-color: aliceblue;
-    color: blue;
+    color: coral;
     border-radius: 20px;
 }
 
+
 .email:hover{
     background-color: aliceblue;
-    color: blue;
+    color: coral;
     border-radius: 20px;
     }
 
@@ -57,9 +67,9 @@
     margin-left: 2px;
 }
 
-.fa-plug-circle-xmark{
+.fa-arrow-right-from-bracket{
     font-size: 20px;
-    margin-left: -6px;
+    margin-left: -11px;
     /* margin-right: 5px; */
     padding-right: 5px;
     padding-bottom: 5px;
@@ -138,9 +148,12 @@
 
 }
 
-.fa-solid {
+.fa-bug {
     font-size: 35px;
-    color: red
+    color: red;
+    margin: 10px;
+    text-shadow: pink 2px 2px
+
 }
 
 .Nav_Home_button{
@@ -202,8 +215,8 @@
 
 
 .Logout_button:hover{
-    box-shadow: 3px 3px 3px rgba(46, 42, 42, 0.3);
-    color: blue;
+   
+    color: coral;
     background-color: aliceblue;
 }
 
@@ -235,7 +248,7 @@
 
 button:hover{
     box-shadow: 3px 3px 3px rgba(46, 42, 42, 0.5);
-    color: blue;
+    color: coral;
     background-color: aliceblue;
     transition: all 0.5s ease;
 }

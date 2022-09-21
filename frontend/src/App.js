@@ -6,6 +6,8 @@ import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation"
 import SpotBrowser from "./components/SpotBrowser";
+import FindSpot from "./components/FindSpot";
+import CreateNewSpot from "./components/CreateSpot";
 
 
 function App() {
@@ -35,6 +37,10 @@ return (
         <Route exact path="/">
             <SpotBrowser />
           </Route>
+          <Route path="/spots/:spotId">
+            <FindSpot/>
+          </Route>
+          <Route exact path="/spots" component={CreateNewSpot}/>
 
       </Switch>
     )}

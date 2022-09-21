@@ -1,0 +1,54 @@
+.createName,
+.createAddress,
+.createCity,
+.createState,
+.createCountry,
+.createLat,
+.createLng,
+.createDescription,
+.createPrice,
+.createImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  border: solid 1px lightslategray;
+  border-radius: 8px;
+  width: 530px;
+  height: 45px;
+  padding-left: 15px;
+  padding-bottom: 6px;
+  padding-top: 6px;
+  margin-bottom: 30px;
+}
+.createHTitle,
+.createSubTitle,
+.createError {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+  sans-serif;
+}
+
+.createError:hover {
+    color: red;
+    font-weight: 700;
+  }
+
+  .createText {
+    display: grid;
+    grid-auto-flow: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .createName {
+    margin-top: 25px;
+  }
+
+  .createDivBut {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
