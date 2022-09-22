@@ -89,7 +89,7 @@ return (
             </div>
            <div className='allReviewSpot'>
             {reviewsObj.map(review => (
-              <UserReview key={review?.id} review={review}/>
+              <UserReview className='everyReview' key={review?.id} review={review}/>
             ))}
            </div>
            </div>

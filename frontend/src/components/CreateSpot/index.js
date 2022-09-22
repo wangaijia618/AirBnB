@@ -29,14 +29,6 @@ const CreateNewSpot = () => {
     }
     setErrors(errors)
   }, [address, city, state, country, lat, lng, name, description, price, image])
-  // if (address.length < 6)
-    // if (address === '') errors.push("Street address is required")
-    // if (city === '') errors.push("City is required")
-    // if (state === '') errors.push("State is required")
-    // if (country === '') errors.push("Country is required")
-    // if (name === '' || name.length > 50) errors.push("Valid name required")
-    // if (description === '') errors.push("Description is required")
-    // if (price === '') errors.push("Price is required")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,7 +58,7 @@ const CreateNewSpot = () => {
     <form onSubmit={handleSubmit} className='createForm'>
       <div className='createBox'>
       <div className='createTitle'>
-        <h1 className='createHTitle'>Welcome to AwayBnB</h1>
+        <h1 className='createHTitle'>Welcome to AirDnd</h1>
       </div>
       <div>
         <h2 className='createSubTitle'>Host Your Home</h2>
