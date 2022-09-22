@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import {getOneSpot, allSpotsObj, removeSpot} from '../../store/spots';
+import {getOneSpot, allSpotsObj, removeSpot, editSpot} from '../../store/spots';
 // import {allReviewsArray, getAllReviewsBySpot} from '../../store/reviews';
 //  import CreateReviewModal from '../CreateReviewModal';
-// import EditSpotModal from "../EditSpotModal";
+// import EditSpotForm from "./EditSpotForm";
 // import UserReview from '../UserReview';
 import "./FindSpot.css";
+import EditSpotModal from "../EditSpotForm";
+
 
 const FindSpot = () => {
   let currentUser;
@@ -14,12 +16,6 @@ const FindSpot = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const spotsObj = useSelector(allSpotsObj);
-//   const oneSpotById = useSelector(state => state.spots.singleSpot)
-//   const reviewsObj = useSelector(allReviewsArray);
-
-// const spotData = useSelector(state => state.spots.singleSpot)
-// const spotdata = spotData.spotId
-// const spotImgArr = spotData.SpotImages
 
   const [isLoaded, setIsLoaded] = useState(false)
   //in use
@@ -29,9 +25,9 @@ const FindSpot = () => {
   useEffect(() => {
     dispatch(getOneSpot(spotId))
 
-    // .then(() => dispatch(getAllReviewsBySpot(spotId)))
+  //   // .then(() => dispatch(getAllReviewsBySpot(spotId)))
     .then(() => setIsLoaded(true))
-  }, [dispatch])
+  }, [dispatch, spotId])
 
   const handleDelete = async (e) => {
   e.preventDefault();
@@ -46,6 +42,7 @@ if (sessionUser && spot) {
 }
 
   return isLoaded && (
+    // return  (
         (
       <>
       <div className='firstDiv'/>
@@ -59,21 +56,18 @@ if (sessionUser && spot) {
             <div key={spot?.id} className='stateSpot'>   {spot?.state}, {spot?.country}</div>
            </div>
            </div>
+
             {currentUser && (
               <div className='editDeleteSpot'>
-              {/* <EditSpotModal/> */}
-              <button onClick={handleDelete} className='deleteButton'>Delete</button>
+            <EditSpotModal />
+              <button onClick={handleDelete} className='deleteButton'>Delete Spot</button>
             </div>
              )}
       </div>
           <div className='imgDivfs'>
          <img className='imageSpotfs' src={spot?.previewImage} alt="Image Is Not Available"/> </div>
-           {/* <div className='single-spot-img'>
 
-               {oneSpotById.SpotImages.map(img => {
-                   (<img key={img.id} src={img.url} />)
-               })}
-           </div> */}
+
            <div className='bottomText'>
             <div className='priceNightfs'>
            <div className='pricesSpot'>${spot?.price}</div>

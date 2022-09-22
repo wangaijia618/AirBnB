@@ -52,6 +52,9 @@ function Navigation({ isLoaded }){
       </div>
         {isLoaded && sessionLinks}
         </div>
+        <div className='Nav_become__host_and_Home_link'>
+     <Link to={'/newspot'} className='Nav_become__host_link'> Become Host? </Link>
+      </div>
     </div>
   </>
   );
