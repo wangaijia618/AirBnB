@@ -44,7 +44,7 @@ if (sessionUser && spot) {
     currentUser = true;
   } else currentUser = false;
 }
-if(!(spot.SpotImages)) return null
+if(!spot.SpotImages) return null
 
 return (
 
@@ -79,8 +79,8 @@ return (
             </div>
            <div className='descriptSpot'>{spot?.description}</div>
            <div className='createReviewSpot'>
-             {/* {sessionUser && <CreateReviewModal spotId={spotId}/>} */}
-             {sessionUser && <CreateReviewModal />}
+             {sessionUser && <CreateReviewModal spotId={spotId}/>}
+             {/* {sessionUser && <CreateReviewModal />} */}
            </div>
            <div className='emptyBorder'/>
            <div className='bottomAvgCount'>

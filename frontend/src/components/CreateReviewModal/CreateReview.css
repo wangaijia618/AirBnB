@@ -84,3 +84,9 @@
   .submitReview:hover {
     cursor: pointer;
   }
+
+  .reviewButton {
+    background-color: red;
+    color:white;
+    font-size: 30px;
+  }
