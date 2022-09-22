@@ -6,10 +6,10 @@ import "./EditSpotForm.css";
 
 function EditSpotModal() {
   const [showModal, setShowModal] = useState(false);
-  const allSpots = useSelector(state => state.spots);
-  useEffect(() => {
-    setShowModal(false);
-  }, [allSpots])
+//   const allSpots = useSelector(state => state.spots);
+//   useEffect(() => {
+//     setShowModal(false);
+//   }, [allSpots])
   return (
     <>
       <button className='editButton' onClick={() => setShowModal(true)}>

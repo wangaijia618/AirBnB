@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import {editSpot, findSpot} from "../../store/spots";
+import {editSpot, getOneSpot} from "../../store/spots";
 import { Modal } from '../../context/Modal';
 import "./EditSpotForm.css"
 
@@ -40,6 +40,9 @@ const EditSpotForm = () => {
     setErrors(errors)
 
   }, [address, city, state, country, lat, lng, name, description, price])
+//   useEffect(() => {
+//     dispatch(getOneSpot(spotId))
+// }, [dispatch, spotId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,13 +58,13 @@ const EditSpotForm = () => {
       price
     };
     setErrors([]);
-    dispatch(editSpot(spotInfo, spot?.id))
+    dispatch(editSpot(spotInfo, spotId))
     .catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors([data.errors])
     })
     history.push(`/spots/${spotId}`)
-  }
+   }
 
   return (
     <form onSubmit={handleSubmit} className='editForm'>

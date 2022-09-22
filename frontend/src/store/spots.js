@@ -53,9 +53,9 @@ const deleteSpot = (spot) => {
 //thunks
 //get all spots thunk
 export const getAllSpots = () => async(dispatch) => {
-    const response = await csrfFetch('/api/spots')
-    if(response.ok){
-        const spots = await response.json()
+    const res = await csrfFetch('/api/spots')
+    if(res.ok){
+        const spots = await res.json()
         dispatch(readAllSpots(spots.Spots))
     }
 
@@ -64,10 +64,10 @@ export const getAllSpots = () => async(dispatch) => {
 //get one spot thunk
 
 export const getOneSpot = (spotId) => async(dispatch) => {
-    const response = await csrfFetch(`/api/spots/${spotId}`)
+    const res = await csrfFetch(`/api/spots/${spotId}`)
 
-    if(response.ok){
-        const spot = await response.json()
+    if(res.ok){
+        const spot = await res.json()
         dispatch(readOneSpot(spot))
     }
 }
@@ -75,13 +75,13 @@ export const getOneSpot = (spotId) => async(dispatch) => {
 //add a spot thunk
 
 export const addSpot = (payload) => async(dispatch) => {
-    const response = await csrfFetch(`/api/spots`, {
+    const res = await csrfFetch(`/api/spots`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
-    if(response.ok) {
-        const spot = await response.json()
+    if(res.ok) {
+        const spot = await res.json()
         dispatch(createSpot(spot))
         return spot
     }
@@ -90,57 +90,47 @@ export const addSpot = (payload) => async(dispatch) => {
 //update spot thunk
 
 // export const editSpot = (spot) => async(dispatch) => {
-//     const response = await csrfFetch(`/api/spots/${spot.id}`, {
+//     const res = await csrfFetch(`/api/spots/${spot?.id}`, {
 //         method: 'PUT',
 //         headers: {'Content-Type': 'application/json'},
 //         body: JSON.stringify(spot)
 //     })
-//     if(response.ok) {
-//         const spot = await response.json();
+//     if(res.ok) {
+//         const spot = await res.json();
 //         dispatch(updateSpot(spot))
 //     }
 // }
-// export const editSpot = (info, spotId) => async (dispatch) => {
-//     const res = await csrfFetch(`/api/spots/${spotId}`, {
-//       method: "PUT",
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify(info)
-//     });
-//     if (res.ok) {
-//       const eachSpot = await res.json();
-//       dispatch(getOneSpot(eachSpot.id));
-//     };
-//   return res
-//   }
+
+
 export const editSpot = (spot) => async(dispatch) =>{
 
-        const response = await csrfFetch(`/api/spots/${spot?.id}`, {
+        const res = await csrfFetch(`/api/spots/${spot?.id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(spot)
         });
-        console.log(response)
-        if (response.ok) {
 
-        const newSpot = await response.json();
+        if (res.ok) {
+
+        const newSpot = await res.json();
         dispatch(updateSpot(newSpot));
-return newSpot;
+        return newSpot
         }
 }
 
 //delete spot thunk
 export const removeSpot = (spotId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/spots/${spotId}`, {
+    const res = await csrfFetch(`/api/spots/${spotId}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     });
 
-    if (response.ok) {
+    if (res.ok) {
       //const spot = await response.json();
       dispatch(deleteSpot(spotId));
       //spot or spotId
     }
-    return response
+    return res
   };
 
   export const createImage = (imageUrl, spotId) => async (dispatch) => {

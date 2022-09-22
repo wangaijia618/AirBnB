@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import {getOneSpot, allSpotsObj, removeSpot, editSpot} from '../../store/spots';
+import {getOneSpot, allSpotsArray, allSpotsObj, removeSpot, editSpot} from '../../store/spots';
 // import {allReviewsArray, getAllReviewsBySpot} from '../../store/reviews';
 //  import CreateReviewModal from '../CreateReviewModal';
 // import EditSpotForm from "./EditSpotForm";
@@ -19,8 +19,10 @@ const FindSpot = () => {
 
   const [isLoaded, setIsLoaded] = useState(false)
   //in use
-    const spot = spotsObj[Number(spotId)];
+    // const spot = spotsObj[Number(spotId)];
+    const spot = useSelector(state => state.spots[spotId])
 
+    console.log(~~~~~~~~~spot)
   const sessionUser = useSelector(state => state.session.user);
   useEffect(() => {
     dispatch(getOneSpot(spotId))
@@ -40,10 +42,10 @@ if (sessionUser && spot) {
     currentUser = true;
   } else currentUser = false;
 }
-
+// if(!spot) return null
   return isLoaded && (
-    // return  (
-        (
+// return (
+
       <>
       <div className='firstDiv'/>
       <div className='topText'>
@@ -90,7 +92,7 @@ if (sessionUser && spot) {
            </div>
       </>
     )
-  )
+
 }
 
 export default FindSpot;
