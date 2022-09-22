@@ -1,9 +1,4 @@
-.editForm {
-    height: 900px;
-    width: 650px;
-  }
-
-  .editButton {
+.createReview {
     background-color: rgb(233, 0, 0);
     color: white;
     border: white solid 1px;
@@ -15,50 +10,65 @@
     height: 40px;
     width: 85px;
     margin-bottom: 20px;
+    position: absolute;
   }
 
-  .editButton:hover {
+  .createReview:hover {
     cursor: pointer;
-    font-size: 17px;
-    height: 40px;
-    width: 90px;
   }
 
-  .editSubTitle {
+  .reviewErrors {
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
     sans-serif;
-    font-weight: 550;
-    margin-bottom: 40px;
+    font-weight: 450;
   }
 
-  .editName,
-  .editAddress,
-  .editCity,
-  .editState,
-  .editCountry,
-  .editLat,
-  .editLng,
-  .editDescription,
-  .editPrice {
+  .reviewErrors:hover {
+    color: red;
+    font-weight: 700;
+  }
+
+  .reviewForm {
+    height: 350px;
+    width: 630px;
+  }
+
+  .reviewHTitle {
+      display: flex;
+      justify-content: center;
+      font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+      sans-serif;
+      font-size: 18px;
+      font-weight: 750;
+      border: none;
+      margin-top: 40px;
+  }
+
+  .userReview,
+  .userStar {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 16px;
     border: solid 1px lightslategray;
     border-radius: 8px;
-    width: 530px;
-    height: 45px;
+    width: 500px;
+    height: 35px;
     padding-left: 15px;
     padding-bottom: 6px;
     padding-top: 6px;
-    margin-bottom: 20px;
-    margin-left: 50px;
+    margin-bottom: 30px;
+    margin-left: 55px;
   }
 
-  .editSpotBut {
+  .userReview {
+    margin-top: 6%;
+    }
+
+  .submitReview {
     background-color: rgb(233, 0, 0);
     color: white;
     border: white solid 1px;
@@ -66,6 +76,11 @@
     font-size: 20px;
     font-weight: 750;
     height: 60px;
-    width: 550px;
+    width: 530px;
+    margin-bottom: 20px;
     margin-left: 50px;
+  }
+
+  .submitReview:hover {
+    cursor: pointer;
   }

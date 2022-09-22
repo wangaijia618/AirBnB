@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import './ProfileButton.css';
+import './Navigation.css';
 import { useHistory, Link } from "react-router-dom";
 import { login } from "../../store/session";
 

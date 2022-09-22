@@ -7,6 +7,9 @@ const LOAD_ALL_USER_REVIEWS = "reviews/LOAD_ALL_USER_REVIEWS"
 const ADD_REVIEW = "reviews/ADD_REVIEW"
 const DELETE_REVIEW = "reviews/DELETE_REVIEW";
 
+export const allReviewsArray = (state) => Object.values(state.reviews);
+export const allReviewsObj = state => state.reviews;
+
 //action creator:
 const loadAllSpotReview = (reviews) => ({
     type: LOAD_ALL_SPOT_REVIEWS,

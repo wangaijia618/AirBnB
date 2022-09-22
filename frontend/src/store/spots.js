@@ -18,10 +18,10 @@ const readAllSpots = (spots) => {
 }
 
 //get one spot
-const readOneSpot = (spots) => {
+const readOneSpot = (spot) => {
     return {
         type: READ_ONE_SPOT,
-        spots,
+        spot,
     }
 }
 
@@ -74,11 +74,11 @@ export const getOneSpot = (spotId) => async(dispatch) => {
 
 //add a spot thunk
 
-export const addSpot = (payload) => async(dispatch) => {
+export const addSpot = (spots) => async(dispatch) => {
     const res = await csrfFetch(`/api/spots`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(spots)
     })
     if(res.ok) {
         const spot = await res.json()
@@ -102,12 +102,12 @@ export const addSpot = (payload) => async(dispatch) => {
 // }
 
 
-export const editSpot = (spot) => async(dispatch) =>{
+export const editSpot = (spotInfo, spotId) => async(dispatch) =>{
 
-        const res = await csrfFetch(`/api/spots/${spot?.id}`, {
+        const res = await csrfFetch(`/api/spots/${spotId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(spot)
+            body: JSON.stringify(spotInfo)
         });
 
         if (res.ok) {
@@ -164,7 +164,7 @@ const spotReducer = (state = initialState, action) => {
             return newState;
         case READ_ONE_SPOT:
             newState = { ...state };
-            newState[action.spotId] = action.spot;
+            newState[action.spot.id] = action.spot;
             return newState;
 
         case CREATE_SPOT:
@@ -173,7 +173,8 @@ const spotReducer = (state = initialState, action) => {
             return newState
         case UPDATE_SPOT:
             newState = {...state}
-            newState[action.spot.id] = action.spot
+            //quick fix is not using siglespot
+            newState[action.spot.id] = {...newState[action.spot.id], ...action.spot}
             return newState
         case DELETE_SPOT:
             newState = {...state}

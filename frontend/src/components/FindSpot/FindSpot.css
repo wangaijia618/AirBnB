@@ -16,7 +16,8 @@
   }
 
   .editDeleteSpot {
-    padding: 10px;
+    padding: 20px;
+
   }
 
   .stateSpot {
@@ -147,3 +148,6 @@
     font-size: 23px;
     margin-left: 25%;
   }
+.bigStar {
+  color: red;
+}

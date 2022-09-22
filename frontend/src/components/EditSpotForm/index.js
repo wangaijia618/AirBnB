@@ -4,20 +4,20 @@ import { Modal } from '../../context/Modal';
 import EditSpotForm from './EditSpotForm';
 import "./EditSpotForm.css";
 
-function EditSpotModal() {
+function EditSpotModal({spot}) {
   const [showModal, setShowModal] = useState(false);
-//   const allSpots = useSelector(state => state.spots);
-//   useEffect(() => {
-//     setShowModal(false);
-//   }, [allSpots])
+  const allSpots = useSelector(state => state.spots);
+  useEffect(() => {
+    setShowModal(false);
+  }, [allSpots])
   return (
     <>
       <button className='editButton' onClick={() => setShowModal(true)}>
-        Edit
+        Edit Spot
         </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditSpotForm />
+          <EditSpotForm spot={spot} />
         </Modal>
       )}
     </>
