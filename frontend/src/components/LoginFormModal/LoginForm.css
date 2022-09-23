@@ -23,7 +23,7 @@
 
 
   .login_input{
-    border-radius: 15px;
+    /* border-radius: 15px; */
     height: 25px;
     font-size: 15px;
   }
@@ -34,20 +34,22 @@
     display: flex;
     line-height: 30px;
     font-size: 17px;
+
   }
 
   .login_button {
-    margin-left: 50px;
-    margin-bottom: 30px;
-    border-radius: 20px;
+    margin: 10% 36%;
+width: 80px;
+    border-radius: 10px;
     cursor: pointer;
-    margin-top: 30px;
+
     background-color:red;
     transition: all 1s ease;
     color: white;
-    padding: 8px 14px;
+   padding: 10px;
     font-size: 13px;
-    font-weight: bold
+    font-weight: bold;
+
   }
 
   .login_button:hover {
