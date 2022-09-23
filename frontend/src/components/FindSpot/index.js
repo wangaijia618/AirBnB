@@ -68,8 +68,8 @@ return (
             </div>
              )}
       </div>
-          {/* <div className='imgDivfs'> */}
-         {/* <img className='imageSpotfs' src={spot?.SpotImages[0].url} alt="Image Is Not Available"/> </div> */}
+          <div className='imgDivfs'>
+         <img className='imageSpotfs' src={spot?.SpotImages[0].url} alt="Image Is Not Available"/> </div>
 
 
            <div className='bottomText'>

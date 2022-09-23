@@ -41,9 +41,10 @@ function LoginForm() {
       <div className="login_container">
         <div className="username_email">
       <label>
-        Username or Email:
+
         <input
-        className="login_input"
+        className="userInput"
+        placeholder="Username/Email"
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
@@ -53,9 +54,10 @@ function LoginForm() {
        </div>
          <div className="password">
       <label>
-        Password:
+
         <input
-        className="login_input"
+        className="passwordInput"
+        placeholder="password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

@@ -4,28 +4,49 @@
     border-radius: 10px;
   } */
 
-  .login_container {
-    width: 300px;
-    height: 200px;
-    border-radius: 10px;
-    margin: 100px auto;
+  .login-container {
+    width: 350px;
+    height: 100px;
 
   }
 
-  .username_email {
+   .username_email {
     display: flex;
-    line-height: 30px;
-    margin-left: 70px;
-    margin-right: 60px;
-    margin-top: -50px;
-    font-size: 17px;
+    justify-content: center;
+    /* line-height: 10px;
+     margin-left: 70px;
+    margin-right: 60px;*/
+    /* font-size: 17px; */
+    margin-top: 5px
+  }
+  .userInput {
+    font-size: 16px;
+    border: solid 1px lightslategray;
+    border-radius: 8px;
+    width: 300px;
+    height: 25px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 15px;
   }
 
-
-  .login_input{
-    /* border-radius: 15px; */
+  /* In Modal */
+  .passwordInput {
+    font-size: 16px;
+    border: solid 1px lightslategray;
+    border-radius: 8px;
+    width: 300px;
     height: 25px;
-    font-size: 15px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 15px;
+  }
+
+  /* .login_input{
+    border-radius: 15px;
+     height: 25px;
+    font-size: 25px;
+    margin: 5px 40px
   }
 
   .password {
@@ -35,26 +56,25 @@
     line-height: 30px;
     font-size: 17px;
 
-  }
+  } */
 
   .login_button {
-    margin: 10% 36%;
-width: 80px;
+
     border-radius: 10px;
     cursor: pointer;
-
-    background-color:red;
+width: 300px;
+    background-color:  red;
     transition: all 1s ease;
     color: white;
    padding: 10px;
-    font-size: 13px;
+    font-size: 20px;
     font-weight: bold;
-
+margin: 20px
   }
 
   .login_button:hover {
-    background-color:maroon;
-
+    background-color:white;
+color: red;
   }
 
   .website_title {

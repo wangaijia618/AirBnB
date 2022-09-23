@@ -56,9 +56,20 @@ function ProfileButton({ user }) {
           </li>
         </ul>
       )
-    }
+
+        // : showMenu && (
+        //   <ul>
+        //     <div>
+        //       <li className="list"><i className="fa-solid fa-user"></i><button className="button" onClick={() => setShowModal(true)}>Log In</button></li>
+        //       {/* <li><NavLink to="/signup">Sign Up</NavLink></li> */}
+        //       {/* <li className="list"><i className="fa-solid fa-user-plus"></i><button className="button" onClick={() => setShowModal(true)}>Sign Up</button></li> */}
+        //       <li className="list"><i className="fa-solid fa-user-astronaut"></i><button className="button" onClick={() => dispatch(login({ credential: "Demo-lition", password: "password", }))}>Demo User</button></li>
+        //     </div>
+        //   </ul>
+        // )
+      }
     </>
   );
-}
 
+    }
 export default ProfileButton;
