@@ -1,0 +1,8 @@
+.ReviewsTitle {
+    display: flex;
+    justify-content: center;
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+  }

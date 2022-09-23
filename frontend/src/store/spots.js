@@ -5,7 +5,7 @@ const READ_ONE_SPOT = "spots/READ_ONE_SPOT";
 const CREATE_SPOT = "spots/CREATE_SPOT";
 const UPDATE_SPOT = "spots/UPDATE_SPOT"
 const DELETE_SPOT = "spots/DELETE_SPOT"
-
+const READ_OWNER_SPOTS = "spots/READ_OWNER_SPOTS";
 export const allSpotsArray = (state) => Object.values(state.spots);
 export const allSpotsObj = state => state.spots
 //action creator
@@ -33,6 +33,13 @@ const createSpot = (spots) => {
     }
 }
 
+//get current owner spot
+const readOwnerSpots = (spots) => {
+    return {
+        type: READ_OWNER_SPOTS,
+        spots,
+    }
+};
 
 //update action
 const updateSpot = (spot) => {
@@ -71,6 +78,16 @@ export const getOneSpot = (spotId) => async(dispatch) => {
         dispatch(readOneSpot(spot))
     }
 }
+
+//GET ALL SPOTS BY CURRENT USER
+export const allSpotsUser = () => async (dispatch) => {
+    const res = await csrfFetch('/api/spots/current');
+    if (res.ok) {
+      const spots = await res.json();
+
+      dispatch(readOwnerSpots(spots.Spots));
+    };
+  }
 
 //add a spot thunk
 
@@ -180,6 +197,14 @@ const spotReducer = (state = initialState, action) => {
             newState = {...state}
             delete newState[action.spotId]
             return newState
+        case READ_OWNER_SPOTS:
+                  newState = {}
+               //   console.log("action.spots: ", action.spots)
+                action.spots.forEach(spot => {
+                newState[spot.id] = spot
+                 })
+               //  newState = {...newState}
+                return newState
         default:
             return state
 

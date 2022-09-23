@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './Navigation.css';
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 import { login } from "../../store/session";
 
 function ProfileButton({ user }) {
@@ -44,6 +44,13 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
          <li className="username"><i className="fa-solid fa-user-check"></i> {user.username}</li>
           <li className="email"><i className="fa-regular fa-envelope"></i> {user.email}</li>
+          <li>
+            <NavLink to={'/spots/current'} className="Nav_Link"><i className="fa-solid fa-house"></i> Your Spot</NavLink>
+          </li>
+
+          <li>
+            <NavLink to={'/reviews/current'} className="Nav_Link"><i className="fa-solid fa-pen"></i> Your Review</NavLink>
+          </li>
           <li>
           <button className="Logout_button" onClick={logout}><i className="fa-solid fa-arrow-right-from-bracket"></i>Log Out</button>
           </li>
