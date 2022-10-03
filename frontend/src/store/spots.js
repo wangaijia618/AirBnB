@@ -50,10 +50,10 @@ const updateSpot = (spot) => {
 }
 
 //delete action
-const deleteSpot = (spot) => {
+const deleteSpot = (spotId) => {
     return {
         type: DELETE_SPOT,
-        spot,
+        spotId,
     }
 }
 
@@ -149,7 +149,7 @@ export const removeSpot = (spotId) => async (dispatch) => {
     }
   };
 
-  export const addImage = (spotId, {preview, url}) => async(dispatch) => {
+  export const createImage = (spotId, {preview, url}) => async(dispatch) => {
     const response = await csrfFetch(`/api/spots/${spotId}/images`, {
         method: "POST",
         headers: {
@@ -219,13 +219,14 @@ const spotReducer = (state = initialState, action) => {
             const newState = {...state};
             const newAllSpots = {}
             //console.log('action.list!!!!!!!!!!!', action.list)
-            action.list.Spots.forEach((spot) => {newAllSpots[spot.id] = spot})
+            // action.list.Spots.forEach((spot) => {newAllSpots[spot.id] = spot})
+            action.spots.forEach((spot) => {newAllSpots[spot.id] = spot})
             newState.allSpots = newAllSpots
             return newState;
 
         case READ_ONE_SPOT:
             const newState1 = {...state}
-            newState1.singleSpot= action.spotId
+            newState1.singleSpot= action.spot
             return newState1
 
         case CREATE_SPOT:
@@ -236,26 +237,26 @@ const spotReducer = (state = initialState, action) => {
             //newState2.singleSpot={...state.singleSpot, ...action.spot}
             return newState2
 
-        case UPDATE_ONE_SPOT:
+        case UPDATE_SPOT:
             const newState3 = {...state}
             newState3.allSpots={...state.allSpots, [action.spot.id]: action.spot}
             newState3.singleSpot={...state.singleSpot, ...action.spot}
 
             return newState3
 
-        case DELETE_ONE_SPOT:
+        case DELETE_SPOT:
             const newState4 = {...state}
             delete newState4.allSpots[action.spotId]
             if(newState4.singleSpot.id === action.spotId) newState4.singleSpot={}
             return newState4
-        case READ_OWNER_SPOTS:
-            newState = { ...state };
-            const normalizedUserSpots = action.spots.Spots.reduce((obj, curSpot) => {
-                obj[curSpot.id] = curSpot;
-                return obj;
-                }, {});
-            newState.allSpots = normalizedUserSpots;
-            return newState;
+        // case READ_OWNER_SPOTS:
+        //     newState = { ...state };
+        //     const normalizedUserSpots = action.spots.Spots.reduce((obj, curSpot) => {
+        //         obj[curSpot.id] = curSpot;
+        //         return obj;
+        //         }, {});
+        //     newState.allSpots = normalizedUserSpots;
+        //     return newState;
         default:
             return state
     }

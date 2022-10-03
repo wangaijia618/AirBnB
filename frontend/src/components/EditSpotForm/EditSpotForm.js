@@ -5,12 +5,12 @@ import {editSpot, getOneSpot} from "../../store/spots";
 import { Modal } from '../../context/Modal';
 import "./EditSpotForm.css"
 
-const EditSpotForm = ({spot}) => {
+const EditSpotForm = () => {
   const {spotId} = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
 //   const spot = useSelector(state => state.spots[spotId])
-
+const spot = useSelector(state => state.spots.singleSpot)
   // const [ownerId, setOwnerId] = useState(spot?.ownerId)
   const [address, setAddress] = useState(spot.address);
   const [city, setCity] = useState(spot.city);

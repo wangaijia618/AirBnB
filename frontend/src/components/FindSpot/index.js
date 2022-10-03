@@ -16,20 +16,20 @@ const FindSpot = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 // export const allSpotsObj = state => state.spots
-  const spotsObj = useSelector(allSpotsObj);
+  const spot = useSelector(state => state.spots.singleSpot);
   // export const allReviewsArray = (state) => Object.values(state.reviews);
   const reviewsObj = useSelector(allReviewsArray);
+  // const reviewsObj = useSelector(state => state.reviews.spot)
   // const [isLoaded, setIsLoaded] = useState(false)
   //in use
-    const spot = spotsObj[+spotId]; //or using Number(spotId)
+    // const spot = spotsObj[+spotId]; //or using Number(spotId)
     // const spot = useSelector(state => state.spots)
    console.log(~~~~~~~~~~spotId)
     console.log(~~~~~~~~~~~~~~spot)
   const sessionUser = useSelector(state => state.session.user);
   useEffect(() => {
     dispatch(getOneSpot(spotId))
-
-     .then(() => dispatch(getSpotReview(spotId)))
+    dispatch(getSpotReview(spotId))
     // .then(() => setIsLoaded(true))
   }, [dispatch, spotId])
 
@@ -44,8 +44,8 @@ if (sessionUser && spot) {
     currentUser = true;
   } else currentUser = false;
 }
-if(!spot.SpotImages) return null
-
+// if(!spot.SpotImages) return null
+// if (Object.keys(spot).length === 0) return null
 return (
 
       <>
@@ -56,7 +56,7 @@ return (
             <div className='outsideStar'>
            <div className="fa-solid fa-star"/>
          <div></div>
-           <div>{spot?.avgRating} ·  {spot?.city} , {spot?.countReviews} </div>
+           <div>{spot?.avgStarRating} ·  {spot?.city} , {spot?.countReviews} </div>
             <div key={spot?.id} className='stateSpot'>   {spot?.state}, {spot?.country}</div>
            </div>
            </div>
@@ -69,8 +69,10 @@ return (
              )}
       </div>
           <div className='imgDivfs'>
-         <img className='imageSpotfs' src={spot?.SpotImages[0].url} alt="Image Is Not Available"/> </div>
-
+         <img className='imageSpotfs' src={spot?.SpotImages.map(img => img.url)} alt="Image Is Not Available"/> </div>
+         {/* {oneSpotById.SpotImages.map(img =>
+                    (<img key={img.id} src={img.url} alt={img.url} />)
+                )} */}
 
            <div className='bottomText'>
             <div className='priceNightfs'>
@@ -85,7 +87,7 @@ return (
            <div className='emptyBorder'/>
            <div className='bottomAvgCount'>
            <div className="fa-solid fa-star bigStar"/>
-            {spot?.avgRating} · {spot?.countReviews} reviews
+            {spot?.avgStarRating} · {spot?.numReviews} reviews
             </div>
            <div className='allReviewSpot'>
             {reviewsObj.map(review => (
