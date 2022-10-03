@@ -143,73 +143,121 @@ export const removeSpot = (spotId) => async (dispatch) => {
     });
 
     if (res.ok) {
-      //const spot = await response.json();
+
       dispatch(deleteSpot(spotId));
-      //spot or spotId
+
     }
-    return res
   };
 
-  export const createImage = (imageUrl, spotId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/spots/${spotId}/images`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(imageUrl)
+  export const addImage = (spotId, {preview, url}) => async(dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body:JSON.stringify({preview, url})
     })
-    if (res.ok) {
-      dispatch(getOneSpot(spotId))
+    if(response.ok){
+
+        dispatch(getOneSpot(spotId))
+        return response;
     }
-    return res;
-  }
+    return response
+}
 
   //reducer
 const initialState = {
-    // allSpots: {},
-    // singleSpot: {SpotImages: []}
+    allSpots: {},
+    singleSpot: {}
 }
+// const spotReducer = (state = initialState, action) => {
+//     let newState={}
+//     switch(action.type) {
+//         case READ_ALL_SPOTS:
+//             // newState = { ...state, allSpots: { ...action.spots } }
+//             // return newState
+//             const allSpots = {}
+//             action.spots.forEach(spot => {
+//               allSpots[spot.id] = spot
+//             })
+//             newState = {...state, ...allSpots}
+//             return newState;
+//         case READ_ONE_SPOT:
+//             newState = { ...state };
+//             newState[action.spot.id] = action.spot;
+//             return newState;
+
+//         case CREATE_SPOT:
+//             newState = {...state}
+//             newState[action.spots.id] = action.spots
+//             return newState
+//         case UPDATE_SPOT:
+//             newState = {...state}
+//             //quick fix is not using siglespot
+//             newState[action.spot.id] = {...newState[action.spot.id], ...action.spot}
+//             return newState
+//         case DELETE_SPOT:
+//             newState = {...state}
+//             delete newState[action.spotId]
+//             return newState
+//         case READ_OWNER_SPOTS:
+//                   newState = {}
+//                //   console.log("action.spots: ", action.spots)
+//                 action.spots.forEach(spot => {
+//                 newState[spot.id] = spot
+//                  })
+//                //  newState = {...newState}
+//                 return newState
+//         default:
+//             return state
+
+//     }
+// }
 const spotReducer = (state = initialState, action) => {
-    let newState={}
-    switch(action.type) {
+    switch(action.type){
         case READ_ALL_SPOTS:
-            // newState = { ...state, allSpots: { ...action.spots } }
-            // return newState
-            const allSpots = {}
-            action.spots.forEach(spot => {
-              allSpots[spot.id] = spot
-            })
-            newState = {...state, ...allSpots}
+            const newState = {...state};
+            const newAllSpots = {}
+            //console.log('action.list!!!!!!!!!!!', action.list)
+            action.list.Spots.forEach((spot) => {newAllSpots[spot.id] = spot})
+            newState.allSpots = newAllSpots
             return newState;
+
         case READ_ONE_SPOT:
-            newState = { ...state };
-            newState[action.spot.id] = action.spot;
-            return newState;
+            const newState1 = {...state}
+            newState1.singleSpot= action.spotId
+            return newState1
 
         case CREATE_SPOT:
-            newState = {...state}
-            newState[action.spots.id] = action.spots
-            return newState
-        case UPDATE_SPOT:
-            newState = {...state}
-            //quick fix is not using siglespot
-            newState[action.spot.id] = {...newState[action.spot.id], ...action.spot}
-            return newState
-        case DELETE_SPOT:
-            newState = {...state}
-            delete newState[action.spotId]
-            return newState
+            // const newState2 = {...state, allSpots: {...state.allSpots, [action.spot.id]: action.spot}}
+            // return newState2
+            let newState2={...state}
+            newState2.allSpots = {...state.allSpots, [action.spot.id]: action.spot}
+            //newState2.singleSpot={...state.singleSpot, ...action.spot}
+            return newState2
+
+        case UPDATE_ONE_SPOT:
+            const newState3 = {...state}
+            newState3.allSpots={...state.allSpots, [action.spot.id]: action.spot}
+            newState3.singleSpot={...state.singleSpot, ...action.spot}
+
+            return newState3
+
+        case DELETE_ONE_SPOT:
+            const newState4 = {...state}
+            delete newState4.allSpots[action.spotId]
+            if(newState4.singleSpot.id === action.spotId) newState4.singleSpot={}
+            return newState4
         case READ_OWNER_SPOTS:
-                  newState = {}
-               //   console.log("action.spots: ", action.spots)
-                action.spots.forEach(spot => {
-                newState[spot.id] = spot
-                 })
-               //  newState = {...newState}
-                return newState
+            newState = { ...state };
+            const normalizedUserSpots = action.spots.Spots.reduce((obj, curSpot) => {
+                obj[curSpot.id] = curSpot;
+                return obj;
+                }, {});
+            newState.allSpots = normalizedUserSpots;
+            return newState;
         default:
             return state
-
     }
 }
-
-
 export default spotReducer
