@@ -44,7 +44,7 @@ if (sessionUser && spot) {
     currentUser = true;
   } else currentUser = false;
 }
-// if(!spot.SpotImages) return null
+if(!spot.SpotImages) return null
 // if (Object.keys(spot).length === 0) return null
 return (
 

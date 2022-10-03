@@ -63,7 +63,8 @@ export const getAllSpots = () => async(dispatch) => {
     const res = await csrfFetch('/api/spots')
     if(res.ok){
         const spots = await res.json()
-        dispatch(readAllSpots(spots.Spots))
+         //dispatch(readAllSpots(spots))
+         dispatch(readAllSpots(spots.Spots))
     }
 
 }
@@ -139,7 +140,7 @@ export const editSpot = (spotInfo, spotId) => async(dispatch) =>{
 export const removeSpot = (spotId) => async (dispatch) => {
     const res = await csrfFetch(`/api/spots/${spotId}`, {
       method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
+    //   headers: { 'Content-Type': 'application/json' },
     });
 
     if (res.ok) {
