@@ -63,7 +63,7 @@ function SignupFormPage() {
         />
       </label>
       </div>
-      <div className="email">
+      <div className="email_signup">
       <label>
         Email:
         <input
@@ -75,7 +75,7 @@ function SignupFormPage() {
         />
       </label>
       </div>
-      <div className="username">
+      <div className="username_signup">
       <label>
         Username:
         <input

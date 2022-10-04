@@ -15,10 +15,10 @@
     padding: 50px;
 
 }
-
+/*
 input:focus {
-    background-color: rgb(253, 240, 224)
-  }
+    background-color: red
+  } */
 
 
 .firstname{
@@ -45,7 +45,7 @@ input:focus {
 
 }
 
-.email{
+.email_signup{
     margin: 15px;
 }
 
@@ -56,9 +56,9 @@ input:focus {
     width: 200px;
 }
 
-.username{
+.username_signup{
     margin: 15px;
-
+    border-style: none;
 }
 
 .username_input{
@@ -66,6 +66,7 @@ input:focus {
     border-radius: 10px;
     height: 25px;
     width: 200px;
+
 }
 .password{
 
@@ -91,7 +92,7 @@ input:focus {
     width: 200px;
 }
 
-.signup_button{
+/* .signup_button{
     width: 180px;
     margin-left: 10px;
     margin-top: 42px;
@@ -104,7 +105,7 @@ input:focus {
     transition: all 1s ease;
     height: 28px;
     font-size: 16px;
-}
+} */
 
 .signup_Button:hover{
     background-color:red;
@@ -117,4 +118,29 @@ input:focus {
 }
 .signupButton {
    margin: 8px
+}
+.signup_button {
+
+    border-radius: 10px;
+    cursor: pointer;
+width: 350px;
+    background-color: rgb(230, 0, 0);
+    transition: all 1s ease;
+    color: white;
+   padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+margin: 50px;
+border: white solid 1px;
+  }
+
+  .signup_button:hover {
+    background-color:white;
+color: red;
+  }
+.sign_up_errors{
+    font-size: 18px;
+    color: darkred;
+    display: block;
+
 }

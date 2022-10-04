@@ -24,8 +24,8 @@ const FindSpot = () => {
   //in use
     // const spot = spotsObj[+spotId]; //or using Number(spotId)
     // const spot = useSelector(state => state.spots)
-   console.log(~~~~~~~~~~spotId)
-    console.log(~~~~~~~~~~~~~~spot)
+  //  console.log(~~~~~~~~~~spotId)
+  //   console.log(~~~~~~~~~~~~~~spot)
   const sessionUser = useSelector(state => state.session.user);
   useEffect(() => {
     dispatch(getOneSpot(spotId))
@@ -35,8 +35,8 @@ const FindSpot = () => {
 
   const handleDelete = async (e) => {
   e.preventDefault();
-  const res = await dispatch(removeSpot(spotId))
-  if (res) history.push("/")
+  await dispatch(removeSpot(spotId))
+  history.push("/")
 }
 
 if (sessionUser && spot) {
@@ -45,7 +45,7 @@ if (sessionUser && spot) {
   } else currentUser = false;
 }
 if(!spot.SpotImages) return null
-// if (Object.keys(spot).length === 0) return null
+if (Object.keys(spot).length === 0) return null
 return (
 
       <>
@@ -63,8 +63,9 @@ return (
 
             {currentUser && (
               <div className='editDeleteSpot'>
-            <EditSpotModal spot={spot}/>
-              <button onClick={handleDelete} className='deleteButton'>Delete Spot</button>
+            <EditSpotModal />
+              {/* <button onClick={handleDelete} className='deleteButton'>Delete Spot</button> */}
+              <button type="button" onClick={handleDelete} className='deleteButton'>Delete Spot</button>
             </div>
              )}
       </div>
@@ -77,7 +78,7 @@ return (
            <div className='bottomText'>
             <div className='right_box'>
            <div className='priceSpot'>${spot?.price} night</div>
-         
+
           <div className='rightbox_review'> {spot?.avgStarRating} · {spot?.numReviews} reviews</div>
             </div>
            <div className='descriptSpot'>{spot?.description}</div>

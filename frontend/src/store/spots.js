@@ -63,10 +63,10 @@ export const getAllSpots = () => async(dispatch) => {
     const res = await csrfFetch('/api/spots')
     if(res.ok){
         const spots = await res.json()
-         //dispatch(readAllSpots(spots))
+        //  dispatch(readAllSpots(spots))
          dispatch(readAllSpots(spots.Spots))
+         return spots
     }
-
 }
 
 //get one spot thunk
@@ -77,6 +77,7 @@ export const getOneSpot = (spotId) => async(dispatch) => {
     if(res.ok){
         const spot = await res.json()
         dispatch(readOneSpot(spot))
+        return spot
     }
 }
 
