@@ -63,6 +63,15 @@ module.exports = {
           url: 'https://a0.muscache.com/im/pictures/efbbe684-2e93-4510-9cb2-951e8a210d59.jpg?im_w=1200',
           preview: true
         },
+        {
+          spotId: 11,
+          url: 'https://a0.muscache.com/im/pictures/9c62c8c4-0317-435d-b520-7487a0bf5209.jpg?im_w=1200'
+        },
+        {
+          spotId: 12,
+          url: 'https://a0.muscache.com/im/pictures/5328877b-434b-48fa-9e1e-81bee401fd2b.jpg?im_w=960',
+          preview: true
+        },
 
       ],{})
   },

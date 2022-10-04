@@ -13,10 +13,11 @@
    .username_email {
     display: flex;
     justify-content: center;
-    /* line-height: 10px;
-     margin-left: 70px;
-    margin-right: 60px;*/
-    /* font-size: 17px; */
+    margin-top: 5px
+  }
+  .password {
+    display: flex;
+    justify-content: center;
     margin-top: 5px
   }
   .userInput {
@@ -28,6 +29,7 @@
     padding-top: 6px;
     padding-bottom: 6px;
     padding-left: 15px;
+    margin: 3px
   }
 
   /* In Modal */
@@ -40,6 +42,7 @@
     padding-top: 6px;
     padding-bottom: 6px;
     padding-left: 15px;
+    margin: 3px
   }
 
   /* .login_input{
@@ -62,7 +65,7 @@
 
     border-radius: 10px;
     cursor: pointer;
-width: 300px;
+width: 330px;
     background-color: rgb(230, 0, 0);
     transition: all 1s ease;
     color: white;
@@ -98,4 +101,23 @@ color: red;
   .login_error_container {
     display: flex;
     justify-content: center;
+  }
+  .demo_button {
+
+    border-radius: 10px;
+    cursor: pointer;
+width: 330px;
+    background-color: rgb(230, 0, 0);
+    transition: all 1s ease;
+    color: white;
+   padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+margin: 20px;
+border: white solid 1px;
+  }
+
+  .demo_button:hover {
+    background-color:white;
+color: red;
   }

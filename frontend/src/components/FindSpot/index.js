@@ -75,9 +75,10 @@ return (
                 )} */}
 
            <div className='bottomText'>
-            <div className='priceNightfs'>
-           <div className='pricesSpot'>${spot?.price}</div>
-           <div className='nightsSpot'>night</div>
+            <div className='right_box'>
+           <div className='priceSpot'>${spot?.price} night</div>
+         
+          <div className='rightbox_review'> {spot?.avgStarRating} · {spot?.numReviews} reviews</div>
             </div>
            <div className='descriptSpot'>{spot?.description}</div>
            <div className='createReviewSpot'>

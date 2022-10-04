@@ -80,10 +80,7 @@
     font-size: 18px;
   }
 
-  .pricesSpot {
-    font-weight: 500;
-    font-size: 20px;
-  }
+
 
   .nightsSpot {
     font-size: 17px;
@@ -104,17 +101,13 @@
     justify-content: center;
   }
 
-  .priceNightfs {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 25%;
-    margin-top: 5px;
-  }
+
 
   .emptyBorder {
     margin-top: 1%;
     margin-bottom: 1%;
     border: solid 1px rgb(230, 230, 230);
+    width: 480px
   }
 
   .allReviewSpot {
@@ -151,3 +144,17 @@
 .bigStar {
   color: red;
 }
+
+.right_box{
+  border: 1px solid lightgrey;
+  width: 200px;
+  height: 150px;
+  /* margin: 200px 70%; */
+  display: flex;
+  justify-content: flex-end;
+}
+ .priceSpot {
+    font-weight: 500;
+    font-size: 20px;
+
+  }

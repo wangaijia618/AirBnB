@@ -1,7 +1,14 @@
 .profile-dropdown{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    border: 2px solid rgb(213, 212, 212);
+    border-radius: 10px;
+    position: absolute;
+    top: calc(90%);
+    right: calc(3%);
+    margin-top: 10px;
+    height: 150px;
+    width: 222px;
+    box-shadow: 2px 2px 2px 0px rgba(195, 195, 195, 0.6);
+    background-color: white;
 
 }
 
@@ -21,9 +28,10 @@
 
 .Parent_navbar{
     position: sticky;
-    top: 0;
-    border-bottom: 1px inset lightgray;
+    top: 0px;
+    /* border-bottom: 1px inset lightgray; */
     background-color: white;
+
 }
 
 .Navbar_container{
@@ -114,12 +122,12 @@
 
 } */
 
-.Nav_become__host_and_Home_link{
-    display:flex;
+.Nav_become_host_and_Home_link{
+
     margin-top:5px;
-    margin-right:30px;
-    justify-content: flex-end;
-    align-items: center;
+    margin: right 1px;
+
+
     transition: all 1s ease;
 
     color: inherit;
@@ -128,9 +136,14 @@
     /* border-radius: 25px; */
 
 }
+.Nav_become_host_link{
+   display: flex;
+ justify-content: flex-end;
+padding-right: 150px;
 
-.Nav_become__host_link:hover{
-    text-shadow: 5px 5px 5px red
+}
+.Nav_become_host_link:hover{
+    text-shadow: 5px 5px 5px red;
 
     /* background-color: coral */
 
@@ -188,14 +201,7 @@
     background-color: aliceblue;
 }
 
-.profile_button{
-    margin-top: 5px;
-    border: 2px solid rgb(224, 220, 220);
-    border-radius: 25px;
-    padding: 6px 12px;
-    /* background-color: white; */
-    cursor: pointer;
-}
+
 
 
 .Logout_button{
@@ -223,9 +229,7 @@
     list-style: none
 }
 
-.fa-user{
-    margin-right: 8px;
-}
+
 
 .fa-user-astronaut{
     font-size: 17px;
@@ -250,4 +254,36 @@ button:hover{
     color: coral;
     background-color: aliceblue;
     transition: all 0.5s ease;
+}
+.profile-button{
+    padding:  10px 20px;
+    position:relative;
+    top: 20px;
+    border-radius: 30px;
+    background-color: white;
+    /* border-color: rgb(244, 243, 243); */
+    /* width: 30px; */
+    height: 50px;
+    /* outline-color: rgb(225, 217, 217); */
+    border-top: 2px solid rgb(222, 219, 219);
+    border-bottom: 2px solid rgb(222, 219, 219);
+    border-left: 2px solid rgb(222, 219, 219);
+    border-right: 2px solid rgb(222, 219, 219);
+    cursor: pointer;
+}
+.fa-solid.fa-bars{
+    position:relative;
+    right: 5px;
+    /* width: 20px;
+    height: 20px; */
+    font-size:20px;
+    bottom: 5px
+}
+
+.fas.fa-user-circle{
+    position:relative;
+    font-size: 30px;
+    left: 8px;
+    /* width: 20px;
+    height: 20px;*/
 }
