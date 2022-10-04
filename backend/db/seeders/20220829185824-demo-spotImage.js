@@ -14,12 +14,12 @@ module.exports = {
      await queryInterface.bulkInsert("SpotImages",
      [
       {
-          spotId: 2,
+          spotId: 1,
           url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-36203760/original/25fb1f75-27ca-4e91-81ab-0d3d5850da55.jpeg?im_w=1200',
           preview: true
         },
         {
-          spotId: 1,
+          spotId: 2,
           url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-36203760/original/0464de12-5582-4168-9f1b-f02be5403d28.jpeg?im_w=1200',
           preview: true
         },
@@ -65,7 +65,8 @@ module.exports = {
         },
         {
           spotId: 11,
-          url: 'https://a0.muscache.com/im/pictures/9c62c8c4-0317-435d-b520-7487a0bf5209.jpg?im_w=1200'
+          url: 'https://a0.muscache.com/im/pictures/9c62c8c4-0317-435d-b520-7487a0bf5209.jpg?im_w=1200',
+          preview: true
         },
         {
           spotId: 12,
