@@ -20,10 +20,12 @@ const SpotBrowser = () => {
   return (
 
       <>
-      <div className='firstDiv'></div>
-      <div className='spotBox'>
+
+      <div className='outer-container'>
         {spots.map(spot => (
+          <div className='most-inner-container'>
           <SpotBox key={spot?.id} spot={spot}/>
+          </div>
         )   //?id resolve id undefined issue, better all use ?
           )}
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
-// import {useState} from 'react'
-// import {useHistory} from 'react-router-dom'
+ import {useState} from 'react'
+ import {useHistory} from 'react-router-dom'
 import {Link, NavLink} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -18,7 +18,12 @@ function Navigation({ isLoaded }){
   //   history.push("/signup")
 
   // };
-
+  const [showMenu, setShowMenu] = useState(false);
+  const history = useHistory();
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
 
   let sessionLinks;
   if (sessionUser) {
@@ -37,6 +42,20 @@ function Navigation({ isLoaded }){
       </span>
       </div>
       </>
+    //  <>
+    //     <button onClick={openMenu} className='profile-button'>
+    //   <i className="fa-solid fa-bars"></i>
+    //     <i className="fas fa-user-circle" />
+    //     </button>
+    //      <div className='loginSignUp'>
+    //      <div className='loginModal'>
+    //        <Link to={LoginFormModal/}>Login</Link>
+    //      </div>
+    //      <div className='signUpModal'>
+    //        <SignupFormModal />
+    //      </div>
+    //      </div>
+    //      </>
     );
   }
 
@@ -52,9 +71,9 @@ function Navigation({ isLoaded }){
       </div>
         {isLoaded && sessionLinks}
 </div>
-        <div className='Nav_become_host_and_Home_link'>
+        {/* <div className='Nav_become_host_and_Home_link'>
      <Link to={'/newspot'} className='Nav_become_host_link'> Become Host? </Link>
-      </div>
+      </div> */}
     </div>
 
   </>

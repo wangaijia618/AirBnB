@@ -26,10 +26,10 @@ const readOneSpot = (spot) => {
 }
 
 //create action
-const createSpot = (spots) => {
+const createSpot = (spot) => {
     return {
         type: CREATE_SPOT,
-        spots,
+        spot,
     }
 }
 
@@ -152,19 +152,19 @@ export const removeSpot = (spotId) => async (dispatch) => {
   };
 
   export const createImage = (spotId, {preview, url}) => async(dispatch) => {
-    const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+    const res = await csrfFetch(`/api/spots/${spotId}/images`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body:JSON.stringify({preview, url})
     })
-    if(response.ok){
+    if(res.ok){
 
         dispatch(getOneSpot(spotId))
-        return response;
+        return res;
     }
-    return response
+    return res
 }
 
   //reducer

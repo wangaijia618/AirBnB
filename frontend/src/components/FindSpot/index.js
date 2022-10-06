@@ -77,10 +77,11 @@ return (
 
            <div className='bottomText'>
             <div className='right_box'>
-           <div className='priceSpot'>${spot?.price} night</div>
+           <span className='priceSpot'>${spot?.price} night</span>
 
-          <div className='rightbox_review'> {spot?.avgStarRating} · {spot?.numReviews} reviews</div>
+          <span className='rightbox_review'> {spot?.avgStarRating} · {spot?.numReviews} reviews</span>
             </div>
+            <div className='hostname'>Entire home hosted by {spot.Owner.firstName}</div>
            <div className='descriptSpot'>{spot?.description}</div>
            <div className='createReviewSpot'>
              {sessionUser && <CreateReviewModal spotId={spotId}/>}

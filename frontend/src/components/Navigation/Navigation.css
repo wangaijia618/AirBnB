@@ -36,7 +36,9 @@
 
 .Navbar_container{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     list-style: none;
     margin-left: 46px;
     margin-right: 28px;
@@ -44,11 +46,11 @@
     padding:0px;
 }
 
-.fa-brands{
+/* .fa-brands{
     color: red;
     font-weight: bold;
     font-size: 20px;
-}
+} */
 
 .email{
    font-size: 23px;
@@ -88,12 +90,12 @@
   }
 
 
-.fa-house{
+/* .fa-house{
     margin-right: 2px;
 }
 .fa-pen{
     margin-right: 4px;
-}
+} */
 
 
 .Airbnb_logo {
@@ -122,11 +124,9 @@
 
 } */
 
-.Nav_become_host_and_Home_link{
+.Nav_become_host_link{
 
-    margin-top:5px;
-    margin: right 1px;
-
+padding-right: 50px;
 
     transition: all 1s ease;
 
@@ -137,9 +137,9 @@
 
 }
 .Nav_become_host_link{
-   display: flex;
- justify-content: flex-end;
-padding-right: 150px;
+
+
+
 
 }
 .Nav_become_host_link:hover{
@@ -236,7 +236,7 @@ padding-right: 150px;
     margin-right: 10px;
 }
 
-.button{
+/* .button{
     border: none;
     outline-style:hidden ;
     background: none;
@@ -247,18 +247,17 @@ padding-right: 150px;
      cursor:pointer;
      font-size: 18px;
      border-radius: 20px;
-}
+} */
 
-button:hover{
-    box-shadow: 3px 3px 3px rgba(46, 42, 42, 0.5);
-    color: coral;
-    background-color: aliceblue;
+.profile-button:hover{
+    box-shadow: 3px 3px 10px rgba(46, 42, 42, 0.5);
+
     transition: all 0.5s ease;
 }
 .profile-button{
     padding:  10px 20px;
     position:relative;
-    top: 20px;
+    top: 8px;
     border-radius: 30px;
     background-color: white;
     /* border-color: rgb(244, 243, 243); */
@@ -284,6 +283,7 @@ button:hover{
     position:relative;
     font-size: 30px;
     left: 8px;
+    color: rgba(100, 100, 100)
     /* width: 20px;
     height: 20px;*/
 }

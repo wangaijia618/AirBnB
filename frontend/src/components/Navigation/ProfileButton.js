@@ -36,11 +36,14 @@ function ProfileButton({ user }) {
 
   return (
     <>
+       <span className='Nav_become_host_and_Home_link'>
+     <NavLink to={'/newspot'} className='Nav_become_host_link'> Become Host? </NavLink>
+
       <button onClick={openMenu} className='profile-button'>
       <i className="fa-solid fa-bars"></i>
         <i className="fas fa-user-circle" />
-
       </button>
+     </span>
       { showMenu && (
         <ul className="profile-dropdown">
          <li className="username"><i className="fa-solid fa-user-check"></i> {user.username}</li>

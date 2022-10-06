@@ -134,17 +134,7 @@ module.exports = {
       description: "this is a description",
       price: 1010,
     },
-    { ownerId: 5,
-      address: "1212 Lastspot St",
-      city: "Parsippany-Troy Hills",
-      state: "New Jersey",
-      country: "USA",
-      lat: 77.7645358,
-      lng: 12.4734527,
-      name: "Last House",
-      description: "this is a description",
-      price: 1010,
-    },
+  
 ], {})
   },
 

@@ -76,11 +76,6 @@
     sans-serif;
   }
 
-  .descriptSpot {
-    font-size: 18px;
-  }
-
-
 
   .nightsSpot {
     font-size: 17px;
@@ -89,14 +84,12 @@
     margin-left: 5px;
   }
 
-  .descriptSpot {
-    margin-bottom: 10px;
-  }
+
 
   .editDeleteSpot,
   .imgDiv,
-  .createReviewSpot,
-  .descriptSpot {
+  .createReviewSpot
+ {
     display: flex;
     justify-content: center;
   }
@@ -145,16 +138,34 @@
   color: red;
 }
 
-.right_box{
-  border: 1px solid lightgrey;
-  width: 200px;
-  height: 150px;
-  /* margin: 200px 70%; */
-  display: flex;
-  justify-content: flex-end;
-}
+
  .priceSpot {
     font-weight: 500;
     font-size: 20px;
 
   }
+.hostname{
+  font-size: 17px;
+  margin: 5px
+}
+.bottomText {
+  display: ;
+  justify-content: ;
+
+}
+.descriptSpot {
+  margin: 10px;
+font-size: 19px
+}
+.right_box{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+ align-items: space-between;
+background-color: lavender;
+margin-right: 10px;
+margin-top: 70px;
+border: 1px solid grey;
+width: 350px;
+height: 300px;
+}

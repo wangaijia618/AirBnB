@@ -35,7 +35,7 @@ module.exports = {
         },
         {
           spotId: 5,
-          url: 'https://a0.muscache.com/im/pictures/b4f8e3d5-91e7-4f9c-ba02-a8d46872941d.jpg?im_w=960',
+          url: 'https://a0.muscache.com/im/pictures/b4f8e3d5-91e7-4f9c-ba02-a8d46872941d.jpg?im_w=1200',
           preview: true
         },
         {
@@ -68,11 +68,7 @@ module.exports = {
           url: 'https://a0.muscache.com/im/pictures/9c62c8c4-0317-435d-b520-7487a0bf5209.jpg?im_w=1200',
           preview: true
         },
-        {
-          spotId: 12,
-          url: 'https://a0.muscache.com/im/pictures/5328877b-434b-48fa-9e1e-81bee401fd2b.jpg?im_w=960',
-          preview: true
-        },
+     
 
       ],{})
   },
