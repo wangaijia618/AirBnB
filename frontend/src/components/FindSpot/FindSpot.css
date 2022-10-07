@@ -87,13 +87,15 @@
 
 
   .editDeleteSpot,
-  .imgDiv,
-  .createReviewSpot
+  .imgDiv
+
  {
     display: flex;
     justify-content: center;
   }
+  /* .createReviewSpot{
 
+  } */
 
 
   .emptyBorder {

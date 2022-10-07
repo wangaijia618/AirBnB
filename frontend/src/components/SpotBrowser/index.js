@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {allSpotsArray,getAllSpots} from '../../store/spots';
 import "./SpotBrowser.css";
 import SpotBox from '../SpotBox';
-
+// import CreateReviewModal from '../CreateReviewModal'
 const SpotBrowser = () => {
   const dispatch = useDispatch();
   // const spotsObj = useSelector(allSpotsArray);
@@ -28,6 +28,7 @@ const SpotBrowser = () => {
           </div>
         )   //?id resolve id undefined issue, better all use ?
           )}
+
       </div>
     </>
 

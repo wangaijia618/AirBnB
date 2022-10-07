@@ -74,7 +74,7 @@ export const createReview = (myReviewInfo, spotId) => async (dispatch) => {
       const review = await response.json();
       dispatch(addReview(review));
     //   console.log("spot: ", spot)
-    return review
+    // return review
     }
   };
 

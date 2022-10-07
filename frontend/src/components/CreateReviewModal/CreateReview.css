@@ -86,7 +86,17 @@
   }
 
   .reviewButton {
-    background-color: red;
+    background-color: rgb(233, 0, 0);
     color:white;
-    font-size: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    border: white solid 1px;
+   padding: 8px 15px;
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+
   }
+.reviewButton:hover{
+  color:rgb(233, 0, 0);
+  background-color: white;
+}

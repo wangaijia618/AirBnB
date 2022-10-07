@@ -9,8 +9,9 @@ import "./CreateReview.css";
 function CreateReviewModal() {
   let currentUser;
   const {spotId} = useParams();
-  const spotsObj = useSelector(allSpotsObj);
-  const spot = spotsObj[+spotId];
+  // const spotsObj = useSelector(allSpotsObj);
+  // const spot = spotsObj[+spotId];
+  const spot = useSelector(state => state.spots.singleSpot)
   const [showModal, setShowModal] = useState(false);
   const allReviews = useSelector(state => state.reviews);
   const sessionUser = useSelector(state => state.session.user);

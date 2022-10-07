@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import {getOneSpot, allSpotsArray, allSpotsObj, removeSpot, editSpot} from '../../store/spots';
 import {allReviewsArray, getSpotReview} from '../../store/reviews';
- import CreateReviewModal from '../CreateReviewModal';
+import CreateReviewModal from '../CreateReviewModal';
 
 import UserReview from '../UserReview';
 import "./FindSpot.css";
@@ -79,18 +79,17 @@ return (
             <div className='right_box'>
            <span className='priceSpot'>${spot?.price} night</span>
 
-          <span className='rightbox_review'> {spot?.avgStarRating} · {spot?.numReviews} reviews</span>
+          <span className='rightbox_review'> {spot?.avgStarRating} · {spot?.numReviews} review(s)</span>
             </div>
             <div className='hostname'>Entire home hosted by {spot.Owner.firstName}</div>
            <div className='descriptSpot'>{spot?.description}</div>
            <div className='createReviewSpot'>
              {sessionUser && <CreateReviewModal spotId={spotId}/>}
-             {/* {sessionUser && <CreateReviewModal />} */}
            </div>
            <div className='emptyBorder'/>
            <div className='bottomAvgCount'>
            <div className="fa-solid fa-star bigStar"/>
-            {spot?.avgStarRating} · {spot?.numReviews} reviews
+            {spot?.avgStarRating} · {spot?.numReviews} review(s)
             </div>
            <div className='allReviewSpot'>
             {reviewsObj.map(review => (

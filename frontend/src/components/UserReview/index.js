@@ -39,7 +39,7 @@ function ReviewUser({review}) {
       <div className="fa-solid fa-user"/>
 
       </div>
-      <div className='reviewName'>Review-User#{review?.UseruserId}</div>
+      <div className='reviewName'>Review from  -{review?.User.firstName}</div>
       </div>
       <div className='reviewDate'>{date}</div>
       <div className='dateReview'>
