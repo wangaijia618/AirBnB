@@ -74,14 +74,14 @@ return (
          {/* {oneSpotById.SpotImages.map(img =>
                     (<img key={img.id} src={img.url} alt={img.url} />)
                 )} */}
-
+  <div className='hostname'>Entire home hosted by {spot.Owner.firstName}</div>
            <div className='bottomText'>
             <div className='right_box'>
            <span className='priceSpot'>${spot?.price} night</span>
 
           <span className='rightbox_review'> {spot?.avgStarRating} · {spot?.numReviews} review(s)</span>
             </div>
-            <div className='hostname'>Entire home hosted by {spot.Owner.firstName}</div>
+
            <div className='descriptSpot'>{spot?.description}</div>
            <div className='createReviewSpot'>
              {sessionUser && <CreateReviewModal spotId={spotId}/>}

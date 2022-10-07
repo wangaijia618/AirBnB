@@ -10,8 +10,7 @@
     font-weight: 500;
     font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
     sans-serif;
-    display: flex;
-    justify-content: center;
+   margin-left: 25%;
     padding: 10px;
   }
 
@@ -150,11 +149,11 @@
   font-size: 17px;
   margin: 5px
 }
-.bottomText {
+/* .bottomText {
   display: ;
   justify-content: ;
 
-}
+} */
 .descriptSpot {
   margin: 10px;
 font-size: 19px
