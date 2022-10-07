@@ -21,7 +21,7 @@ module.exports = {
       {
         review:'Clean',
         stars: 4,
-        userId: 4,
+        userId: 1,
         spotId: 2,
       },
       {
@@ -45,31 +45,31 @@ module.exports = {
       {
         review:'This is a review',
         stars: 4,
-        userId: 5,
+        userId: 2,
         spotId: 1,
       },
       {
         review:'This is a review',
         stars: 4,
-        userId: 4,
+        userId: 3,
         spotId: 2,
       },
       {
         review:'This is a review',
         stars: 1,
-        userId: 1,
+        userId: 5,
         spotId: 3,
       },
       {
         review:'This is a review',
         stars: 4,
-        userId: 3,
+        userId: 1,
         spotId: 4,
       },
       {
         review:'This is a review',
         stars: 5,
-        userId: 2,
+        userId: 4,
         spotId: 5,
       },
       {
@@ -108,7 +108,7 @@ module.exports = {
         userId: 4,
         spotId: 11,
       },
-  
+
     ],{})
   },
 
