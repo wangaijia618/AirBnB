@@ -8,7 +8,7 @@ import CreateReviewModal from '../CreateReviewModal';
 import UserReview from '../UserReview';
 import "./FindSpot.css";
 import EditSpotModal from "../EditSpotForm";
-
+// replaced {spot?countReviews} with {reviewsObj?.length} to update review immidiately
 
 const FindSpot = () => {
   let currentUser;
@@ -19,8 +19,8 @@ const FindSpot = () => {
   const spot = useSelector(state => state.spots.singleSpot);
   // export const allReviewsArray = (state) => Object.values(state.reviews);
   const reviewsObj = useSelector(allReviewsArray);
-  // const reviews = useSelector(state => state.reviews.spot)
-  // const reviewsObj = Object.values(reviews)
+  //  const reviews = useSelector(state => state.reviews.spot)
+  // const reviewContent = Object.values(reviews)
   // const reviewsObj = useSelector(state => state.reviews.spot)
   // const [isLoaded, setIsLoaded] = useState(false)
   //in use
@@ -56,8 +56,8 @@ return (
            <div className='rating_top_spot'>
             <div className='outsideStar'>
            <i className="fa-solid fa-star"/>
-           <div>{spot?.avgStarRating} ·  {spot?.city} , {spot?.countReviews} </div>
-            <div key={spot?.id} className='stateSpot'>   {spot?.state}, {spot?.country}</div>
+           {/* <div>{spot?.avgStarRating} · {spot?.countReviews}review(s)</div> */}
+            <div key={spot?.id} className='stateSpot'> {spot?.avgStarRating} · {reviewsObj.length} review(s) · {spot?.city}, {spot?.state}, {spot?.country}</div>
            </div>
            </div>
 
@@ -78,7 +78,7 @@ return (
             <div className='spot_right_box'>
            <span className='priceSpotfs'>${spot?.price} night</span>
 
-          <span className='rightbox_review'> {spot?.avgStarRating} · {spot?.numReviews} review(s)</span>
+          <span className='rightbox_review'> <i className="fa-solid fa-star"/>{spot?.avgStarRating} · {reviewsObj?.length} review(s)</span>
             </div>
             <div className='spot_left_info'>
             <div className='hostname'>Entire home hosted by {spot.Owner.firstName}</div>
@@ -92,7 +92,7 @@ return (
            <div className='emptyBorder'/>
            <div className='bottomAvgCount'>
            <div className="fa-solid fa-star bigStar"/>
-            {spot?.avgStarRating} · {spot?.numReviews} review(s)
+            {spot?.avgStarRating} · {reviewsObj?.length} review(s)
             </div>
            <div className='allReviewSpot'>
             {reviewsObj.map(review => (
