@@ -7,21 +7,21 @@
     background-color: rgb(233, 0, 0);
     color: white;
     border: white solid 1px;
-    border-radius: 18px;
+    border-radius: 12px;
     font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
     sans-serif;
     font-size: 15px;
     font-weight: 600;
     height: 40px;
-    width: 85px;
-    margin-bottom: 20px;
+    width: 105px;
+    /* margin-bottom: 20px; */
   }
 
   .editButton:hover {
     cursor: pointer;
-    font-size: 17px;
-    height: 40px;
-    width: 90px;
+color: red;
+background-color: white;
+border: 1px solid grey
   }
 
   .editSubTitle {

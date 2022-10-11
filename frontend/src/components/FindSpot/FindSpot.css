@@ -1,168 +1,183 @@
+.single_spot_infos{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2% 0 2% ;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+}
+
 .nameSpot {
-    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
-    sans-serif;
-    font-size: 26px;
-    font-weight: 500;
-    padding: 10px;
-  }
 
-  .ratingSpot {
-    font-weight: 500;
-    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
-    sans-serif;
-   margin-left: 25%;
-    padding: 10px;
-  }
+  font-size: 26px;
+  font-weight: 500;
+  margin-left: 25%;
+  margin-bottom: 20px;
+}
 
-  .editDeleteSpot {
-    padding: 20px;
+.rating_top_spot {
+  font-weight: 500;
+  margin-left: 25%;
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+  justify-content: space-between;
+  margin-bottom: 5px;
 
-  }
+}
 
-  .stateSpot {
-    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
-    sans-serif;
-    font-weight: 500;
+.editDeleteSpot {
+  padding-top: 20px;
 
-  }
+}
 
-  .fa-star {
-    font-size: 15px;
-    margin-top: 4px;
-    padding-right: 3px;
-  }
+/* .stateSpot {
 
-  .imgDivfs {
-    display:flex;
-    justify-content: center;
-    height: 600px;
-    width: 100%;
-  }
+  font-weight: 500;
+} */
 
-  .imageSpotfs {
-    height: 100%;
-    width: 50%;
-    border-radius: 20px;
-  }
+.fa-star {
+  font-size: 15px;
+  margin-top: 1px;
+  padding-right: 3px;
+}
 
+.imgDivfs {
+  display:flex;
+  justify-content: center;
+  height: 600px;
+  width: 100%;
+  /* object-fit: cover; */
+}
 
-
-  .deleteButton {
-    background-color: rgb(233, 0, 0);
-    color: white;
-    border: white solid 1px;
-    border-radius: 18px;
-    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
-    sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    height: 40px;
-    width: 85px;
-
-  }
-
-  .deleteButton:hover {
-    cursor: pointer;
-    font-size: 17px;
-    height: 40px;
-    width: 90px;
-  }
-
-  .pricesSpot,
-  .nightsSpot,
-  .descriptSpot {
-    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
-    sans-serif;
-  }
-
-
-  .nightsSpot {
-    font-size: 17px;
-    display: flex;
-    align-items: center;
-    margin-left: 5px;
-  }
+.imageSpotfs {
+  height: 100%;
+  width: 50%;
+  border-radius: 20px;
+  cursor: pointer;
+}
+/* .imageSpotfs:hover{
+  filter: brightness(95%);
+  transition-duration: 200ms
+} */
 
 
 
-  .editDeleteSpot,
-  .imgDiv
+.deleteButton {
+  background-color: rgb(233, 0, 0);
+  color: white;
+  border: white solid 1px;
+  border-radius: 12px;
+  font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+  sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  height: 40px;
+  width: 100px;
 
- {
-    display: flex;
-    justify-content: center;
-  }
-  /* .createReviewSpot{
+}
 
-  } */
+.deleteButton:hover {
+  cursor: pointer;
+color: red;
+background-color: white;
+border: 1px solid grey
+}
 
-
-  .emptyBorder {
-    margin-top: 1%;
-    margin-bottom: 1%;
-    border: solid 1px rgb(230, 230, 230);
-    width: 480px
-  }
-
-  .allReviewSpot {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin-top: 0.5%;
-    margin-left: 24.5%;
-    width: 52%;
-    flex-direction: column;
-  }
-
-  .nameSpot {
-
-    margin-left: 25%;
-  }
-
-  .outsideStar {
-    display: flex;
-    justify-content: flex-start;
-    margin-right: 32%;
-  }
-
-  .bigStar {
-    font-size: 23px;
-  }
-
-  .bottomAvgCount {
-    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
-    sans-serif;
-    font-size: 23px;
-    margin-left: 25%;
-  }
-.bigStar {
-  color: red;
+.pricesSpot,
+.nightsSpot,
+.descriptSpot {
+  font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+  sans-serif;
 }
 
 
- .priceSpot {
-    font-weight: 500;
-    font-size: 20px;
-
-  }
-.hostname{
+.nightsSpot {
   font-size: 17px;
-  margin: 5px
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+}
+
+
+
+.editDeleteSpot
+
+{
+  display: flex;
+  margin-left: 25%;
+
+}
+
+
+
+.emptyBorder {
+  margin-top: 10%;
+  margin-bottom: 3%;
+  border: solid 1px rgb(230, 230, 230);
+  width: 580px
+}
+.emptyBorder1 {
+  margin-top: 2%;
+  margin-bottom: 3%;
+  border: solid 1px rgb(230, 230, 230);
+  width: 580px
+}
+
+.allReviewSpot {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 0.5%;
+  margin-left: 24.5%;
+  width: 52%;
+  flex-direction: column;
+}
+
+/*  */
+
+.outsideStar {
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 32%;
+}
+
+.bigStar {
+  font-size: 23px;
+}
+
+.bottomAvgCount {
+
+  font-size: 23px;
+  margin-left: 25%;
+}
+.bigStar {
+color: red;
+}
+
+
+.priceSpotfs {
+  font-weight: 500;
+  font-size: 20px;
+
+}
+.hostname{
+font-size: 17px;
+margin: 5px
 }
 /* .bottomText {
-  display: ;
-  justify-content: ;
+display: ;
+justify-content: ;
 
 } */
 .descriptSpot {
-  margin: 10px;
+margin: 10px;
 font-size: 19px
 }
 .right_box{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
- align-items: space-between;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: space-between;
 background-color: lavender;
 margin-right: 10px;
 margin-top: 70px;

@@ -19,6 +19,8 @@ const FindSpot = () => {
   const spot = useSelector(state => state.spots.singleSpot);
   // export const allReviewsArray = (state) => Object.values(state.reviews);
   const reviewsObj = useSelector(allReviewsArray);
+  // const reviews = useSelector(state => state.reviews.spot)
+  // const reviewsObj = Object.values(reviews)
   // const reviewsObj = useSelector(state => state.reviews.spot)
   // const [isLoaded, setIsLoaded] = useState(false)
   //in use
@@ -49,13 +51,11 @@ if (Object.keys(spot).length === 0) return null
 return (
 
       <>
-      <div className='firstDiv'/>
-      <div className='topText'>
+      <div className='single_spot_infos'>
           <div className="nameSpot">{spot?.name}</div>
-           <div className='ratingSpot'>
+           <div className='rating_top_spot'>
             <div className='outsideStar'>
-           <div className="fa-solid fa-star"/>
-         <div></div>
+           <i className="fa-solid fa-star"/>
            <div>{spot?.avgStarRating} ·  {spot?.city} , {spot?.countReviews} </div>
             <div key={spot?.id} className='stateSpot'>   {spot?.state}, {spot?.country}</div>
            </div>
@@ -74,15 +74,18 @@ return (
          {/* {oneSpotById.SpotImages.map(img =>
                     (<img key={img.id} src={img.url} alt={img.url} />)
                 )} */}
-  <div className='hostname'>Entire home hosted by {spot.Owner.firstName}</div>
-           <div className='bottomText'>
-            <div className='right_box'>
-           <span className='priceSpot'>${spot?.price} night</span>
+              <div className='spot_bottom_text'>
+            <div className='spot_right_box'>
+           <span className='priceSpotfs'>${spot?.price} night</span>
 
           <span className='rightbox_review'> {spot?.avgStarRating} · {spot?.numReviews} review(s)</span>
             </div>
-
+            <div className='spot_left_info'>
+            <div className='hostname'>Entire home hosted by {spot.Owner.firstName}</div>
+            <div className='emptyBorder1'/>
            <div className='descriptSpot'>{spot?.description}</div>
+           </div>
+           <div className='emptyBorder'/>
            <div className='createReviewSpot'>
              {sessionUser && <CreateReviewModal spotId={spotId}/>}
            </div>

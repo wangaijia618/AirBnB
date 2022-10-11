@@ -14,7 +14,8 @@ function ReviewUser({review}) {
   // const {reviewId} = useParams
   // const allReviews = (state) => Object.values(state.reviews)
   // const reviewsObj = useSelector(allReviews);
-  // const review = reviewsObj.find(review => review.id == reviewId)
+  //  const review = reviewsObj.find(review => review.id == reviewId)
+  // console.log(review)
   let currentUser;
   if (sessionUser && review) {
     if (sessionUser.id === review.userId) {
@@ -39,7 +40,7 @@ function ReviewUser({review}) {
       <div className="fa-solid fa-user"/>
 
       </div>
-      <div className='reviewName'>Review from  -{review?.User.firstName}</div>
+      <div className='reviewName'>Review from  -{review.User.firstName}</div>
       </div>
       <div className='reviewDate'>{date}</div>
       <div className='dateReview'>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {createReview} from "../../store/reviews";
 import { useParams } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import './CreateReview.css';
 
 function ReviewForm() {
@@ -10,7 +10,7 @@ function ReviewForm() {
   const [review, setReview] = useState('');
   const [stars, setStars] = useState('');
   const [errors, setErrors] = useState([]);
-
+  const user = useSelector(state => state.session)
   const handleSubmit = (e) => {
     e.preventDefault();
     const reviewInfo = {
@@ -19,7 +19,7 @@ function ReviewForm() {
     };
 
     setErrors([]);
-    dispatch(createReview(reviewInfo, spotId)).catch(async (res) => {
+    dispatch(createReview(reviewInfo, spotId, user)).catch(async (res) => {
       const data = await res.json();
       console.log('data', data)
       if (data && data.errors) setErrors(data.errors);
