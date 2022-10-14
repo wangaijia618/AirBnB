@@ -1,95 +1,48 @@
-import React from 'react';
- import {useState, useEffect} from 'react'
- import {useHistory} from 'react-router-dom'
-import {Link, NavLink} from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
-import SignupFormModal from '../SignupFormModal';
-import './Navigation.css';
-
-function Navigation(){
-  const sessionUser = useSelector(state => state.session.user);
-
-  const [showMenu, setShowMenu] = useState(false);
-  const history = useHistory();
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
-  useEffect(() => {
-    if (!showMenu) return;
-
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
 
 
-    document.addEventListener('click', closeMenu);
+import { NavLink } from "react-router-dom"
+import { useSelector } from "react-redux"
+import  ProfileButton  from "./ProfileButton"
+import { LoginButton } from "./LoginButton";
 
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
 
-  let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = (
-      <ProfileButton user={sessionUser} />
+import './Navigation.css'
+
+ const Navigation = () => {
+
+    const currentUser = useSelector(state => state.session.user)
+
+    let sessionLinks;
+    if (currentUser) {
+        sessionLinks = (
+            <ProfileButton user={currentUser} />
+        );
+    } else {
+        sessionLinks = (
+            <>
+                <LoginButton />
+            </>
+        );
+    }
+
+    return (
+
+        <>
+
+            <ul>
+                <li className='session'>
+                    <NavLink style={{ 'textDecoration': 'none', 'color': '#45454599' }} exact to="/">
+                        <img className='logo' alt='logo'  />
+                    </NavLink>
+                    <div className='sessionlinks'>
+                        {sessionLinks}
+                    </div>
+                </li>
+            </ul>
+            <div className='headerbreak'>
+            </div>
+
+        </>
     );
-  } else {
-    sessionLinks = (
-      <>
-      <div className='loginSignUp'>
-      <span className='loginModal'>
-        <LoginFormModal />
-      </span>
-      <span className='signUpModal'>
-        <SignupFormModal />
-      </span>
-
-      </div>
-
-     </>
-
-
-//      <>
-//         <button onClick={openMenu} className='profile-button'>
-//       <i className="fa-solid fa-bars"></i>
-//         <i className="fas fa-user-circle" />
-//         </button>
-//          <div className='loginSignUp'>
-//          <div className='loginModal'>
-//            <Link to={LoginFormModal/}>Login</Link>
-//          </div>
-//          <div className='signUpModal'>
-//            <SignupFormModal />
-//          </div>
-// </div>
-//          </>
-    );
-  }
-
-  return (
-  <>
-    <div className='Parent_navbar'>
-    <div className='Navbar_container'>
-      <div className='home_logo'>
-      <NavLink exact to='/' className='home_link' >
-        <i className="fa-solid fa-bug"></i>
-        <div className="airdnd">AirDnd</div>
-        </NavLink>
-      </div>
-        {sessionLinks}
-</div>
-        {/* <div className='Nav_become_host_and_Home_link'>
-     <Link to={'/newspot'} className='Nav_become_host_link'> Become Host? </Link>
-      </div> */}
-    </div>
-
-  </>
-  );
 }
-  //  {/* <div className='Nav_become__host_and_Home_link'>
-  //       <li><Link to={'/spots'} className='Nav_become__host_link'> Become Host? </Link></li>
-  //       <li> */}
-
 export default Navigation;

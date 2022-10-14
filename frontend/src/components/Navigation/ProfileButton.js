@@ -4,8 +4,9 @@ import * as sessionActions from '../../store/session';
 import './Navigation.css';
 import { useHistory, NavLink } from "react-router-dom";
 import { login } from "../../store/session";
-
-function ProfileButton({ user }) {
+import LoginFormModal from '../LoginFormModal';
+import SignupFormModal from '../SignupFormModal';
+function ProfileButton({ user}) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const history = useHistory();
@@ -43,7 +44,7 @@ function ProfileButton({ user }) {
         <i className="fas fa-user-circle" />
       </button>
      </span>
-      { showMenu && (
+      {showMenu && (
         <ul className="profile-dropdown">
          <li className="username"><i className="fa-solid fa-user-check"></i> {user.username}</li>
           <li className="email"><i className="fa-regular fa-envelope"></i> {user.email}</li>
@@ -58,18 +59,9 @@ function ProfileButton({ user }) {
           <button className="Logout_button" onClick={logout}><i className="fa-solid fa-arrow-right-from-bracket"></i>Log Out</button>
           </li>
         </ul>
-      )
 
-        // : showMenu && (
-        //   <ul>
-        //     <div>
-        //       <li className="list"><i className="fa-solid fa-user"></i><button className="button" onClick={() => setShowModal(true)}>Log In</button></li>
-        //       {/* <li><NavLink to="/signup">Sign Up</NavLink></li> */}
-        //       {/* <li className="list"><i className="fa-solid fa-user-plus"></i><button className="button" onClick={() => setShowModal(true)}>Sign Up</button></li> */}
-        //       <li className="list"><i className="fa-solid fa-user-astronaut"></i><button className="button" onClick={() => dispatch(login({ credential: "Demo-lition", password: "password", }))}>Demo User</button></li>
-        //     </div>
-        //   </ul>
-        // )
+
+        )
       }
     </>
   );
