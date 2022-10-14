@@ -1,5 +1,5 @@
 import React from 'react';
- import {useState} from 'react'
+ import {useState, useEffect} from 'react'
  import {useHistory} from 'react-router-dom'
 import {Link, NavLink} from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -8,22 +8,27 @@ import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation(){
   const sessionUser = useSelector(state => state.session.user);
-  // const [showModal, setShowModal] = useState(false);
-  // const history = useHistory();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   history.push("/signup")
-
-  // };
   const [showMenu, setShowMenu] = useState(false);
   const history = useHistory();
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
   };
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+
+
+    document.addEventListener('click', closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
   let sessionLinks;
   if (sessionUser) {
@@ -40,22 +45,26 @@ function Navigation({ isLoaded }){
       <span className='signUpModal'>
         <SignupFormModal />
       </span>
+
       </div>
-      </>
-    //  <>
-    //     <button onClick={openMenu} className='profile-button'>
-    //   <i className="fa-solid fa-bars"></i>
-    //     <i className="fas fa-user-circle" />
-    //     </button>
-    //      <div className='loginSignUp'>
-    //      <div className='loginModal'>
-    //        <Link to={LoginFormModal/}>Login</Link>
-    //      </div>
-    //      <div className='signUpModal'>
-    //        <SignupFormModal />
-    //      </div>
-    //      </div>
-    //      </>
+
+     </>
+
+
+//      <>
+//         <button onClick={openMenu} className='profile-button'>
+//       <i className="fa-solid fa-bars"></i>
+//         <i className="fas fa-user-circle" />
+//         </button>
+//          <div className='loginSignUp'>
+//          <div className='loginModal'>
+//            <Link to={LoginFormModal/}>Login</Link>
+//          </div>
+//          <div className='signUpModal'>
+//            <SignupFormModal />
+//          </div>
+// </div>
+//          </>
     );
   }
 
@@ -69,7 +78,7 @@ function Navigation({ isLoaded }){
         <div className="airdnd">AirDnd</div>
         </NavLink>
       </div>
-        {isLoaded && sessionLinks}
+        {sessionLinks}
 </div>
         {/* <div className='Nav_become_host_and_Home_link'>
      <Link to={'/newspot'} className='Nav_become_host_link'> Become Host? </Link>

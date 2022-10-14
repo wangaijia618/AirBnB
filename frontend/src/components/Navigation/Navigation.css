@@ -287,3 +287,7 @@ padding-right: 50px;
     /* width: 20px;
     height: 20px;*/
 }
+
+.login_signup_dropdown{
+    border: 1px solid grey
+}

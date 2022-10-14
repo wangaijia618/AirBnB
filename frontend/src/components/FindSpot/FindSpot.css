@@ -3,7 +3,14 @@
   flex-direction: column;
   justify-content: center;
   margin: 2% 0 2% ;
-  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important
+}
+.spot-body-container{
+  width: 925px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .nameSpot {
@@ -67,8 +74,7 @@
   color: white;
   border: white solid 1px;
   border-radius: 12px;
-  font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
-  sans-serif;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
   font-size: 15px;
   font-weight: 600;
   height: 40px;
@@ -82,14 +88,6 @@ color: red;
 background-color: white;
 border: 1px solid grey
 }
-
-.pricesSpot,
-.nightsSpot,
-.descriptSpot {
-  font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
-  sans-serif;
-}
-
 
 .nightsSpot {
   font-size: 17px;
@@ -123,7 +121,7 @@ border: 1px solid grey
   width: 580px
 }
 
-.allReviewSpot {
+/* .allReviewSpot {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -131,7 +129,7 @@ border: 1px solid grey
   margin-left: 24.5%;
   width: 52%;
   flex-direction: column;
-}
+} */
 
 /*  */
 
@@ -155,14 +153,12 @@ color: red;
 }
 
 
-.priceSpotfs {
-  font-weight: 500;
-  font-size: 20px;
 
-}
 .hostname{
-font-size: 17px;
-margin: 5px
+  font-size: 1.5em;
+  width: 467px;
+  margin-bottom: 24px;
+font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important
 }
 /* .bottomText {
 display: ;
@@ -170,8 +166,10 @@ justify-content: ;
 
 } */
 .descriptSpot {
-margin: 10px;
-font-size: 19px
+  width: 100%;
+  margin-top: 24;
+  font-size: 16px;
+font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important
 }
 .right_box{
 display: flex;
@@ -184,4 +182,43 @@ margin-top: 70px;
 border: 1px solid grey;
 width: 350px;
 height: 300px;
+}
+
+.spot_info_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+.spot_left_info{
+  width: 540px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+.spot_right_info{
+height: 200px;
+  }
+  .spot_right_card_info{
+    width: 307px;
+    height: 100%;
+    border: 1px solid #DDD;
+    box-shadow: 0px 0px 10px #DDD;
+    border-radius: 15px;
+}
+.spot_card_header{
+  display: flex;
+  justify-content: space-between;
+  padding: 24px
+}
+.priceSpotfs,
+.rightbox_review
+{
+
+  font-size: 12x;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important
+}
+#priceSpotfs{
+  font-weight: 600;
+  font-size: 20px
 }

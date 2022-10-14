@@ -51,6 +51,7 @@ if (Object.keys(spot).length === 0) return null
 return (
 
       <>
+      <div className='spot_body_container'>
       <div className='single_spot_infos'>
           <div className="nameSpot">{spot?.name}</div>
            <div className='rating_top_spot'>
@@ -74,26 +75,31 @@ return (
          {/* {oneSpotById.SpotImages.map(img =>
                     (<img key={img.id} src={img.url} alt={img.url} />)
                 )} */}
-              <div className='spot_bottom_text'>
-            <div className='spot_right_box'>
-           <span className='priceSpotfs'>${spot?.price} night</span>
-
-          <span className='rightbox_review'> <i className="fa-solid fa-star"/>{spot?.avgStarRating} · {reviewsObj?.length} review(s)</span>
-            </div>
+            <div className='spot_info_header'>
             <div className='spot_left_info'>
-            <div className='hostname'>Entire home hosted by {spot.Owner.firstName}</div>
+            <div className='hostname'>Entire home hosted by {spot.Owner.firstName} {spot.Owner.lastName}</div>
             <div className='emptyBorder1'/>
            <div className='descriptSpot'>{spot?.description}</div>
            </div>
-           <div className='emptyBorder'/>
-           <div className='createReviewSpot'>
-             {sessionUser && <CreateReviewModal spotId={spotId}/>}
-           </div>
-           <div className='emptyBorder'/>
-           <div className='bottomAvgCount'>
-           <div className="fa-solid fa-star bigStar"/>
-            {spot?.avgStarRating} · {reviewsObj?.length} review(s)
+           <div className='spot_right_info'>
+            <div className='spot_right_card_info'>
+              <div className='spot_card_header'>
+           <div className='priceSpotfs'><span id='priceSpotfs'>${spot?.price} </span>night</div>
+
+          <div className='rightbox_review'><span id='reviewSpotfs'> <i className="fa-solid fa-star"/></span>{spot?.avgStarRating} · {reviewsObj?.length} review(s)</div>
             </div>
+            </div>
+            </div>
+            </div>
+           <div className='emptyBorder'/>
+
+           <span className='bottomAvgCount'>
+           <span className="fa-solid fa-star bigStar"/>
+            {spot?.avgStarRating} · {reviewsObj?.length} review(s)
+            </span>
+            <span className='createReviewSpot'>
+             {sessionUser && <CreateReviewModal spotId={spotId}/>}
+           </span>
            <div className='allReviewSpot'>
             {reviewsObj.map(review => (
               <UserReview className='everyReview' key={review?.id} review={review}/>

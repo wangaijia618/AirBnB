@@ -1,22 +1,9 @@
 .reviewsContainer {
-    padding: 5%;
-    width: 250px;
-border: lightgrey solid 2px;
+height: 40px;
+display: flex;
+align-items: center;
+margin-left: 25%;
 
-    /* border: 1px red solid; */
-
-
-
-  }
-
-  .reviewBox {
-    display: flex;
-    justify-content: center;
-    width: 250px;
-    padding: 3px;
-
-    /* flex-wrap: wrap;
-    border: 1px black solid; */
   }
 
 

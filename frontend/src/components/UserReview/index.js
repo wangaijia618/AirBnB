@@ -32,8 +32,8 @@ function ReviewUser({review}) {
   // }
 
   return (
-    <div className='reviewSquare'>
-    <div className='reviewBox'>
+
+
       <div className="reviewsContainer">
       <div className='reviewProfile'>
       <div className='reviewUserIcon'>
@@ -55,8 +55,8 @@ function ReviewUser({review}) {
         )}
       </div>
         </div>
-    </div>
-  </div>
+   
+
   )
 }
 
