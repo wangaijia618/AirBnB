@@ -7,6 +7,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
+import logo from "../../images/airdnd-logo.png"
 
 function Navigation(){
   const sessionUser = useSelector(state => state.session.user);
@@ -74,8 +75,9 @@ function Navigation(){
     <div className='Navbar_container'>
       <div className='home_logo'>
       <NavLink exact to='/' className='home_link' >
-        <i className="fa-solid fa-bug"></i>
-        <div className="airdnd">AirDnd</div>
+        {/* <div className="fa-solid fa-bug"></div> */}
+        <img className="logoD" src={logo}></img>
+        <span className="airdnd">AirDnd</span>
         </NavLink>
       </div>
         {sessionLinks}

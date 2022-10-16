@@ -12,14 +12,8 @@
 
 }
 
-.airdnd {
-    display: inline-block;
-    margin: 10px;
-    font-size: 30px;
-    font-family: monospace;
-    color: red;
-    text-shadow: pink 2px 2px
-}
+
+
 .profile-dropdown > li {
     list-style: none;
     margin: 5px;
@@ -38,7 +32,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     list-style: none;
     margin-left: 46px;
     margin-right: 28px;
@@ -85,10 +79,6 @@
     padding-bottom: 5px;
 }
 
-.Airbnb_logo:visited {
-    color: inherit;
-  }
-
 
 /* .fa-house{
     margin-right: 2px;
@@ -98,31 +88,6 @@
 } */
 
 
-.Airbnb_logo {
-    margin:10px 5px ;
-    font-size: 30px;
-    transition: all 0.5s ease;
-    margin-top: 21px;
-}
-
-
-.Airbnb_logo:hover {
-    text-shadow: 2px 3px 2px rgba(33, 31, 31, 0.5);
-}
-
-
-/* .Airbnb_logo {
-    transition: all 1s ease;
-} */
-
-/* .Nav_become__host_and_Home_link{
-    display: flex;
-    margin:10px 10px ;
-    text-decoration: none;
-    font-size: 20px;
-    padding-top: 5px;
-
-} */
 
 .Nav_become_host_link{
 
@@ -149,39 +114,7 @@ padding-right: 50px;
 
 }
 
-.li{
-    font-size: 30px;
 
-}
-.home_link{
-    text-decoration: none;
-    color: red;
-    font-weight: bold;
-
-}
-
-.fa-bug {
-    font-size: 35px;
-    color: red;
-    margin: 10px;
-    text-shadow: pink 2px 2px
-
-}
-
-.Nav_Home_button{
-    text-decoration: 'none';
-    border-radius: 20px;
-    background-color:white;
-    transition: all 0.2s ease;
-}
-
-/* .Nav_Home_button{
-    transition: all 0.5s ease;
-} */
-
-.Nav_Home_button:hover{
-    box-shadow: 1px 3px 3px rgb(29, 27, 27);
-}
 
 
 .Nav_Link{
@@ -292,4 +225,25 @@ padding-right: 50px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+}
+.logoD{
+    width: 60px;
+    height: 60px;
+    margin-bottom:-19px;
+    margin-right: -10px
+
+}
+
+.home_logo{
+    display: flex;
+    justify-content: center;
+align-items: center;
+}
+.airdnd {
+    display: inline-block;
+    margin: 10px;
+    font-size: 30px;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    color: red;
+    text-shadow: pink 2px 2px
 }
