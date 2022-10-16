@@ -92,33 +92,39 @@ input:focus {
     width: 200px;
 }
 
-/* .signup_button{
-    width: 180px;
-    margin-left: 10px;
-    margin-top: 42px;
+.signupButton{
+
     background-color: rgb(232, 63, 92);
     color: white;
-    border: 0;
-    height: 23px;
     border-radius: 20px;
     cursor: pointer;
-    transition: all 1s ease;
-    height: 28px;
-    font-size: 16px;
-} */
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 30px;
+    margin-left: 10px;
+    width: 100px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 50px;
+    padding: 10px;
+    border: 1px solid #EBEBEB;
 
-.signup_Button:hover{
-    background-color:red;
-    color:white;
+}
+
+
+.signupButton:hover{
+    background-color: white;
+    color:rgb(232, 63, 92)
 }
 
 .signup_errors{
     list-style: none;
     color:red
 }
-.signupButton {
-   margin: 8px
-}
+
 .signup_button {
 
     border-radius: 10px;
@@ -142,5 +148,23 @@ color: red;
     font-size: 18px;
     color: darkred;
     display: block;
+
+}
+.signup-form-close-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+   margin-left: 13px;
+   margin-top: -18px;
+    background-color:white;
+    font-size: 17px;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+.signup-form-close-btn:hover {
+    background-color: red;
 
 }

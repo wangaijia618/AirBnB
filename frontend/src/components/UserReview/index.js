@@ -35,18 +35,12 @@ function ReviewUser({review}) {
 
 
       <div className="reviewsContainer">
-      <div className='reviewProfile'>
-      <div className='reviewUserIcon'>
-      <div className="fa-solid fa-user"/>
 
-      </div>
       <div className='reviewName'>Review from  -{review.User.firstName}</div>
-      </div>
+
       <div className='reviewDate'>{date}</div>
-      <div className='dateReview'>
-      <div className='reviewReview'>
-      <div className="fa-solid fa-star"/>{review?.stars} : {review?.review}</div>
-      </div>
+
+      <div className='review_content'>{review?.review}</div>
       <div className='reviewDivDelete'>
         {currentUser && (
           <div className='reviewDelete'>
@@ -54,8 +48,9 @@ function ReviewUser({review}) {
           </div>
         )}
       </div>
+
         </div>
-   
+
 
   )
 }

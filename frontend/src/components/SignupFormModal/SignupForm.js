@@ -5,7 +5,7 @@ import * as sessionActions from "../../store/session";
 
 import './SignupForm.css';
 
-function SignupFormPage() {
+function SignupFormPage({onClose}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState("");
@@ -34,8 +34,12 @@ function SignupFormPage() {
 
   return (
     <div>
-    <h3 className="sign_up_words">Sign up</h3>
+         <button className='signup-form-close-btn' onClick={onClose}>
+                    <i className="fa-solid fa-xmark"></i>
+                </button>
+  <h3 className="sign_up_words">Sign up</h3>
     <form className ="sign_up_container" onSubmit={handleSubmit}>
+
       <ul className="sign_up_errors">
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>

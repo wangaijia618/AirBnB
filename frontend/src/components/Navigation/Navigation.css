@@ -288,6 +288,8 @@ padding-right: 50px;
     height: 20px;*/
 }
 
-.login_signup_dropdown{
-    border: 1px solid grey
+.loginSignUp{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
