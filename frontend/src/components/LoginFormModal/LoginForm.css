@@ -66,7 +66,7 @@
     border-radius: 10px;
     cursor: pointer;
 width: 330px;
-    background-color: rgb(230, 0, 0);
+    background-color: rgb(232, 63, 92);
     transition: all 1s ease;
     color: white;
    padding: 10px;
@@ -83,9 +83,9 @@ color: red;
 
   .website_title {
     font-size: 25px;
-    margin-top: 20px;
-    margin-left: 25px;
-    color: red;
+    margin-top:20px;
+    margin-left: 145px;
+    color: black;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold
   }
@@ -107,7 +107,7 @@ color: red;
     border-radius: 10px;
     cursor: pointer;
 width: 330px;
-    background-color: rgb(230, 0, 0);
+    background-color: rgb(232, 63, 92);
     transition: all 1s ease;
     color: white;
    padding: 10px;

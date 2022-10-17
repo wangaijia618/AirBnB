@@ -12,7 +12,7 @@
 .sign_up_words{
     text-align: center;
     font-size: 30px;
-    padding: 50px;
+    padding: 20px;
 
 }
 /*
@@ -21,76 +21,16 @@ input:focus {
   } */
 
 
-.firstname{
-    margin: 15px;
-}
-
-.firstname_input{
-    margin-left: 12px;
-    border-radius: 10px;
-    height: 25px;
-    width: 200px;
-}
-
-
-.lastname{
-    margin: 15px;
-}
-
-.lastname_input{
-    margin-left: 12px;
-    border-radius: 10px;
-    height: 25px;
-    width: 200px;
-
-}
-
-.email_signup{
-    margin: 15px;
-}
-
-.email_input{
-    margin-left: 55px;
-    border-radius: 10px;
-    height: 25px;
-    width: 200px;
-}
-
-.username_signup{
-    margin: 15px;
-    border-style: none;
-}
-
-.username_input{
-    margin-left: 12px;
-    border-radius: 10px;
-    height: 25px;
-    width: 200px;
-
-}
-.password{
-
-    margin: 15px;
-}
-
-.password_input{
-    margin-left: 17px;
-    border-radius: 10px;
-    height: 25px;
-    width: 200px;
-
-}
+.firstname,
+.lastname,
+.email_signup,
+.username_signup,
+.password_signup,
 .confirm_password{
-   margin-left:-85px;
-   margin-top: 15px
+   margin: 5px
 }
 
-.confirm_password_input{
-    margin-left: 15px;
-    border-radius: 10px;
-    height: 25px;
-    width: 200px;
-}
+
 
 .signupButton{
 
@@ -129,8 +69,8 @@ input:focus {
 
     border-radius: 10px;
     cursor: pointer;
-width: 350px;
-    background-color: rgb(230, 0, 0);
+width: 250px;
+    background-color: rgb(232, 63, 92);
     transition: all 1s ease;
     color: white;
    padding: 10px;
@@ -167,4 +107,22 @@ color: red;
 .signup-form-close-btn:hover {
     background-color: red;
 
+}
+#firstname-input,
+#lastname-input,
+#email-input,
+#username-input,
+#password-input,
+#confirm-password-input
+{
+    font-size: 15px;
+    border: solid 1px lightslategray;
+    border-radius: 8px;
+    width: 350px;
+    height: 35px;
+    margin-right:-5px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 15px;
+    margin: 3px
 }

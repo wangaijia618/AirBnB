@@ -35,8 +35,8 @@ function LoginForm({onClose}) {
         <i className="fa-solid fa-xmark"></i>
                 </button>
         <div className="website_title">
-        <i class="fa-solid fa-bug"></i>
-        AirDnd
+
+        Log In
         </div>
 
         <div className="login_error_container">

@@ -92,7 +92,7 @@ return (
             </div>
             </div>
            <div className='emptyBorder'/>
-
+         <div className="bottom_review">
            <span className='bottomAvgCount'>
            <span className="fa-solid fa-star bigStar"/>
             {spot?.avgStarRating} · {reviewsObj?.length} review(s)
@@ -106,6 +106,7 @@ return (
             ))}
            </div>
            </div>
+          </div>
       </>
     )
 

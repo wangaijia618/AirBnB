@@ -36,18 +36,19 @@ function ReviewUser({review}) {
 
       <div className="reviewsContainer">
 
-      <div className='reviewName'>Review from  -{review.User.firstName}</div>
+      <div className='reviewName'>Review from  -<span className="reviewer">{review.User.firstName}</span></div>
 
       <div className='reviewDate'>{date}</div>
 
       <div className='review_content'>{review?.review}</div>
-      <div className='reviewDivDelete'>
+
+    <span className='reviewDivDelete'>
         {currentUser && (
-          <div className='reviewDelete'>
+          <span className='reviewDelete'>
             <button onClick={handleDelete} className='reviewDeleteButton'>Delete Review</button>
-          </div>
+          </span>
         )}
-      </div>
+       </span>
 
         </div>
 

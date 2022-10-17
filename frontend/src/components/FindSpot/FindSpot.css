@@ -109,10 +109,11 @@ border: 1px solid grey
 
 
 .emptyBorder {
-  margin-top: 10%;
-  margin-bottom: 3%;
+  /* margin-top: 10%;
+  margin-bottom: 3%; */
+  margin: 10% 0 auto ;
   border: solid 1px rgb(230, 230, 230);
-  width: 580px
+  width: 1580px
 }
 .emptyBorder1 {
   margin-top: 2%;
@@ -186,7 +187,7 @@ height: 300px;
 
 .spot_info_header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 40px;
 }
@@ -221,4 +222,11 @@ height: 200px;
 #priceSpotfs{
   font-weight: 600;
   font-size: 20px
+}
+
+.bottom_review{
+  margin-top: 50px
+}
+.createReviewSpot{
+  margin-left: 20px;
 }
