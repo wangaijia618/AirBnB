@@ -77,7 +77,7 @@ function Navigation(){
       <NavLink exact to='/' className='home_link' >
         {/* <div className="fa-solid fa-bug"></div> */}
         <img className="logoD" src={logo}></img>
-        <span className="airdnd">AirDnd</span>
+        <span className="airdnd">AirDnD</span>
         </NavLink>
       </div>
         {sessionLinks}
