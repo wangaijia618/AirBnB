@@ -264,3 +264,4 @@ const spotReducer = (state = initialState, action) => {
     }
 }
 export default spotReducer
+
