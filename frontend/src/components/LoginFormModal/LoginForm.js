@@ -4,7 +4,7 @@ import { useDispatch, useSelector} from "react-redux";
 import "./LoginForm.css"
 // import {Redirect} from 'react-router-dom'
 
-function LoginForm() {
+function LoginForm({onClose}) {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +12,6 @@ function LoginForm() {
 //?????
   // const sessionUser = useSelector(state => state.session.user);
   // if (sessionUser) return <Redirect to="/" />;
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,14 +23,22 @@ function LoginForm() {
       }
     );
   };
+  const demoUserLogin = (e) => {
+    e.preventDefault();
+    const demoUser = { credential: 'FakeUser1', password: 'password1' };
+    dispatch(sessionActions.login(demoUser));
+  }
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-
+<button className='login-form-close-btn' onClick={onClose}>
+        <i className="fa-solid fa-xmark"></i>
+                </button>
         <div className="website_title">
-        <i class="fa-solid fa-bug"></i>
-        AirDnd
+
+        Log In
         </div>
+
         <div className="login_error_container">
       <ul>
         {errors.map((error, idx) => (
@@ -42,9 +49,10 @@ function LoginForm() {
       <div className="login_container">
         <div className="username_email">
       <label>
-        Username or Email:
+
         <input
-        className="login_input"
+        className="userInput"
+        placeholder="Username/Email"
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
@@ -54,9 +62,10 @@ function LoginForm() {
        </div>
          <div className="password">
       <label>
-        Password:
+
         <input
-        className="login_input"
+        className="passwordInput"
+        placeholder="password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -64,7 +73,12 @@ function LoginForm() {
         />
       </label>
       </div>
+      <div>
       <button className="login_button" type="submit">Log In</button>
+      </div>
+      <div>
+      <button className="demo_button" onClick={demoUserLogin}>Log in as demo user</button>
+       </div>
 </div>
     </form>
   );

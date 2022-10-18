@@ -1,34 +1,66 @@
 .profile-dropdown{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    border: 2px solid rgb(213, 212, 212);
+    border-radius: 10px;
+    position: absolute;
+    top: calc(90%);
+    right: 30px;
+    margin-top: 15px;
+    height: 190px;
+    width: 210px;
+    box-shadow: 2px 2px 2px 0px rgba(195, 195, 195, 0.6);
+    background-color: white;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: flex-start;
 
 }
-
-.airdnd {
-    display: inline-block;
-    margin: 10px;
-    font-size: 30px;
-    font-family: monospace;
-    color: red;
-    text-shadow: pink 2px 2px
-}
-.profile-dropdown > li {
+.profile-dropdown li{
     list-style: none;
-    margin: 5px;
+    display: block;
+    height: 25px;
+    padding-left: 13px;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+}
+.profile-dropdown li:hover{
+    background-color: lightgray;
+    width:stretch;
 
+}
+.profile_username,
+.profile_email,
+.current_spot_link,
+.current_review_link,
+.logout_button{
+
+font-size: 18px;
+
+}
+.profile_username,
+.profile_email{
+
+    cursor: not-allowed;
+}
+
+.current_spot_link,
+.current_review_link{
+    text-decoration: none;
+    color: inherit
 }
 
 .Parent_navbar{
     position: sticky;
-    top: 0;
-    border-bottom: 1px inset lightgray;
+    top: 0px;
+    /* border-bottom: 1px inset lightgray; */
     background-color: white;
+
 }
 
 .Navbar_container{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: flex-end;
     list-style: none;
     margin-left: 46px;
     margin-right: 28px;
@@ -36,219 +68,113 @@
     padding:0px;
 }
 
-.fa-brands{
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-}
 
-.email{
-   font-size: 23px;
-   margin: 5px;
-}
+.Nav_become_host_link{
+color: black;
+margin-right:18px;
+padding: 10px 15px;
+transition: all 1s ease;
+font-size: 25px;
+border-radius: 25px;
+text-decoration: none;
 
-
-.username:hover{
-    background-color: aliceblue;
-    color: coral;
-    border-radius: 20px;
 }
 
 
-.email:hover{
-    background-color: aliceblue;
-    color: coral;
-    border-radius: 20px;
-    }
+.Nav_become_host_link:hover{
+    background-color: rgb(211,211,211);
 
-.fa-at{
-    font-size: 18px;
-    margin-right: 4px;
-    margin-left: 2px;
-}
-
-.fa-arrow-right-from-bracket{
-    font-size: 20px;
-    margin-left: -11px;
-    /* margin-right: 5px; */
-    padding-right: 5px;
-    padding-bottom: 5px;
-}
-
-.Airbnb_logo:visited {
-    color: inherit;
-  }
-
-
-.fa-house{
-    margin-right: 2px;
-}
-.fa-pen{
-    margin-right: 4px;
-}
-
-
-.Airbnb_logo {
-    margin:10px 5px ;
-    font-size: 30px;
     transition: all 0.5s ease;
-    margin-top: 21px;
-}
-
-
-.Airbnb_logo:hover {
-    text-shadow: 2px 3px 2px rgba(33, 31, 31, 0.5);
-}
-
-
-/* .Airbnb_logo {
-    transition: all 1s ease;
-} */
-
-
-.Nav_become__host_and_Home_link{
-    display: flex;
-    margin:10px 10px ;
-    text-decoration: none;
-    font-size: 20px;
-    padding-top: 5px;
-
 
 }
-
-.Nav_become__host_link{
-    display: flex;
-    margin:5px 10px ;
-    text-decoration: 'none';
-    transition: all 1s ease;
-    text-decoration: none;
-    color: inherit;
-    font-size: 25px;
-    padding: 4px 10px;
-    border-radius: 25px;
-    border: 1px solid white;
-
-}
-
-.Nav_become__host_link:hover{
-    /* text-shadow: 3px 3px 3px rgb(171, 63, 63);   */
-    text-decoration: none;
-    background-color: rgb(215, 211, 211);
-
-}
-
-.li{
-    font-size: 30px;
-
-}
-.home_link{
-    text-decoration: none;
-    color: red;
-    font-weight: bold;
-
-}
-
-.fa-bug {
-    font-size: 35px;
-    color: red;
-    margin: 10px;
-    text-shadow: pink 2px 2px
-
-}
-
-.Nav_Home_button{
-    text-decoration: 'none';
-    border-radius: 20px;
-    background-color:white;
-    transition: all 0.2s ease;
-}
-
-/* .Nav_Home_button{
-    transition: all 0.5s ease;
-} */
-
-.Nav_Home_button:hover{
-    box-shadow: 1px 3px 3px rgb(29, 27, 27);
-}
-
-
-.Nav_Link{
-    text-decoration: none;
-    color: inherit;
-    border-radius: 20px;
-    padding: 2px;
-}
-
-.Nav_Link:visited{
-    text-decoration: none;
-
-}
-
-.Nav_Link:hover{
-    color: blue;
-    background-color: aliceblue;
-}
-
-.profile_button{
-    margin-top: 5px;
-    border: 2px solid rgb(224, 220, 220);
-    border-radius: 25px;
-    padding: 6px 12px;
-    /* background-color: white; */
-    cursor: pointer;
-}
-
 
 .Logout_button{
     border: none;
-    outline-style:hidden ;
+    text-decoration: none;
+    /* outline-style:hidden; */
     background: none;
-     margin-bottom: 5px;
+     /* margin-bottom: 5px; */
      transition: all 0.5s ease;
-     margin-left: 4px;
+     margin-left: -3px;
      cursor:pointer;
      font-size: 18px;
-     border-radius: 20px;
-     margin-top: -2px;
+     width:180px;
+     text-align: left;
+     /* border-radius: 20px; */
+     /* margin-top: -2px; */
 
 }
 
 
-.Logout_button:hover{
-   
-    color: coral;
-    background-color: aliceblue;
-}
+
+
 
 .list{
     list-style: none
 }
 
-.fa-user{
-    margin-right: 8px;
-}
+.profile-button:hover{
+    box-shadow: 3px 3px 10px rgba(46, 42, 42, 0.5);
 
-.fa-user-astronaut{
-    font-size: 17px;
-    margin-right: 10px;
-}
-
-.button{
-    border: none;
-    outline-style:hidden ;
-    background: none;
-     margin-bottom: 5px;
-     margin-right: 5px;
-     transition: all 0.5s ease;
-     margin-left: 2px;
-     cursor:pointer;
-     font-size: 18px;
-     border-radius: 20px;
-}
-
-button:hover{
-    box-shadow: 3px 3px 3px rgba(46, 42, 42, 0.5);
-    color: coral;
-    background-color: aliceblue;
     transition: all 0.5s ease;
+}
+.profile-button{
+    padding:  10px 20px;
+    position:relative;
+    top: 8px;
+    border-radius: 30px;
+    background-color: white;
+    /* border-color: rgb(244, 243, 243); */
+    /* width: 30px; */
+    height: 50px;
+    /* outline-color: rgb(225, 217, 217); */
+    border-top: 2px solid rgb(222, 219, 219);
+    border-bottom: 2px solid rgb(222, 219, 219);
+    border-left: 2px solid rgb(222, 219, 219);
+    border-right: 2px solid rgb(222, 219, 219);
+    cursor: pointer;
+}
+.fa-solid.fa-bars{
+    position:relative;
+    right: 5px;
+    /* width: 20px;
+    height: 20px; */
+    font-size:20px;
+    bottom: 5px
+}
+
+.fas.fa-user-circle{
+    position:relative;
+    font-size: 30px;
+    left: 8px;
+    color: rgba(100, 100, 100)
+    /* width: 20px;
+    height: 20px;*/
+}
+
+.loginSignUp{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.logoD{
+    width: 60px;
+    height: 60px;
+    margin-bottom:-19px;
+    margin-right: -10px
+
+}
+
+.home_logo{
+    display: flex;
+    justify-content: center;
+align-items: center;
+}
+.airdnd {
+    display: inline-block;
+    margin: 10px;
+    font-size: 30px;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    color: red;
+    text-shadow: pink 2px 2px
 }

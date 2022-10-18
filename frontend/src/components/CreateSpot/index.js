@@ -27,16 +27,19 @@ const CreateNewSpot = () => {
     if (!image.endsWith('.jpg') && !image.endsWith('.png') && !image.endsWith('.jpeg')) {
       errors.push('Provide a valid image url')
     }
+    if (address.length === 0) errors.push('Address is required');
+    if (city.length === 0) errors.push('City is required');
+    if (state.length === 0) errors.push('State is required')
+    if (country.length === 0) errors.push('Country is required');
+    if (name.length === 0) errors.push('Name is required');
+    if (description.length === 0) errors.push('Description is required');
+    if (lat.length === 0) errors.push('Latitude is required')
+    if (lng.length === 0) errors.push('Longitute is required')
+    if (price.length === 0) errors.push('Price is required')
+    if (price < 0) errors.push('Price must be greater than 0');
+
     setErrors(errors)
   }, [address, city, state, country, lat, lng, name, description, price, image])
-  // if (address.length < 6)
-    // if (address === '') errors.push("Street address is required")
-    // if (city === '') errors.push("City is required")
-    // if (state === '') errors.push("State is required")
-    // if (country === '') errors.push("Country is required")
-    // if (name === '' || name.length > 50) errors.push("Valid name required")
-    // if (description === '') errors.push("Description is required")
-    // if (price === '') errors.push("Price is required")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,19 +57,47 @@ const CreateNewSpot = () => {
       price
     };
     setErrors([]);
-    const spot = await dispatch(addSpot(spotInfo)).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors([data.errors])
-    })
-    dispatch(createImage({previewImage: true, url: image}, spot.id))
-    history.push(`/spots/${spot.id}`)
+  //   const spot = await dispatch(addSpot(spotInfo)).catch(async (res) => {
+  //     const data = await res;
+  //     if (data && data.errors) setErrors([data.errors])
+  //   })
+  //   dispatch(createImage(res.id, {preview: true, url: image}))
+  //   history.push(`/spots/${data.id}`)
+  // }
+  dispatch(addSpot(spotInfo)).then(
+    async (res) => {
+      //console.log('!!!!!!!!!!!!!!res', res)
+      //const data = await res.json();
+      //console.log('!!!!!!!!!!!!!!data', data)
+      let newSpot = res
+      if (res && res.errors) {
+        //console.log('!!!!!!!!!!!!!!errros', res.errors)
+        setErrors(res.errors);
+      } else {
+        //console.log('###########imgUrl', imgUrl)
+        dispatch(createImage(res.id, { preview: true, url: image })).then(
+          async (res) => {
+            const data = await res.json();
+            if (data && data.errors) {
+              setErrors(data.errors);
+            } else {
+
+              history.push(`/spots/${newSpot.id}`)
+            }
+          }
+        )
+
+
+      }
+    }
+  );
   }
 
   return (
     <form onSubmit={handleSubmit} className='createForm'>
       <div className='createBox'>
       <div className='createTitle'>
-        <h1 className='createHTitle'>Welcome to AwayBnB</h1>
+        <h1 className='createHTitle'>Welcome to AirDnd</h1>
       </div>
       <div>
         <h2 className='createSubTitle'>Host Your Home</h2>
@@ -184,7 +215,7 @@ const CreateNewSpot = () => {
       </label>
       </div>
       <div className='createDivBut'>
-      <button type="submit" disabled={isSubmitted && errors.length > 0} className='signUpButton'>Host Your Home!</button>
+      <button className="hostHomeButton" type="submit" disabled={isSubmitted && errors.length > 0} >Host Your Home!</button>
       </div>
     </form>
   )

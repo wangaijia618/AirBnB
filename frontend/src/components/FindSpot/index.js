@@ -1,42 +1,44 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import {getOneSpot, allSpotsObj, removeSpot} from '../../store/spots';
-// import {allReviewsArray, getAllReviewsBySpot} from '../../store/reviews';
-//  import CreateReviewModal from '../CreateReviewModal';
-// import EditSpotModal from "../EditSpotModal";
-// import UserReview from '../UserReview';
+import {getOneSpot, allSpotsArray, allSpotsObj, removeSpot, editSpot} from '../../store/spots';
+import {allReviewsArray, getSpotReview} from '../../store/reviews';
+import CreateReviewModal from '../CreateReviewModal';
+
+import UserReview from '../UserReview';
 import "./FindSpot.css";
+import EditSpotModal from "../EditSpotForm";
+// replaced {spot?countReviews} with {reviewsObj?.length} to update review immidiately
 
 const FindSpot = () => {
   let currentUser;
   const {spotId} = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-  const spotsObj = useSelector(allSpotsObj);
-//   const oneSpotById = useSelector(state => state.spots.singleSpot)
-//   const reviewsObj = useSelector(allReviewsArray);
-
-// const spotData = useSelector(state => state.spots.singleSpot)
-// const spotdata = spotData.spotId
-// const spotImgArr = spotData.SpotImages
-
-  const [isLoaded, setIsLoaded] = useState(false)
+// export const allSpotsObj = state => state.spots
+  const spot = useSelector(state => state.spots.singleSpot);
+  // export const allReviewsArray = (state) => Object.values(state.reviews);
+  const reviewsObj = useSelector(allReviewsArray);
+  //  const reviews = useSelector(state => state.reviews.spot)
+  // const reviewContent = Object.values(reviews)
+  // const reviewsObj = useSelector(state => state.reviews.spot)
+  // const [isLoaded, setIsLoaded] = useState(false)
   //in use
-    const spot = spotsObj[Number(spotId)];
-
+    // const spot = spotsObj[+spotId]; //or using Number(spotId)
+    // const spot = useSelector(state => state.spots)
+  //  console.log(~~~~~~~~~~spotId)
+  //   console.log(~~~~~~~~~~~~~~spot)
   const sessionUser = useSelector(state => state.session.user);
   useEffect(() => {
     dispatch(getOneSpot(spotId))
-
-    // .then(() => dispatch(getAllReviewsBySpot(spotId)))
-    .then(() => setIsLoaded(true))
-  }, [dispatch])
+    dispatch(getSpotReview(spotId))
+    // .then(() => setIsLoaded(true))
+  }, [dispatch, spotId])
 
   const handleDelete = async (e) => {
   e.preventDefault();
-  const res = await dispatch(removeSpot(spotId))
-  if (res) history.push("/")
+  await dispatch(removeSpot(spotId))
+  history.push("/")
 }
 
 if (sessionUser && spot) {
@@ -44,59 +46,70 @@ if (sessionUser && spot) {
     currentUser = true;
   } else currentUser = false;
 }
+if(!spot.SpotImages) return null
+if (Object.keys(spot).length === 0) return null
+return (
 
-  return isLoaded && (
-        (
       <>
-      <div className='firstDiv'/>
-      <div className='topText'>
+      <div className='spot_body_container'>
+      <div className='single_spot_infos'>
           <div className="nameSpot">{spot?.name}</div>
-           <div className='ratingSpot'>
+           <div className='rating_top_spot'>
             <div className='outsideStar'>
-           <div className="fa-solid fa-star"/>
-         <div></div>
-           <div>{spot?.avgRating} ·  {spot?.city} , {spot?.countReviews} </div>
-            <div key={spot?.id} className='stateSpot'>   {spot?.state}, {spot?.country}</div>
+           <i className="fa-solid fa-star"/>
+           {/* <div>{spot?.avgStarRating} · {spot?.countReviews}review(s)</div> */}
+            <div key={spot?.id} className='stateSpot'> {spot?.avgStarRating} · {reviewsObj.length} review(s) · {spot?.city}, {spot?.state}, {spot?.country}</div>
            </div>
            </div>
+
             {currentUser && (
               <div className='editDeleteSpot'>
-              {/* <EditSpotModal/> */}
-              <button onClick={handleDelete} className='deleteButton'>Delete</button>
+            <EditSpotModal />
+              {/* <button onClick={handleDelete} className='deleteButton'>Delete Spot</button> */}
+              <button type="button" onClick={handleDelete} className='deleteButton'>Delete Spot</button>
             </div>
              )}
       </div>
           <div className='imgDivfs'>
-         <img className='imageSpotfs' src={spot?.previewImage} alt="Image Is Not Available"/> </div>
-           {/* <div className='single-spot-img'>
-
-               {oneSpotById.SpotImages.map(img => {
-                   (<img key={img.id} src={img.url} />)
-               })}
-           </div> */}
-           <div className='bottomText'>
-            <div className='priceNightfs'>
-           <div className='pricesSpot'>${spot?.price}</div>
-           <div className='nightsSpot'>night</div>
-            </div>
+         <img className='imageSpotfs' src={spot?.SpotImages.map(img => img.url)} alt="Image Is Not Available"/> </div>
+         {/* {oneSpotById.SpotImages.map(img =>
+                    (<img key={img.id} src={img.url} alt={img.url} />)
+                )} */}
+            <div className='spot_info_header'>
+            <div className='spot_left_info'>
+            <div className='hostname'>Entire home hosted by {spot.Owner.firstName} {spot.Owner.lastName}</div>
+            <div className='emptyBorder1'/>
            <div className='descriptSpot'>{spot?.description}</div>
-           <div className='createReviewSpot'>
-             {/* {sessionUser && <CreateReviewModal spotId={spotId}/>} */}
            </div>
-           <div className='emptyBorder'/>
-           <div className='bottomAvgCount'>
-           <div className="fa-solid fa-star bigStar"/>
-            {spot?.avgRating} · {spot?.countReviews} reviews
+           <div className='spot_right_info'>
+            <div className='spot_right_card_info'>
+              <div className='spot_card_header'>
+           <div className='priceSpotfs'><span id='priceSpotfs'>${spot?.price} </span>night</div>
+
+          <div className='rightbox_review'><span id='reviewSpotfs'> <i className="fa-solid fa-star"/></span>{spot?.avgStarRating} · {reviewsObj?.length} review(s)</div>
             </div>
-           {/* <div className='allReviewSpot'>
+            </div>
+            </div>
+            </div>
+           <div className='emptyBorder'/>
+         <div className="bottom_review">
+           <span className='bottomAvgCount'>
+           <span className="fa-solid fa-star bigStar"/>
+            {spot?.avgStarRating} · {reviewsObj?.length} review(s)
+            </span>
+            <span className='createReviewSpot'>
+             {sessionUser && <CreateReviewModal spotId={spotId}/>}
+           </span>
+           <div className='allReviewSpot'>
             {reviewsObj.map(review => (
-              <UserReview key={review?.id} review={review}/>
+              <UserReview className='everyReview' key={review?.id} review={review}/>
             ))}
-           </div> */}
            </div>
+           </div>
+          </div>
       </>
     )
-  )
+
 }
 
 export default FindSpot;
