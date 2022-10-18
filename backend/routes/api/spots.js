@@ -96,13 +96,13 @@ router.get('/', validateSpot, async (req, res, next) => {
     //    } else {
         let data = el.toJSON()
         data.avgRating= Number(allRating[0].avgRating).toFixed(1)
-        // data.previewImage = imageUrl?.url
+        data.previewImage = imageUrl.url
         //   data = {
         //     ...el.toJSON(),
-        //     avgRating: Number(allRating[0].avgRating).toFixed(1),
+        //     avgRating: allRating[0].avgRating,
         //     previewImage: imageUrl.url
         // }
-        data.previewImage = !imageUrl ? '' : imageUrl.url
+
         spot.push(data)
              }
             res.json({

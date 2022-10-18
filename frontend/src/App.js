@@ -8,8 +8,8 @@ import Navigation from "./components/Navigation"
 import SpotBrowser from "./components/SpotBrowser";
 import FindSpot from "./components/FindSpot";
 import CreateNewSpot from "./components/CreateSpot";
-import ReviewByUser from "./components/ReviewByUser";
-import SpotByUser from "./components/SpotByUser";
+import EditSpotForm from "./components/EditSpotForm";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -44,12 +44,8 @@ return (
           <Route path='/newspot'>
             <CreateNewSpot />
           </Route>
-          <Route path='/spots/current'>
-          <SpotByUser />
-          </Route>
-
-          <Route path='/reviews/current'>
-          <ReviewByUser />
+          <Route path="/spots/:spotId/edit">
+            <EditSpotForm />
           </Route>
       </Switch>
     )}
