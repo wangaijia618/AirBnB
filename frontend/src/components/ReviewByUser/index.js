@@ -1,71 +1,58 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from "react-router-dom";
-import UserReview from "../UserReview";
-import { getUserReview, allReviewsArray } from "../../store/reviews";
-import "./ReviewByUser.css";
-import { deleteReview } from "../../store/reviews";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, NavLink, useParams } from "react-router-dom";
+import { deleteReview, getUserReview } from "../../store/reviews";
 
-const ReviewByUser = ({review}) => {
-  const sessionUser = useSelector(state => state.session.user);
-  const {spotId} = useParams();
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const reviews = useSelector(state => state.reviews)
-  useEffect(() => {
-    dispatch(getUserReview());
-  },[dispatch]);
-  if (!reviews || Object.values(reviews).length===0){
-    return null;
-}
-const handleDelete = async (reviewId) => {
-  if (window.confirm('Confirm to delete this review?')){
-      await dispatch(deleteReview(review.id, review.spotId))
-      history.replace(`/reviews/current`)
-  }
-}
 
-const reviewValues = Object.values(reviews);
-return (
-  <div className="my-reviews-container">
-      {reviewValues.map((review) => (
-        <div className="my-reviews-container" id={review.id} key={review.id}>
-          <div className="my-reviews-list">
-          {/* <div className="my-single-review-container"> */}
-            <div className="my-single-review-spot-pic" >
-                <img src={review.Spot?.previewImage} alt={review.Spot?.description}></img>
-            </div>
-            <div className="my-single-spot-review-title">
-                <div className="spot-subtitle-text">
-                  {review.Spot?.name===null? "" : `Review for ${review.Spot?.name}`}
-                </div>
-                <div className='rating-star'>
-                      <i className="fa-solid fa-star fa-xs"></i>
-                      {'\u00A0'}{review.stars}
-                </div>
-                {/* <div className="review-card-date">{getMonthYear(review.updatedAt)}</div> */}
-            <div className="review-details">
-              <div className="spot-default-text">{review.review}</div>
-            </div>
-            </div>
+const ReviewByUser = () => {
 
+    const reviewsObj = useSelector((state) => state.reviews)
+    const reviews = Object.values(reviewsObj)
+    // console.log('reviewsObjUser from component: ', reviewsObj)
+    // console.log('reviewsUser from component: ', reviews)
+
+    const dispatch = useDispatch();
+
+    const user = useSelector((state) => state.session.user)
+    // console.log("user", user)
+
+    useEffect(() => {
+        dispatch(getUserReview());
+    }, [dispatch]);
+    return (
+      <div>
+
+          <div className="review_container" >
+          <h1 className="review_user_h2">Reviews by you: </h1>
+
+              {user && reviews.length ? reviews.map(review => (
+                  <div key={review.id} className="second_div">
+                      <div className="first_div">Past reviews you’ve written</div>
+                      <div className="ReviewUser_star"><i className="fa-solid fa-star"></i> {review.stars} </div>
+                      <div className="ReviewUser_review">{review.review}</div>
+                      {console.log(review.id)}
+
+                      <button className="ReviewUser_button" onClick={() => dispatch(deleteReview(review.id))}><i className="fa-solid fa-trash-can"></i> Delete</button>
+                  </div>
+
+
+              )) :
+              <>
+              <h2 className = "please_log_in">Please log in to see all the reviews or</h2>
+              <h2 className="ReviewUser_no_an_review_found">You have not written any reviews yet.</h2>
+              </>
+              }
           </div>
-
-          <div className="edit-delete-btn-panel">
-                  <div className="edit-review-button-container">
-                    <button className="create-review-button" disabled={true}>Eidt Review</button>
-                    </div>
-                    <div className="edit-review-button-container">
-                      <button className="create-review-button" onClick={() => handleDelete(review.id)}>Delete Review</button>
-                    </div>
-                </div>
-                {/* </div> */}
-
+          <footer className='footer_container'>
+              <div>
+              <i className="fa-brands fa-fort-awesome"></i> © 2022 WonderlandBnB, Inc. · Privacy · Terms · Sitemap
               </div>
+              <div className="USD">
+              <i className="fa-solid fa-globe"></i> English(US) $ USD
+              </div>
+          </footer>
+      </div>
+  );
+};
 
-            ))}
-        </div>
-      );
-
-}
 export default ReviewByUser;

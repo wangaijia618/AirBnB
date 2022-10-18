@@ -24,7 +24,7 @@ function ReviewUser({review}) {
   }
 
   const handleDelete = () => {
-    dispatch(deleteReview(review.id, review.spotId))
+    dispatch(deleteReview(review.id))
   }
 
   // const handleSpot = () => {
