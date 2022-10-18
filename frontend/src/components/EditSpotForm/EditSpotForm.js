@@ -61,12 +61,13 @@ const spot = useSelector(state => state.spots.singleSpot)
     dispatch(editSpot(spotInfo, spotId))
     .catch(async (res) => {
       const data = await res.json();
-      if (data && data.errors) setErrors([data.errors])
+      if (data && data.errors) setErrors(data.errors)
     })
     history.push(`/spots/${spotId}`)
    }
 
   return (
+    <div className='Edit'>
     <form onSubmit={handleSubmit} className='editForm'>
       <div className='editTitle'>
         {/* <h1 className='createHTitle'>Update Home</h1> */}
@@ -74,11 +75,11 @@ const spot = useSelector(state => state.spots.singleSpot)
       <div>
         <h2 className='editSubTitle'>Update Home</h2>
       </div>
-      <div>
+      <ul className='editErrors'>
         {errors.map((error, idx) =>
-        <div key={idx} className='editError'>{error}</div>
+        <li key={idx} className='editError'>{error}</li>
         )}
-      </div>
+      </ul>
       <label>
         <input
         className='editName'
@@ -171,6 +172,7 @@ const spot = useSelector(state => state.spots.singleSpot)
       </label>
       <button type="submit" className='editSpotBut'>Update Your Home!</button>
     </form>
+    </div>
   )
 }
 

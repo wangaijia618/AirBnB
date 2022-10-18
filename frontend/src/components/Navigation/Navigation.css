@@ -3,10 +3,10 @@
     border-radius: 10px;
     position: absolute;
     top: calc(90%);
-    right: 2%;
+    right: 30px;
     margin-top: 15px;
-    height: 170px;
-    width: 230px;
+    height: 190px;
+    width: 210px;
     box-shadow: 2px 2px 2px 0px rgba(195, 195, 195, 0.6);
     background-color: white;
 display: flex;
@@ -15,21 +15,31 @@ justify-content: space-around;
 align-items: flex-start;
 
 }
+.profile-dropdown li{
+    list-style: none;
+    display: block;
+    height: 25px;
+    padding-left: 13px;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+}
+.profile-dropdown li:hover{
+    background-color: lightgray;
+    width:stretch;
+
+}
 .profile_username,
 .profile_email,
 .current_spot_link,
 .current_review_link,
 .logout_button{
-    margin-left: 15px;
+
 font-size: 18px;
 
 }
-.profile_username:hover,
-.profile_email:hover,
-.current_spot_link:hover,
-.current_review_link:hover,
-.logout_button:hover{
-    background-color: grey
+.profile_username,
+.profile_email{
+
+    cursor: not-allowed;
 }
 
 .current_spot_link,
@@ -80,23 +90,24 @@ text-decoration: none;
 
 .Logout_button{
     border: none;
-    outline-style:hidden ;
+    text-decoration: none;
+    /* outline-style:hidden; */
     background: none;
      /* margin-bottom: 5px; */
      transition: all 0.5s ease;
      margin-left: -3px;
      cursor:pointer;
      font-size: 18px;
+     width:180px;
+     text-align: left;
      /* border-radius: 20px; */
      /* margin-top: -2px; */
 
 }
 
-.Logout_button:hover{
 
-    color: coral;
-    background-color: aliceblue;
-}
+
+
 
 .list{
     list-style: none
