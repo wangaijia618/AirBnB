@@ -51,12 +51,14 @@
     font-size: 25px;
     margin: 5px 40px
   }
+
   .password {
     margin: 5px;
     margin-left: 70px;
     display: flex;
     line-height: 30px;
     font-size: 17px;
+
   } */
 
   .login_button {
@@ -165,7 +167,3 @@ color: red;
   background-color: white;
   color:rgb(232, 63, 92)
 }
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
