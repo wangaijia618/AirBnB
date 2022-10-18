@@ -49,11 +49,12 @@ router.get('/current', requireAuth, async(req, res, next) => {
 
      for(let review of reviews) {
         let spotimage = await SpotImage.findByPk( review.id, {where: { preview: true }, attributes: ['url'] })
+      
         let data = review.toJSON()
-        data.Spot.previewImage = spotimage.url
+        data.Spot.previewImage = spotimage?.url
        result.push(data)
-     }
-        res.json({Reviews: result})
+    }
+       return res.json({Reviews: result})
     })
 
 //create an image to a review based on the review's id
