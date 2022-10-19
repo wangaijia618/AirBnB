@@ -126,3 +126,6 @@ color: red;
     padding-left: 15px;
     margin: 3px
 }
+.sign_up_error{
+    list-style: none;
+}

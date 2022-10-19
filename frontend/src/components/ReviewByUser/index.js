@@ -14,7 +14,7 @@ const ReviewByUser = () => {
     dispatch(getUserReview());
   },[dispatch]);
 
-  return (
+  return allReviews.length?(
     <>
     <div className='ReviewsTitle'>My Reviews</div>
     <div className='emptyBordercurrent'/>
@@ -25,5 +25,11 @@ const ReviewByUser = () => {
       </div>
       </>
   )
+  :(
+    <>
+             <h1 className='no_review_found'>You currently have no review !</h1>
+
+         </>
+         )
 }
 export default ReviewByUser;

@@ -41,7 +41,7 @@ function SignupFormPage({onClose}) {
          <form className ="sign_up_container" onSubmit={handleSubmit}>
 
          <ul className="sign_up_errors">
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {errors.map((error, idx) => <li className='sign_up_error' key={idx}>{error}</li>)}
         </ul>
         <div className="firstname">
       <label>

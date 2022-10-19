@@ -87,7 +87,7 @@ border: 1px solid grey
   }
 .editErrors{
 font-size: 18px;
-color: darkred;
+color:red;
 display:block;
 font-size: 16px;
 border-radius: 8px;
@@ -97,5 +97,3 @@ border-radius: 8px;
   list-style: none;
   color: red
   }
-
-

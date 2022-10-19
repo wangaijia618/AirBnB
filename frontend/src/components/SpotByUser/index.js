@@ -64,7 +64,7 @@ const SpotByUser = () => {
     //         <h1 className='no_spot_found'>You currently have no any spot to host !</h1>
 
     //     </>
-    return (
+    return filter.length?(
         <>
         <div className='my_spots_title'>My Spots</div>
         <div className='emptyBordercurrent'/>
@@ -76,6 +76,14 @@ const SpotByUser = () => {
 
           </>
       )
+      :(
+        <>
+                 <h1 className='no_spot_found'>You currently have no spot !</h1>
+
+             </>
+             )
+
+
     }
 
 
