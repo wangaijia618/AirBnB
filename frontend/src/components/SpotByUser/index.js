@@ -6,6 +6,7 @@ import { editSpot, removeSpot, allSpotsUser } from "../../store/spots";
 import SpotBox from "../SpotBox"
 import "./SpotByUser.css"
 //  console.log("12456879")
+import EditSpotModal from "../EditSpotForm";
 
 const SpotByUser = () => {
 
@@ -21,7 +22,7 @@ const SpotByUser = () => {
 
     const user = useSelector(state => state.session.user)
     const filter = spots.filter(spot => spot?.ownerId === user?.id)
-    // console.log("filter: ", filter)
+    console.log("filter: ", filter)
     // console.log("spots: ", spots)
 
     useEffect(() => {
@@ -32,7 +33,11 @@ const SpotByUser = () => {
         alert("You need to log in first to manage your spot !")
         history.push("/")
     }
-
+    // const handleDelete = async (e) => {
+    //     e.preventDefault();
+    //     await dispatch(removeSpot(filter.spot.id))
+    //     history.push("/")
+    //   }
     // if (!filter) return alert("You need to log in first to manage your spot !")
     // return filter.length ? (
     //     <>
@@ -70,8 +75,14 @@ const SpotByUser = () => {
         <div className='emptyBordercurrent'/>
         <div className='my_spots'>
         {filter.map((spot) => (
-          <SpotBox key={spot?.id} spot={spot}/>
-          ))}
+            <>
+          <SpotBox key={spot?.id} spot={spot} />
+          {/* <button type="button" key={spot?.id} spot={spot} onClick={()=>dispatch(editSpot(spot.id))}>edit</button> */}
+          {/* <button type="button" key={spot?.id} spot={spot}onClick={EditSpotModal}>Edit Spot</button> */}
+          {/* <button type="button" key={spot?.id} spot={spot} onClick={()=>dispatch(removeSpot(spot.id))} className='deleteButton'>Delete Spot</button> */}
+       </>
+        ))}
+
           </div>
 
           </>
