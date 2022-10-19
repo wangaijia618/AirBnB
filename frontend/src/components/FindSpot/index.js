@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import {getOneSpot, allSpotsArray, allSpotsObj, removeSpot, editSpot} from '../../store/spots';
 import {allReviewsArray, getSpotReview} from '../../store/reviews';
 import CreateReviewModal from '../CreateReviewModal';
-
+import aircover from '../../images/airdnd-aircover.png'
 import UserReview from '../UserReview';
 import "./FindSpot.css";
 import EditSpotModal from "../EditSpotForm";
@@ -78,6 +78,8 @@ return (
             <div className='spot_info_header'>
             <div className='spot_left_info'>
             <div className='hostname'>Entire home hosted by {spot.Owner.firstName} {spot.Owner.lastName}</div>
+            <div className='emptyBorder1'/>
+            <img className='aircover' src={aircover}></img>
             <div className='emptyBorder1'/>
            <div className='descriptSpot'>{spot?.description}</div>
            </div>
