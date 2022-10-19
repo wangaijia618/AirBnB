@@ -15,7 +15,7 @@ Plese see below links to project Wiki
 ## Technologies Used:
 
 ### Frontend
-- React
+* React
 - Redux
 - Javascript
 - HTML
@@ -29,8 +29,18 @@ Plese see below links to project Wiki
 
 # Features Directions:
 
-## Home Page Demo User
-
-Home Page
-
+## Home Page
+You can view all the spots without login.
 <img width="1680" src="https://github.com/wangaijia618/AirBnB/blob/b1f36d87a1dc841081389a5e56f04e3f87c767c7/frontend/src/images/airdnd-home-nologin.png" alt="home page"></img>
+
+## Home Page Demo User
+You will be able to test the features without sign up by click on the "Demo User" button.
+<img width="1680" src="https://github.com/wangaijia618/AirBnB/blob/main/frontend/src/images/airdnd-login-demo.png"></img>
+
+## Sign Up New User
+You are able to sign up as a new user.
+<img width="1680" src="https://github.com/wangaijia618/AirBnB/blob/main/frontend/src/images/airdnd-signup.png"></img>
+
+##Logged In User
+After logging in, you are able to see and make changes to your spots and reviews.
+<img width="1680" src="https://github.com/wangaijia618/AirBnB/blob/main/frontend/src/images/airdnd-home-loggedIn.png"></img>
