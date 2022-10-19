@@ -1,58 +1,29 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link, NavLink, useParams } from "react-router-dom";
-import { deleteReview, getUserReview } from "../../store/reviews";
-
-
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from "react-router-dom";
+import UserReview from "../UserReview";
+import { getUserReview, allReviewsArray } from "../../store/reviews";
+import "./ReviewByUser.css";
 const ReviewByUser = () => {
+  const {spotId} = useParams();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const allReviews = useSelector(allReviewsArray);
+  // const reviews = allReviews.map(review => review.userId ===)
+  useEffect(() => {
+    dispatch(getUserReview());
+  },[dispatch]);
 
-    const reviewsObj = useSelector((state) => state.reviews)
-    const reviews = Object.values(reviewsObj)
-    // console.log('reviewsObjUser from component: ', reviewsObj)
-    // console.log('reviewsUser from component: ', reviews)
-
-    const dispatch = useDispatch();
-
-    const user = useSelector((state) => state.session.user)
-    // console.log("user", user)
-
-    useEffect(() => {
-        dispatch(getUserReview());
-    }, [dispatch]);
-    return (
-      <div>
-
-          <div className="review_container" >
-          <h1 className="review_user_h2">Reviews by you: </h1>
-
-              {user && reviews.length ? reviews.map(review => (
-                  <div key={review.id} className="second_div">
-                      <div className="first_div">Past reviews you’ve written</div>
-                      <div className="ReviewUser_star"><i className="fa-solid fa-star"></i> {review.stars} </div>
-                      <div className="ReviewUser_review">{review.review}</div>
-                      {console.log(review.id)}
-
-                      <button className="ReviewUser_button" onClick={() => dispatch(deleteReview(review.id))}><i className="fa-solid fa-trash-can"></i> Delete</button>
-                  </div>
-
-
-              )) :
-              <>
-              <h2 className = "please_log_in">Please log in to see all the reviews or</h2>
-              <h2 className="ReviewUser_no_an_review_found">You have not written any reviews yet.</h2>
-              </>
-              }
-          </div>
-          <footer className='footer_container'>
-              <div>
-              <i className="fa-brands fa-fort-awesome"></i> © 2022 WonderlandBnB, Inc. · Privacy · Terms · Sitemap
-              </div>
-              <div className="USD">
-              <i className="fa-solid fa-globe"></i> English(US) $ USD
-              </div>
-          </footer>
+  return (
+    <>
+    <div className='ReviewsTitle'>My Reviews</div>
+    <div className='emptyBorder'/>
+    <div className='MyReviews'>
+    {allReviews.map((review) => (
+      <UserReview key={review?.id} review={review}/>
+      ))}
       </div>
-  );
-};
-// empty
+      </>
+  )
+}
 export default ReviewByUser;

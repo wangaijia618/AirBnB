@@ -1,71 +1,85 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
-import {allSpotsUser, removeSpot} from '../../store/spots';
-import './SpotByUser.css';
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeSpot, allSpotsUser } from "../../store/spots";
+
+
+//  console.log("12456879")
 
 const SpotByUser = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
 
-  const user = useSelector((state) => state.session.user);
-  const currentSpots = useSelector(state => state.spots.singleSpot);
-  const spotsArr = Object.values(currentSpots);
-  const userSpots = spotsArr.filter((spot) => spot.ownerId === user.id);
-console.log(currentSpots)
-  useEffect(() => {
-    dispatch(allSpotsUser())
-  }, [dispatch]);
+    // console.log("beginning")
+    const history = useHistory()
 
-  if (userSpots.length === 0) {
-    return <div className="curr_spot_no_spots">
-      There are no listings yet.
-    </div>;
-  }
+    const dispatch = useDispatch();
 
-  const deleteHandler = async (spotId) => {
-      await dispatch(removeSpot(spotId));
-      history.push("/");
-  }
+    const spotObj = useSelector(state => state.spots.allSpots)
+    // console.log("spotObj: ", spotObj)
+    const spots = Object.values(spotObj)
+    // console.log("spot: ", spots)
 
+    const user = useSelector(state => state.session.user)
+    const filter = spots.filter(spot => spot?.ownerId === user?.id)
+    // console.log("filter: ", filter)
+    // console.log("spots: ", spots)
 
-return (
-  <>
-    <div className='curr_spot_title'>Listings</div>
-      <div className="curr_spot_cards_container">
-         {userSpots && userSpots.map((spot) => {
-          return (
-            <>
-            <div className='curr_spot_details_outer_container'>
-                <img className='curr_spot_image' src={spot.previewImage} alt=""></img>
-                <div className='curr_spot_details_container1'>
-                  <div className="curr_spot_location">{spot.city},  {spot.state}</div>
-                  <div className="curr_spot_rating">
-                      <i id="curr_rating" className="fa-solid fa-star"></i>
-                      <span>
-                      {spot.avgRating? spot.avgRating : 0}
-                      </span>
-                  </div>
+    useEffect(() => {
+        dispatch(allSpotsUser())
+    }, [dispatch])
+
+    if (!user) {
+        alert("You need to log in first to manage your spot !")
+        history.push("/")
+    }
+
+    // if (!filter) return alert("You need to log in first to manage your spot !")
+    return filter.length ? (
+        <>
+            {spots.map(spot =>
+                <div className='SpotOwner_Container' key={spot.id}>
+                    <div>
+                        <NavLink to={`/spots/${spot.id}`}>
+                            <img className='SpotOwner_img' src={spot.previewImage} alt="Vacation Property" />
+                        </NavLink>
+                    </div>
+                    <div className='SpotOwner_Second_Container'>
+                        <div className='SpotOwner_Price_and_Star'>
+                            <div className='SpotOwner_Price'>{`$${spot.price}`} / night</div>
+                            <div><i className="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0}</div>
+                        </div>
+                        <div className='SpotOwner_Name'><i className="fa-solid fa-house"></i>Hotel Name: {spot.name}</div>
+                        <div className='SpotOwner_Address'><i className="fa-solid fa-location-dot"></i> Hotel Address: {spot.address}, {spot.city}, {spot.state}, {spot.country}</div>
+                        {/* <div>{spot.city}, {spot.state}, {spot.country} </div> */}
+                        <div className='SpotOwner_Description'><i className="fa-solid fa-file-lines"></i> Description: {spot.description}</div>
+                        <NavLink className="SpotOwner_Link_Edit" to={`/spots/${spot.id}/edit`}><i className="fa-solid fa-pen-to-square"></i> Edit</NavLink>
+                        <button className='SpotOwner_Delete_button' onClick={() => dispatch(removeSpot(spot.id))}> <i className="fa-solid fa-trash-can"></i> Delete</button>
+                    </div>
                 </div>
-                <div className="curr_spot_name">{spot.name}</div>
-                <div className='curr_spot_details_container2'>
-                    <div id="price" className="spots_price">${spot.price}</div>
-                    <span> night</span>
+            )}
+            <footer className='footer_container'>
+                <div>
+                    © 2022 WonderlandBnB, Inc. · Privacy · Terms · Sitemap
                 </div>
-                <div className="curr_spot_buttons">
-                {/* <button onClick={() => history.push(`/updateSpot/${spot.id}`)}>Edit Spot</button> */}
-                <NavLink to={`/updateSpot/${spot.id}`}>
-                  <button className="curr_spot_edit_button">Edit Spot</button>
-                </NavLink>
-                  <button className="curr_spot_delete_button" onClick={() => deleteHandler(spot.id)}>Delete Spot</button>
+                <div>
+                    <i className="fa-solid fa-globe"></i> English(US)  $ USD
                 </div>
-          </div>
-            </>
-            )
-         })}
-      </div>
-   </>
-  );
+            </footer>
+
+        </>
+    ) :
+        <>
+            <h1 className='no_spot_found'>You currently have no any spot to host !</h1>
+            <footer className='footer_container'>
+                <div>
+                    © 2022 WonderlandBnB, Inc. · Privacy · Terms · Sitemap
+                </div>
+                <div>
+                    <i className="fa-solid fa-globe"></i> English(US)  $ USD
+                </div>
+            </footer>
+        </>
 };
+
 
 export default SpotByUser;

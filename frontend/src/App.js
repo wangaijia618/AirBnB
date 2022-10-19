@@ -29,27 +29,25 @@ function App() {
 //     </Switch>
 //   );
 // }
-return (
+return (  
   <>
     <Navigation isLoaded={isLoaded} />
     {isLoaded && (
       <Switch>
-
+<Route exact path='/spots/current'>
+          <SpotByUser />
+          </Route>
+<Route exact path='/reviews/current'>
+          <ReviewByUser />
+          </Route>
         <Route exact path="/">
             <SpotBrowser />
           </Route>
-          <Route path="/spots/:spotId">
+          <Route exact path="/spots/:spotId">
             <FindSpot/>
           </Route>
-          <Route path='/newspot'>
+          <Route exact path='/newspot'>
             <CreateNewSpot />
-          </Route>
-          <Route path='/spots/current'>
-          <SpotByUser />
-          </Route>
-
-          <Route path='/reviews/current'>
-          <ReviewByUser />
           </Route>
       </Switch>
     )}
