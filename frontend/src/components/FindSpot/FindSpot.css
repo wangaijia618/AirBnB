@@ -167,9 +167,10 @@ justify-content: ;
 
 } */
 .descriptSpot {
-  width: 100%;
-  margin-top: 24;
+  width: 467px;
+  margin-top: 24px;
   font-size: 16px;
+  font-weight: 250;
 font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important
 }
 .right_box{
@@ -187,9 +188,11 @@ height: 300px;
 
 .spot_info_header {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly;
+  /* align-items:center ; */
   margin-top: 40px;
+  margin-left: 250px;
+  margin-right: 250px
 }
 .spot_left_info{
   width: 540px;
@@ -199,6 +202,7 @@ height: 300px;
 }
 .spot_right_info{
 height: 200px;
+position: static
   }
   .spot_right_card_info{
     width: 307px;
@@ -229,4 +233,8 @@ height: 200px;
 }
 .createReviewSpot{
   margin-left: 20px;
+}
+.aircover{
+  width: 550px;
+  margin-left: -10px
 }

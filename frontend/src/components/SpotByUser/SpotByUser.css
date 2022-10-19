@@ -1,13 +1,15 @@
-.SpotsTitle {
+.my_spots_title {
     display: flex;
     justify-content: center;
     font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
     sans-serif;
     font-size: 25px;
     font-weight: 500;
+    margin-top: 20px;
   }
-
-  .emptyBordersbu {
-    margin-top: 2%;
-    border: solid 1px rgb(230, 230, 230);
-  }
+.emptyBordercurrent{
+  border: 1px solid rgb(230, 230, 230);
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+  
