@@ -5,7 +5,7 @@ import {editSpot, getOneSpot} from "../../store/spots";
 import { Modal } from '../../context/Modal';
 import "./EditSpotForm.css"
 
-const EditSpotForm = () => {
+const EditSpotForm = ({onClose}) => {
   const {spotId} = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -69,9 +69,9 @@ const spot = useSelector(state => state.spots.singleSpot)
   return (
     <div className='Edit'>
     <form onSubmit={handleSubmit} className='editForm'>
-      <div className='editTitle'>
-        {/* <h1 className='createHTitle'>Update Home</h1> */}
-      </div>
+    <button className='edit-spot-close-btn' onClick={onClose}>
+        <i className="fa-solid fa-xmark"></i>
+                </button>
       <div>
         <h2 className='editSubTitle'>Update Home</h2>
       </div>
