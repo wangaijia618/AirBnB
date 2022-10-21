@@ -100,3 +100,21 @@
   color:rgb(233, 0, 0);
   background-color: white;
 }
+.write-review-close-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+ margin-left: 16px;
+ margin-top: -20px;
+  background-color:white;
+  font-size: 15px;
+  border-radius: 50%;
+  border: 2px solid;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.write-review-close-btn:hover{
+  background-color: red;
+}

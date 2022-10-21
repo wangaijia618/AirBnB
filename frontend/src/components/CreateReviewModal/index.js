@@ -34,7 +34,7 @@ function CreateReviewModal() {
         )}
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ReviewForm />
+          <ReviewForm onClose={() => setShowModal(false)} />
         </Modal>
       )}
     </>
