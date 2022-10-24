@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import {createReview} from "../../store/reviews";
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import './CreateReview.css';
-
+import {Link, NavLink} from 'react-router-dom';
+import {Redirect} from 'react-router-dom'
 function ReviewForm({onClose}) {
+  const history = useHistory();
   const {spotId} = useParams();
   const dispatch = useDispatch();
   const [review, setReview] = useState('');
@@ -25,6 +27,7 @@ function ReviewForm({onClose}) {
       if (data && data.errors) setErrors(data.errors);
       else if (data && data.message) setErrors([data.message]);
     })
+  
   }
 
   return (
@@ -63,11 +66,13 @@ function ReviewForm({onClose}) {
           />
       </div>
       <div>
+
         <button
         type="submit"
         className="submitReview">
           Create Review
           </button>
+
       </div>
     </form>
   )
