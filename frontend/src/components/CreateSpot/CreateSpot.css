@@ -59,6 +59,12 @@
     width: 250px;
     height: 60px;
     font-size: 18px;
-    color: white
+    color: white;
+    cursor: pointer;
+    border: none
   }
-/* // */
+  .hostHomeButton:hover{
+    background-color: white;
+    color: red;
+
+  }
