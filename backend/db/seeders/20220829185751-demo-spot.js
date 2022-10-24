@@ -21,7 +21,7 @@ module.exports = {
       lat: 37.7645358,
       lng: -122.4730327,
       name: "City Bungalow",
-      description: "Welcome to New Haven! his location is close to great restaurants, parks, nightlife, and historic landmarks! We want to make your stay as seamless as possible with easy parking accessibility and self check in access to the entire apartment! Fast WiFi, Smart 4K TV. Our house is ideal for families looking for a comfortable getaway or for groups that want to explore New Haven!",
+      description: "Welcome to New Haven! his location is close to great restaurants, parks, nightlife, and historic landmarks!",
       price: 101,
     },
     { ownerId: 2,
