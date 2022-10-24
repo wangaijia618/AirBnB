@@ -1,4 +1,4 @@
-# Welcome to the AirDnd wiki!
+# :tada: Welcome to the AirDnd wiki!
 
 AirDnd is a website clone, inspired by AirBnb. AirDnd stands for Air, Desire and Destination. It provides an online marketplace for lodging, primarily homestays for vacation rentals, and tourism activities.
 [Click here to view AidDnd Live Site](https://aijia-wang-airbnb.herokuapp.com/)
@@ -41,6 +41,28 @@ You will be able to test the features without sign up by click on the "Demo User
 You are able to sign up as a new user.
 <img width="1680" src="https://github.com/wangaijia618/AirBnB/blob/main/frontend/src/images/airdnd-signup.png"></img>
 
-##Logged In User
+## Logged In User
 After logging in, you are able to see and make changes to your spots and reviews.
 <img width="1680" src="https://github.com/wangaijia618/AirBnB/blob/main/frontend/src/images/airdnd-home-loggedIn.png"></img>
+
+# Getting Started
+
+Clone repository:
+```
+git@github.com:wangaijia618/AirBnB.git
+```
+Install dependencies:
+```
+npm install
+```
+cd backend and frontend folders:
+```
+npm start
+```
+
+# :inbox_tray: Contact:
+
+[Github](https://github.com/wangaijia618) 
+
+[LinkedIn](https://www.linkedin.com/in/aijia-wang-b18726131)
+
