@@ -65,8 +65,3 @@ npm start
 [Github](https://github.com/wangaijia618) 
 
 [LinkedIn](https://www.linkedin.com/in/aijia-wang-b18726131)
-
- [[params.social]]
-    icon = "linkedin"
-    icon_pack = "fa"
-    link = "https://www.linkedin.com/in/aijia-wang-b18726131"
