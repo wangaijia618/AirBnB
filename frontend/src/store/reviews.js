@@ -6,7 +6,7 @@ const LOAD_ALL_SPOT_REVIEWS = "reviews/LOAD_ALL_SPOT_REVIEWS"
 const LOAD_ALL_USER_REVIEWS = "reviews/LOAD_ALL_USER_REVIEWS"
 const ADD_REVIEW = "reviews/ADD_REVIEW"
 const DELETE_REVIEW = "reviews/DELETE_REVIEW";
-
+const EDIT_REVIEW = "reviews/EDIT_REVIEW"
 export const allReviewsArray = (state) => Object.values(state.reviews);
 export const allReviewsObj = state => state.reviews;
 
@@ -55,7 +55,7 @@ export const getUserReview = () => async (dispatch) => {
         const reviews = await response.json()
         // console.log("reviews from thunk: ", reviews)
         dispatch(loadAllUserReview(reviews.Reviews))
-      
+
     }
 }
 
