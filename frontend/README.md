@@ -76,3 +76,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 heroku run npm run sequelize db:migrate
 heroku run npm run sequelize db:seed:all
+
+
+dotenv npx sequelize db:migrate
+dotenv npx sequelize db:migrate:undo
+dotenv npx sequelize db:seed:all
+dotenv npx sequelize db:seed:undo:all
+
+
+cd backend and npm start, then cd frontend npm start
