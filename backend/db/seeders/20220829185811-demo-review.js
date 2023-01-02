@@ -13,37 +13,37 @@ module.exports = {
     */
      await queryInterface.bulkInsert("Reviews", [
       {
-        review:'Fancy',
+        review:'Amazing location. Space is Compact.',
         stars: 4,
         userId: 5,
         spotId: 1,
       },
       {
-        review:'Clean',
+        review:'This was the perfect little spot for a few nights stay in Manhattan.',
         stars: 4,
         userId: 1,
         spotId: 2,
       },
       {
-        review:'Smell',
+        review:'They were greate hosts, very responsive. I would definitely stay there again.',
         stars: 1,
         userId: 1,
         spotId: 3,
       },
       {
-        review:'Amazing',
+        review:'Amazing apartment and great view.',
         stars: 4,
         userId: 3,
         spotId: 4,
       },
       {
-        review:'Cozy',
+        review:'Excellent place to stay.',
         stars: 5,
         userId: 2,
         spotId: 5,
       },
       {
-        review:'This is a review',
+        review:'We had a great stay here. The house is adorable.',
         stars: 4,
         userId: 2,
         spotId: 1,
@@ -61,7 +61,7 @@ module.exports = {
         spotId: 3,
       },
       {
-        review:'This is a review',
+        review:'Location is fantastic.',
         stars: 4,
         userId: 1,
         spotId: 4,
@@ -91,7 +91,7 @@ module.exports = {
         spotId: 8,
       },
       {
-        review:'This is a review',
+        review:'Very clean and nicely updated.',
         stars: 5,
         userId: 1,
         spotId: 9,

@@ -1,37 +1,10 @@
-// import React, { useEffect } from "react";
-// import { useDispatch, useSelector } from 'react-redux';
-// import { allSpotsArray, allSpotsUser } from "../../store/spots";
-// import { useParams } from 'react-router-dom';
-// import "./SpotByUser.css";
-// import SpotBox from "../SpotBox";
-// const SpotByUser = () => {
-//   // const {spotId} = useParams();
-//   const dispatch = useDispatch();
-//   const spotsObj = useSelector(allSpotsArray);
-//   // const sessionUser = useSelector(state => state.session.user);
-//   useEffect(() => {
-//     dispatch(allSpotsUser());
-//   },[dispatch]);
-
-//   return  (
-//     <>
-//     <div className='SpotsTitle'>My Spots</div>
-//     <div className='emptyBorder'/>
-//     <div className='spotBox'>
-//       {spotsObj.map(spot => (<SpotBox key={spot?.id} spot={spot}/>))}
-//       </div>
-//       </>
-//   )
-// }
-
-// export default SpotByUser;
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeSpot, allSpotsUser } from "../../store/spots";
-
-
+import { editSpot, removeSpot, allSpotsUser } from "../../store/spots";
+import SpotBox from "../SpotBox"
+import "./SpotByUser.css"
 //  console.log("12456879")
 
 const SpotByUser = () => {
@@ -41,7 +14,7 @@ const SpotByUser = () => {
 
     const dispatch = useDispatch();
 
-    const spotObj = useSelector(state => state.spots)
+    const spotObj = useSelector(state => state.spots.allSpots)
     // console.log("spotObj: ", spotObj)
     const spots = Object.values(spotObj)
     // console.log("spot: ", spots)
@@ -61,51 +34,58 @@ const SpotByUser = () => {
     }
 
     // if (!filter) return alert("You need to log in first to manage your spot !")
-    return filter.length ? (
-        <>
-            {spots.map(spot =>
-                <div className='SpotOwner_Container' key={spot.id}>
-                    <div>
-                        <NavLink to={`/spots/${spot.id}`}>
-                            <img className='SpotOwner_img' src={spot?.previewImage} alt="Vacation Property" />
-                        </NavLink>
-                    </div>
-                    <div className='SpotOwner_Second_Container'>
-                        <div className='SpotOwner_Price_and_Star'>
-                            <div className='SpotOwner_Price'>{`$${spot?.price}`} / night</div>
-                            <div><i className="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0}</div>
-                        </div>
-                        <div className='SpotOwner_Name'><i className="fa-solid fa-house"></i>Hotel Name: {spot.name}</div>
-                        <div className='SpotOwner_Address'><i className="fa-solid fa-location-dot"></i> Hotel Address: {spot.address}, {spot.city}, {spot.state}, {spot.country}</div>
-                        {/* <div>{spot.city}, {spot.state}, {spot.country} </div> */}
-                        <div className='SpotOwner_Description'><i className="fa-solid fa-file-lines"></i> Description: {spot.description}</div>
-                        <NavLink className="SpotOwner_Link_Edit" to={`/spots/${spot.id}/edit`}><i className="fa-solid fa-pen-to-square"></i> Edit</NavLink>
-                        <button className='SpotOwner_Delete_button' onClick={() => dispatch(removeSpot(spot.id))}> <i className="fa-solid fa-trash-can"></i> Delete</button>
-                    </div>
-                </div>
-            )}
-            <footer className='footer_container'>
-                <div>
-                    © 2022 WonderlandBnB, Inc. · Privacy · Terms · Sitemap
-                </div>
-                <div>
-                    <i className="fa-solid fa-globe"></i> English(US)  $ USD
-                </div>
-            </footer>
+    // return filter.length ? (
+    //     <>
+    //         {spots.map(spot =>
+    //             <div className='SpotOwner_Container' key={spot.id}>
+    //                 <div>
+    //                     <NavLink to={`/spots/${spot.id}`}>
+    //                         <img className='SpotOwner_img' src={spot.previewImage} alt="Vacation Property" />
+    //                     </NavLink>
+    //                 </div>
+    //                 <div className='SpotOwner_Second_Container'>
+    //                     <div className='SpotOwner_Price_and_Star'>
+    //                         <div className='SpotOwner_Price'>{`$${spot.price}`} / night</div>
+    //                         <div><i className="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0}</div>
+    //                     </div>
+    //                     <div className='SpotOwner_Name'><i className="fa-solid fa-house"></i>Hotel Name: {spot.name}</div>
+    //                     <div className='SpotOwner_Address'><i className="fa-solid fa-location-dot"></i> Hotel Address: {spot.address}, {spot.city}, {spot.state}, {spot.country}</div>
+    //                     {/* <div>{spot.city}, {spot.state}, {spot.country} </div> */}
+    //                     <div className='SpotOwner_Description'><i className="fa-solid fa-file-lines"></i> Description: {spot.description}</div>
+    //                     <button className="SpotOwner_Link_Edit" onClick={() => dispatch(editSpot(spot.id))}><i className="fa-solid fa-pen-to-square"></i> Edit</button>
+    //                     <button className='SpotOwner_Delete_button' onClick={()=> dispatch(removeSpot(spot.id))}> <i className="fa-solid fa-trash-can"></i> Delete</button>
+    //                 </div>
+    //             </div>
+    //         )}
 
-        </>
-    ) :
+    //     </>
+    // ) :
+    //     <>
+    //         <h1 className='no_spot_found'>You currently have no any spot to host !</h1>
+
+    //     </>
+    return filter.length?(
         <>
-            <h1 className='no_spot_found'>You currently have no any spot to host !</h1>
-            <footer className='footer_container'>
-                <div>
-                    © 2022 WonderlandBnB, Inc. · Privacy · Terms · Sitemap
-                </div>
-                <div>
-                    <i className="fa-solid fa-globe"></i> English(US)  $ USD
-                </div>
-            </footer>
-        </>
-};
+        <div className='my_spots_title'>My Spots</div>
+        <div className='emptyBordercurrent'/>
+        <div className='my_spots'>
+        {filter.map((spot) => (
+          <SpotBox key={spot?.id} spot={spot}/>
+          ))}
+          </div>
+
+          </>
+      )
+      :(
+        <>
+                 <h1 className='no_spot_found'>You currently have no spot !</h1>
+
+             </>
+             )
+
+
+    }
+
+
 
 export default SpotByUser;

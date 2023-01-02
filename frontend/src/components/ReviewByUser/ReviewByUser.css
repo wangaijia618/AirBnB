@@ -5,4 +5,9 @@
     sans-serif;
     font-size: 25px;
     font-weight: 500;
+    margin-top: 30px
+  }
+  .no_review_found{
+    margin: 7% 38%;
+    width: 500px
   }

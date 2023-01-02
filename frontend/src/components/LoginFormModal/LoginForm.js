@@ -4,7 +4,7 @@ import { useDispatch, useSelector} from "react-redux";
 import "./LoginForm.css"
 // import {Redirect} from 'react-router-dom'
 
-function LoginForm() {
+function LoginForm({onClose}) {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -31,11 +31,14 @@ function LoginForm() {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-
+<button className='login-form-close-btn' onClick={onClose}>
+        <i className="fa-solid fa-xmark"></i>
+                </button>
         <div className="website_title">
-        <i class="fa-solid fa-bug"></i>
-        AirDnd
+
+        Log In
         </div>
+
         <div className="login_error_container">
       <ul>
         {errors.map((error, idx) => (

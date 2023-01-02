@@ -68,6 +68,16 @@ export const getAllSpots = () => async(dispatch) => {
          return spots
     }
 }
+//GET ALL SPOTS BY CURRENT USER
+export const allSpotsUser = () => async (dispatch) => {
+    const res = await csrfFetch('/api/spots/current');
+    if (res.ok) {
+      const spots = await res.json();
+console.log(res)
+      dispatch(readOwnerSpots(spots.Spots));
+      return spots
+    };
+  }
 
 //get one spot thunk
 
@@ -81,15 +91,6 @@ export const getOneSpot = (spotId) => async(dispatch) => {
     }
 }
 
-//GET ALL SPOTS BY CURRENT USER
-export const allSpotsUser = () => async (dispatch) => {
-    const res = await csrfFetch('/api/spots/current');
-    if (res.ok) {
-      const spots = await res.json();
-
-      dispatch(readOwnerSpots(spots.Spots));
-    };
-  }
 
 //add a spot thunk
 
@@ -251,14 +252,15 @@ const spotReducer = (state = initialState, action) => {
             delete newState4.allSpots[action.spotId]
             if(newState4.singleSpot.id === action.spotId) newState4.singleSpot={}
             return newState4
-        // case READ_OWNER_SPOTS:
-        //     newState = { ...state };
-        //     const normalizedUserSpots = action.spots.Spots.reduce((obj, curSpot) => {
-        //         obj[curSpot.id] = curSpot;
-        //         return obj;
-        //         }, {});
-        //     newState.allSpots = normalizedUserSpots;
-        //     return newState;
+        case READ_OWNER_SPOTS:
+            const newState5 = { ...state };
+            let allSpots = {};
+            action.spots.forEach(spot => {
+                allSpots[spot.id] = spot;
+            });
+            // console.log('############ALL SPOTS REDUCED', allSpots)
+            newState5.allSpots = allSpots;
+            return newState5;
         default:
             return state
     }

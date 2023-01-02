@@ -15,7 +15,7 @@
   border: solid 1px lightslategray;
   border-radius: 8px;
   width: 530px;
-  height: 45px;
+  height: 35px;
   padding-left: 15px;
   padding-bottom: 6px;
   padding-top: 6px;
@@ -51,4 +51,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+
+  }
+  .hostHomeButton{
+    background-color: red;
+    width: 250px;
+    height: 60px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    border: none
+  }
+  .hostHomeButton:hover{
+    background-color: white;
+    color: red;
+
   }

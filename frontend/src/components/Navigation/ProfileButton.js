@@ -37,28 +37,29 @@ function ProfileButton({ user}) {
   return (
     <>
        <span className='Nav_become_host_and_Home_link'>
-     <NavLink to={'/newspot'} className='Nav_become_host_link'> Become Host? </NavLink>
+     <NavLink to={'/newspot'} className='Nav_become_host_link'> Become a Host? </NavLink>
 
       <button onClick={openMenu} className='profile-button'>
       <i className="fa-solid fa-bars"></i>
         <i className="fas fa-user-circle" />
       </button>
      </span>
-      {showMenu && (
-        <ul className="profile-dropdown">
-         <li className="username"><i className="fa-solid fa-user-check"></i> {user.username}</li>
-          <li className="email"><i className="fa-regular fa-envelope"></i> {user.email}</li>
+      { showMenu && (
+        <div className="profile-dropdown">
+         <li className="profile_username">{user.username}</li>
+          <li className="profile_email">{user.email}</li>
           <li>
-            <NavLink to={'/spots/current'} className="Nav_Link"><i className="fa-solid fa-house"></i> Your Spot</NavLink>
+            <NavLink to={'/spots/current'} className="current_spot_link">Your Spot</NavLink>
           </li>
 
           <li>
-            <NavLink to={'/reviews/current'} className="Nav_Link"><i className="fa-solid fa-pen"></i> Your Review</NavLink>
+            <NavLink to={'/reviews/current'} className="current_review_link"> Your Review</NavLink>
           </li>
-          <li>
-          <button className="Logout_button" onClick={logout}><i className="fa-solid fa-arrow-right-from-bracket"></i>Log Out</button>
+          <li className="logout_button">
+          <button className="Logout_button" onClick={logout}>Log Out</button>
           </li>
-        </ul>
+        </div>
+      )
 
 
         )

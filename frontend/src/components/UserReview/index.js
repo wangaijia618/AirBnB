@@ -24,7 +24,7 @@ function ReviewUser({review}) {
   }
 
   const handleDelete = () => {
-    dispatch(deleteReview(review.id, review.spotId))
+    dispatch(deleteReview(review.id))
   }
 
   // const handleSpot = () => {
@@ -35,27 +35,23 @@ function ReviewUser({review}) {
 
 
       <div className="reviewsContainer">
-      <div className='reviewProfile'>
-      <div className='reviewUserIcon'>
-      <div className="fa-solid fa-user"/>
 
-      </div>
-      <div className='reviewName'>Review from  -{review.User.firstName}</div>
-      </div>
+      <div className='reviewName'>Review from  -<span className="reviewer">{review.User.firstName}</span></div>
+
       <div className='reviewDate'>{date}</div>
-      <div className='dateReview'>
-      <div className='reviewReview'>
-      <div className="fa-solid fa-star"/>{review?.stars} : {review?.review}</div>
-      </div>
-      <div className='reviewDivDelete'>
+
+      <div className='review_content'>{review?.review}</div>
+
+    <span className='reviewDivDelete'>
         {currentUser && (
-          <div className='reviewDelete'>
+          <span className='reviewDelete'>
             <button onClick={handleDelete} className='reviewDeleteButton'>Delete Review</button>
-          </div>
+          </span>
         )}
-      </div>
+       </span>
+
         </div>
-   
+
 
   )
 }

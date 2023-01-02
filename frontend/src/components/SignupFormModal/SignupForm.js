@@ -5,7 +5,7 @@ import * as sessionActions from "../../store/session";
 
 import './SignupForm.css';
 
-function SignupFormPage() {
+function SignupFormPage({onClose}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState("");
@@ -34,16 +34,21 @@ function SignupFormPage() {
 
   return (
     <div>
-    <h3 className="sign_up_words">Sign up</h3>
-    <form className ="sign_up_container" onSubmit={handleSubmit}>
-      <ul className="sign_up_errors">
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <div className="firstname">
+         <button className='signup-form-close-btn' onClick={onClose}>
+                    <i className="fa-solid fa-xmark"></i>
+                </button>
+         <h3 className="sign_up_words">Sign up</h3>
+         <form className ="sign_up_container" onSubmit={handleSubmit}>
+
+         <ul className="sign_up_errors">
+        {errors.map((error, idx) => <li className='sign_up_error' key={idx}>{error}</li>)}
+        </ul>
+        <div className="firstname">
       <label>
-        Firstname:
+
         <input
-          className="firstname_input"
+          id="firstname-input"
+          placeholder="First Name"
           type="text"
           value={firstName}
           onChange={(e) => setFirstname(e.target.value)}
@@ -53,9 +58,10 @@ function SignupFormPage() {
       </div>
       <div className="lastname">
       <label>
-        Lastname:
+
         <input
-          className="lastname_input"
+          id="lastname-input"
+          placeholder="Last Name"
           type="text"
           value={lastName}
           onChange={(e) => setLastname(e.target.value)}
@@ -65,9 +71,10 @@ function SignupFormPage() {
       </div>
       <div className="email_signup">
       <label>
-        Email:
+
         <input
-          className="email_input"
+          id="email-input"
+          placeholder="Email"
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -77,9 +84,10 @@ function SignupFormPage() {
       </div>
       <div className="username_signup">
       <label>
-        Username:
+
         <input
-          className="username_input"
+          id="username-input"
+          placeholder="Username"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -87,11 +95,12 @@ function SignupFormPage() {
         />
       </label>
       </div>
-      <div >
+      <div className="password_signup" >
       <label>
-        Password:
+
         <input
-          className="password_input"
+          id="password-input"
+          placeholder="Password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -101,9 +110,10 @@ function SignupFormPage() {
       </div>
       <div className="confirm_password">
       <label>
-        Confirm Password:
+
         <input
-          className="confirm_password_input"
+          id="confirm-password-input"
+          placeholder="Confirm Your Password"
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}

@@ -3,27 +3,49 @@
     border-radius: 10px;
     position: absolute;
     top: calc(90%);
-    right: calc(3%);
-    margin-top: 10px;
-    height: 150px;
-    width: 222px;
+    right: 30px;
+    margin-top: 15px;
+    height: 190px;
+    width: 210px;
     box-shadow: 2px 2px 2px 0px rgba(195, 195, 195, 0.6);
     background-color: white;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: flex-start;
 
 }
-
-.airdnd {
-    display: inline-block;
-    margin: 10px;
-    font-size: 30px;
-    font-family: monospace;
-    color: red;
-    text-shadow: pink 2px 2px
-}
-.profile-dropdown > li {
+.profile-dropdown li{
     list-style: none;
-    margin: 5px;
+    display: block;
+    height: 25px;
+    padding-left: 13px;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+}
+.profile-dropdown li:hover{
+    background-color: lightgray;
+    width:stretch;
 
+}
+.profile_username,
+.profile_email,
+.current_spot_link,
+.current_review_link,
+.logout_button{
+
+font-size: 18px;
+
+}
+.profile_username,
+.profile_email{
+
+    cursor: not-allowed;
+}
+
+.current_spot_link,
+.current_review_link{
+    text-decoration: none;
+    color: inherit
 }
 
 .Parent_navbar{
@@ -38,216 +60,59 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     list-style: none;
     margin-left: 46px;
     margin-right: 28px;
     margin-top:30px;
-    padding:0px;
+    /* padding-left:100px;
+    padding-right: 130px */
 }
 
-/* .fa-brands{
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-} */
-
-.email{
-   font-size: 23px;
-   margin: 5px;
-}
-
-
-.username:hover{
-    background-color: aliceblue;
-    color: coral;
-    border-radius: 20px;
-}
-
-
-.email:hover{
-    background-color: aliceblue;
-    color: coral;
-    border-radius: 20px;
-    }
-
-.fa-at{
-    font-size: 18px;
-    margin-right: 4px;
-    margin-left: 2px;
-}
-
-.fa-arrow-right-from-bracket{
-    font-size: 20px;
-    margin-left: -11px;
-    /* margin-right: 5px; */
-    padding-right: 5px;
-    padding-bottom: 5px;
-}
-
-.Airbnb_logo:visited {
-    color: inherit;
-  }
-
-
-/* .fa-house{
-    margin-right: 2px;
-}
-.fa-pen{
-    margin-right: 4px;
-} */
-
-
-.Airbnb_logo {
-    margin:10px 5px ;
-    font-size: 30px;
-    transition: all 0.5s ease;
-    margin-top: 21px;
-}
-
-
-.Airbnb_logo:hover {
-    text-shadow: 2px 3px 2px rgba(33, 31, 31, 0.5);
-}
-
-
-/* .Airbnb_logo {
-    transition: all 1s ease;
-} */
-
-/* .Nav_become__host_and_Home_link{
-    display: flex;
-    margin:10px 10px ;
-    text-decoration: none;
-    font-size: 20px;
-    padding-top: 5px;
-
-} */
 
 .Nav_become_host_link{
-
-padding-right: 50px;
-
-    transition: all 1s ease;
-
-    color: inherit;
-    font-size: 25px;
-
-    /* border-radius: 25px; */
+color: black;
+margin-right:18px;
+padding: 10px 15px;
+transition: all 1s ease;
+font-size: 25px;
+border-radius: 25px;
+text-decoration: none;
 
 }
-/* .Nav_become_host_link{
 
 
-
-
-} */
 .Nav_become_host_link:hover{
-    text-shadow: 5px 5px 5px red;
+    background-color: rgb(211,211,211);
 
-    /* background-color: coral */
-
-}
-
-.li{
-    font-size: 30px;
-
-}
-.home_link{
-    text-decoration: none;
-    color: red;
-    font-weight: bold;
-
-}
-
-.fa-bug {
-    font-size: 35px;
-    color: red;
-    margin: 10px;
-    text-shadow: pink 2px 2px
-
-}
-
-.Nav_Home_button{
-    text-decoration: 'none';
-    border-radius: 20px;
-    background-color:white;
-    transition: all 0.2s ease;
-}
-
-/* .Nav_Home_button{
     transition: all 0.5s ease;
-} */
-
-.Nav_Home_button:hover{
-    box-shadow: 1px 3px 3px rgb(29, 27, 27);
-}
-
-
-.Nav_Link{
-    text-decoration: none;
-    color: inherit;
-    border-radius: 20px;
-    padding: 2px;
-}
-
-.Nav_Link:visited{
-    text-decoration: none;
 
 }
-
-.Nav_Link:hover{
-    color: blue;
-    background-color: aliceblue;
-}
-
-
-
 
 .Logout_button{
     border: none;
-    outline-style:hidden ;
+    text-decoration: none;
+    /* outline-style:hidden; */
     background: none;
-     margin-bottom: 5px;
+     /* margin-bottom: 5px; */
      transition: all 0.5s ease;
-     margin-left: 4px;
+     margin-left: -3px;
      cursor:pointer;
      font-size: 18px;
-     border-radius: 20px;
-     margin-top: -2px;
+     width:180px;
+     text-align: left;
+     /* border-radius: 20px; */
+     /* margin-top: -2px; */
 
 }
 
 
-.Logout_button:hover{
 
-    color: coral;
-    background-color: aliceblue;
-}
+
 
 .list{
     list-style: none
 }
-
-
-
-.fa-user-astronaut{
-    font-size: 17px;
-    margin-right: 10px;
-}
-
-/* .button{
-    border: none;
-    outline-style:hidden ;
-    background: none;
-     margin-bottom: 5px;
-     margin-right: 5px;
-     transition: all 0.5s ease;
-     margin-left: 2px;
-     cursor:pointer;
-     font-size: 18px;
-     border-radius: 20px;
-} */
 
 .profile-button:hover{
     box-shadow: 3px 3px 10px rgba(46, 42, 42, 0.5);
@@ -288,6 +153,29 @@ padding-right: 50px;
     height: 20px;*/
 }
 
-.login_signup_dropdown{
-    border: 1px solid grey
+.loginSignUp{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.logoD{
+    width: 60px;
+    height: 60px;
+    margin-bottom:-19px;
+    margin-right: -10px
+
+}
+
+.home_logo{
+    display: flex;
+    justify-content: center;
+align-items: center;
+}
+.airdnd {
+    display: inline-block;
+    margin: 10px;
+    font-size: 30px;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    color: red;
+    text-shadow: pink 2px 2px
 }

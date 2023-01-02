@@ -24,12 +24,13 @@
     font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
     sans-serif;
     font-weight: 450;
+    color: red
   }
 
-  .reviewErrors:hover {
+  /* .reviewErrors:hover {
     color: red;
     font-weight: 700;
-  }
+  } */
 
   .reviewForm {
     height: 350px;
@@ -83,6 +84,8 @@
 
   .submitReview:hover {
     cursor: pointer;
+    color:rgb(233, 0, 0);
+    background-color: white;
   }
 
   .reviewButton {
@@ -99,4 +102,22 @@
 .reviewButton:hover{
   color:rgb(233, 0, 0);
   background-color: white;
+}
+.write-review-close-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+ margin-left: 16px;
+ margin-top: -20px;
+  background-color:white;
+  font-size: 15px;
+  border-radius: 50%;
+  border: 2px solid;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.write-review-close-btn:hover{
+  background-color: red;
 }

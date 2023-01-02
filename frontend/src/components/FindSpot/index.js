@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import {getOneSpot, allSpotsArray, allSpotsObj, removeSpot, editSpot} from '../../store/spots';
 import {allReviewsArray, getSpotReview} from '../../store/reviews';
 import CreateReviewModal from '../CreateReviewModal';
-
+import aircover from '../../images/airdnd-aircover.png'
 import UserReview from '../UserReview';
 import "./FindSpot.css";
 import EditSpotModal from "../EditSpotForm";
@@ -22,7 +22,7 @@ const FindSpot = () => {
   //  const reviews = useSelector(state => state.reviews.spot)
   // const reviewContent = Object.values(reviews)
   // const reviewsObj = useSelector(state => state.reviews.spot)
-  // const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
   //in use
     // const spot = spotsObj[+spotId]; //or using Number(spotId)
     // const spot = useSelector(state => state.spots)
@@ -32,7 +32,7 @@ const FindSpot = () => {
   useEffect(() => {
     dispatch(getOneSpot(spotId))
     dispatch(getSpotReview(spotId))
-    // .then(() => setIsLoaded(true))
+    .then(() => setIsLoaded(true))
   }, [dispatch, spotId])
 
   const handleDelete = async (e) => {
@@ -49,10 +49,10 @@ if (sessionUser && spot) {
 if(!spot.SpotImages) return null
 if (Object.keys(spot).length === 0) return null
 return (
-
-      <>
+<>
+    {isLoaded && (
       <div className='spot_body_container'>
-      <div className='single_spot_infos'>
+     <div className='single_spot_infos'>
           <div className="nameSpot">{spot?.name}</div>
            <div className='rating_top_spot'>
             <div className='outsideStar'>
@@ -65,19 +65,19 @@ return (
             {currentUser && (
               <div className='editDeleteSpot'>
             <EditSpotModal />
-              {/* <button onClick={handleDelete} className='deleteButton'>Delete Spot</button> */}
+
               <button type="button" onClick={handleDelete} className='deleteButton'>Delete Spot</button>
             </div>
              )}
       </div>
           <div className='imgDivfs'>
          <img className='imageSpotfs' src={spot?.SpotImages.map(img => img.url)} alt="Image Is Not Available"/> </div>
-         {/* {oneSpotById.SpotImages.map(img =>
-                    (<img key={img.id} src={img.url} alt={img.url} />)
-                )} */}
+
             <div className='spot_info_header'>
             <div className='spot_left_info'>
             <div className='hostname'>Entire home hosted by {spot.Owner.firstName} {spot.Owner.lastName}</div>
+            <div className='emptyBorder1'/>
+            <img className='aircover' src={aircover}></img>
             <div className='emptyBorder1'/>
            <div className='descriptSpot'>{spot?.description}</div>
            </div>
@@ -92,7 +92,7 @@ return (
             </div>
             </div>
            <div className='emptyBorder'/>
-
+         <div className="bottom_review">
            <span className='bottomAvgCount'>
            <span className="fa-solid fa-star bigStar"/>
             {spot?.avgStarRating} · {reviewsObj?.length} review(s)
@@ -106,7 +106,8 @@ return (
             ))}
            </div>
            </div>
-      </>
+ </div>)}
+</>
     )
 
 }

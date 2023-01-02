@@ -215,7 +215,7 @@ const CreateNewSpot = () => {
       </label>
       </div>
       <div className='createDivBut'>
-      <button type="submit" disabled={isSubmitted && errors.length > 0} className='signUpButton'>Host Your Home!</button>
+      <button className="hostHomeButton" type="submit" disabled={isSubmitted && errors.length > 0} >Host Your Home!</button>
       </div>
     </form>
   )
