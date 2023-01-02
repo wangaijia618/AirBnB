@@ -10,8 +10,8 @@ const rootReducer = combineReducers({
 //REMEMBER!!!!!!
   session: sessionReducer,
   spots: spotReducer,
-  reviews: reviewReducer
-
+  reviews: reviewReducer,
+  bookings: bookingReducer
 });
 
 let enhancer;
