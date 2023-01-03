@@ -1,0 +1,31 @@
+.search-bar-container {
+    border: 1px solid lightgrey;
+    display: flex;
+    box-shadow: 0 0 10px lightgrey;
+    border-radius: 55px;
+    z-index: 1;
+    width: 450px;
+}
+
+.search-bar {
+
+    height: 40px;
+    width: 450px;
+    padding-bottom: 5px;
+    padding-left: 8%;
+    font-size: 16px;
+    border: none;
+    border-radius: 55px;
+}
+
+.search-button {
+    margin-right: 3%;
+    height: 33px;
+    width: 38px;
+    margin-top: 1.5%;
+    border-radius: 60px;
+    color: white;
+    background-color: rgb(255, 56, 92);
+    border: none;
+    cursor: pointer;
+}

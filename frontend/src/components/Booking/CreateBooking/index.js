@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { thunkAddBookingToSpot } from "../../../store/bookingReducer";
+import { thunkAddBookingToSpot } from "../../../store/bookings";
 import './CreateBooking.css'
 
 function CreateBooking({ spot }) {
@@ -15,6 +15,14 @@ function CreateBooking({ spot }) {
   const [endDate, setEndDate] = useState(new Date());
   const { spotId } = useParams();
   let numOfNight = parseInt((new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 3600 * 24))
+
+  let currentUser
+  if (sessionUser && spot) {
+    if (sessionUser.id === spot.ownerId) {
+      currentUser = false;
+    } else currentUser = true;
+  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -97,9 +105,11 @@ function CreateBooking({ spot }) {
           </ul>
         </div>}
 
-        <button
-          className="booking-create-button"
-          type="submit">Reserve</button>
+      { currentUser ?  <button
+        className="booking-create-button"
+        type="submit">Reserve</button> : <div
+        className="booking-create-button2"
+        >this is your spot</div> }
 
       </form>
       <div className="booking-create-notes">You won't be charged yet</div>

@@ -72,7 +72,21 @@
     padding-bottom: 4px;
     width: 100%;
 }
-
+.booking-create-button2 {
+    margin-top: 8%;
+    margin-bottom: 3%;
+    border: none;
+    background-color: rgb(166, 160, 160);
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    height: 40px;
+    padding-bottom: 0px;
+    padding-top: 6px;
+    text-align: center;
+    width: 100%;
+    cursor: not-allowed
+}
 .booking-create-notes {
    text-align: center;
 }

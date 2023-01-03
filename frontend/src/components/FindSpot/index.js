@@ -8,6 +8,7 @@ import aircover from '../../images/airdnd-aircover.png'
 import UserReview from '../UserReview';
 import "./FindSpot.css";
 import EditSpotModal from "../EditSpotForm";
+import CreateBooking from "../Booking/CreateBooking";
 // replaced {spot?countReviews} with {reviewsObj?.length} to update review immidiately
 
 const FindSpot = () => {
@@ -88,6 +89,7 @@ return (
 
           <div className='rightbox_review'><span id='reviewSpotfs'> <i className="fa-solid fa-star"/></span>{spot?.avgStarRating} · {reviewsObj?.length} review(s)</div>
             </div>
+            <CreateBooking spot={spot} />
             </div>
             </div>
             </div>

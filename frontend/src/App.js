@@ -10,7 +10,7 @@ import FindSpot from "./components/FindSpot";
 import CreateNewSpot from "./components/CreateSpot";
 import ReviewByUser from "./components/ReviewByUser";
 import SpotByUser from "./components/SpotByUser";
-// import CurrentUserBookings from "./components/Booking/CurrentUserBooking";
+import CurrentUserBookings from "./components/Booking/CurrentUserBooking";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,9 +50,9 @@ return (
           <Route exact path='/newspot'>
             <CreateNewSpot />
           </Route>
-          {/* <Route path={"/bookings/current"} exact>
+          <Route path={"/bookings/current"} exact>
             <CurrentUserBookings />
-          </Route> */}
+          </Route>
       </Switch>
     )}
   </>

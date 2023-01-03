@@ -1,0 +1,54 @@
+.filter-outer-container{
+    width: 580px;
+    height: 280px;
+}
+
+.filter-index-title{
+    text-align: center;
+}
+
+.filter-create-button{
+    background-color: rgb(255,56,92);
+    color:white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: large;
+    margin-top: 5%;
+    height: 40px;
+    margin-left: 5%;
+    width: 89%;
+}
+
+
+.filter-input-div-container{
+    display: flex;
+
+}
+
+.filter-price-container{
+    border: 1px solid grey;
+    font-size: small;
+    width: 240px;
+    height: 60px;
+    margin-left: 5%;
+    margin-top:5%;
+    border-radius: 8px;
+}
+
+.filter-price-input{
+    border:none;
+    font-size: 18px;
+    width: 70%;
+}
+
+.filter-price-text{
+    margin-top: 3%;
+    margin-left: 5%;
+}
+
+.filter-dollar-sign{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 5%;
+}

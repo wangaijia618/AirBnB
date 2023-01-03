@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { thunkGetAllCurrentUserBookings, thunkDeleteBooking } from '../../../store/bookingReducer';
+import { thunkGetAllCurrentUserBookings, thunkDeleteBooking } from '../../../store/bookings';
 import { Link } from 'react-router-dom';
 import './CurrentUserBooking.css'
 
