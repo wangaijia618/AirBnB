@@ -1,0 +1,76 @@
+.booking-page-container{
+    margin-left: 27%;
+    margin-right: 27%;
+    margin-top: 2%;
+}
+
+.booking-card{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid gray;
+    border-radius: 15px;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    height: 260px;
+    box-shadow: 0 0 10px grey;
+}
+
+.booking-card-left{
+    margin-top: 5%;
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+.booking-card-image{
+    width:100%;
+    height: 260px;
+    object-fit: cover;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.booking-card-image:hover{
+    opacity: 0.9;
+}
+
+.booking-card-title{
+    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 1%;
+}
+
+.booking-card-left-down{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-top: 3%;
+    font-size: 16px;
+}
+
+.booking-card-left-down-left{
+    border-right: 1px solid grey;
+}
+
+.booking-card-left-down-right{
+    margin-left: 10%;
+}
+
+.booking-card-text{
+    margin-bottom: 4%;
+}
+
+.delete-booking-button{
+    margin-top: 3%;
+    background-color: rgb(255,56,92);
+    color: white;
+    width: 67%;
+    border: none;
+    font-size: 18px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.delete-booking-button-container{
+    display: flex;
+    justify-content: flex-end;
+}

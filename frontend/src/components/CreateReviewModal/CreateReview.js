@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import {createReview} from "../../store/reviews";
+import {createReview, editReview} from "../../store/reviews";
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import './CreateReview.css';
 import {Link, NavLink} from 'react-router-dom';
 import {Redirect} from 'react-router-dom'
-function ReviewForm({onClose}) {
+function ReviewForm({onClose, reviewId}) {
   const history = useHistory();
   const {spotId} = useParams();
   const dispatch = useDispatch();
+  // const reviewToEdit = useSelector(state => state.reviews[reviewId]);
+  // const [stars, setStars] = useState(reviewToEdit ? reviewToEdit.stars : 5);
+  // const [review, setReview] = useState(reviewToEdit ? reviewToEdit.review : "");
   const [review, setReview] = useState('');
   const [stars, setStars] = useState('');
   const [errors, setErrors] = useState([]);
@@ -21,13 +24,23 @@ function ReviewForm({onClose}) {
     };
 
     setErrors([]);
+  //   if (reviewId) {
+  //     dispatch(editReview(reviewId, { stars, review }))
+  //         .then(() => onClose())
+  //         .catch(
+  //             async (res) => {
+  //                 const data = await res.json();
+  //                 if (data) setErrors(data);
+  //             }
+  //         );
+  // } else {
     dispatch(createReview(reviewInfo, spotId, user)).catch(async (res) => {
       const data = await res.json();
       console.log('data', data)
       if (data && data.errors) setErrors(data.errors);
       else if (data && data.message) setErrors([data.message]);
     })
-  
+
   }
 
   return (

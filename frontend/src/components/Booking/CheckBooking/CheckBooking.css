@@ -1,0 +1,21 @@
+.reservation-calendar-container {
+    display: flex;
+    /* background-color: blue; */
+}
+
+.reservation-calendar {
+    padding-right: 3%;
+    width: 50%
+}
+
+@media screen and (max-width: 1200px)  {
+    .spot-show-container  {
+        margin-right: 0%;
+        margin-left: 0%;
+    }
+
+    .reservation-calendar-container {
+        display: flex;
+        flex-direction: column;
+    }
+}

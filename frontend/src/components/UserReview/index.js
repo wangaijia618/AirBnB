@@ -1,9 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Link } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
-import { deleteReview } from "../../store/reviews";
+import { deleteReview, editReview} from "../../store/reviews";
 import "./UserReview.css";
+// import ReviewFormModal from '../ReviewFormModal';
+
 
 function ReviewUser({review}) {
   const {spotId} = useParams();
@@ -16,6 +18,29 @@ function ReviewUser({review}) {
   // const reviewsObj = useSelector(allReviews);
   //  const review = reviewsObj.find(review => review.id == reviewId)
   // console.log(review)
+  const reviewToEdit = useSelector(state => state.reviews[review.id]);
+  const [stars, setStars] = useState(reviewToEdit ? reviewToEdit.stars : 5);
+  const [reviewa, setReviewa] = useState(reviewToEdit ? reviewToEdit.review : "");
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const reviewInfo = {
+      review,
+      stars
+    };
+
+    // setErrors([]);
+    dispatch(editReview(review.id, reviewInfo))
+          // .then(() => onClose())
+          .catch(
+              async (res) => {
+                  const data = await res.json();
+                  // if (data) setErrors(data);
+              }
+          );
+  }
+
   let currentUser;
   if (sessionUser && review) {
     if (sessionUser.id === review.userId) {
@@ -45,6 +70,7 @@ function ReviewUser({review}) {
     <span className='reviewDivDelete'>
         {currentUser && (
           <span className='reviewDelete'>
+         <button onClick={handleSubmit} className='reviewDeleteButton'>Edit</button>
             <button onClick={handleDelete} className='reviewDeleteButton'>Delete Review</button>
           </span>
         )}
