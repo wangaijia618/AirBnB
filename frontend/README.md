@@ -78,10 +78,28 @@ heroku run npm run sequelize db:migrate
 heroku run npm run sequelize db:seed:all
 
 
-dotenv npx sequelize db:migrate
+<!-- dotenv npx sequelize db:migrate
 dotenv npx sequelize db:migrate:undo
 dotenv npx sequelize db:seed:all
-dotenv npx sequelize db:seed:undo:all
-
+dotenv npx sequelize db:seed:undo:all -->
+npx dotenv sequelize db:migrate
 
 cd backend and npm start, then cd frontend npm start
+Method #1 - Reset via CLI
+1.	heroku run npm run sequelize db:seed:undo:all
+2.	heroku run npm run sequelize db:migrate:undo:all
+3.	heroku run npm run sequelize db:migrate
+4.	heroku run npm run sequelize db:seed:all
+
+Method #2 - Reset from Heroku database page
+1.	Go to your Heroku app dashboard > Resources
+2.	Click Heroku Postgres <-- this will take you to a new tab
+3.	Go to Settings tab, and click Reset database
+4.	type in the name of your Heroku app
+5.	Back in our terminal, follow step 3 and 4 from Method #1
+Method #3 - Delete/Reinstall Heroku Postgres
+1.	Go to your Heroku app dashboard > Resources
+2.	Click vertical "<>'" icon, and delete add-on
+3.	Search “Heroku Postgres” on the add on search bar
+4.	Add free hobby - dev plan, and place order
+5.	Back in our terminal, follow step 3 and 4 from Method #1
