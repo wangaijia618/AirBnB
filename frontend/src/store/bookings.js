@@ -102,8 +102,8 @@ const bookingsReducer = (state = {}, action) => {
         case LOAD_CURRENT_USER_BOOKINGS:
             // console.log("action!!!!!!!!", action.spot)
             let curretUserState = {}
-            // console.log("!!!!!!!!action", action.bookings.bookings)
-            action.bookings.bookings.forEach(booking => {
+            // console.log("!!!!!!!!action", action.bookings.Bookings)
+            action.bookings.Bookings.forEach(booking => {
                 curretUserState[booking.id] = booking
             });
             // console.log("!!!!!!!!curretUserState", curretUserState)

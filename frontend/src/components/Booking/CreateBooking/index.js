@@ -105,9 +105,13 @@ function CreateBooking({ spot }) {
           </ul>
         </div>}
 
-      { currentUser ?  <button
+        {!sessionUser && <button
+        className="booking-create-button2"
+        type="submit">log in or sign up</button> }
+        {sessionUser && currentUser && <button
         className="booking-create-button"
-        type="submit">Reserve</button> : <div
+        type="submit">Reserve</button> }
+        {sessionUser && !currentUser && <div
         className="booking-create-button2"
         >this is your spot</div> }
 

@@ -19,9 +19,9 @@ function CurrentUserBookings() {
   if (!bookings) { return null }
   if (!sessionUser) { history.push(`/`) }
 
-  // console.log('bookings!!!!', bookings)
+  console.log('bookings!!!!', bookings)
   let bookingsArr = Object.values(bookings)
-  // console.log('bookingsArr!!!!', bookingsArr)
+  console.log('bookingsArr!!!!', bookingsArr)
 
   const handleDelete = async (bookingId) => {
     // bookingId.preventDefault();
