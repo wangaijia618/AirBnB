@@ -11,10 +11,11 @@ import CreateNewSpot from "./components/CreateSpot";
 import ReviewByUser from "./components/ReviewByUser";
 import SpotByUser from "./components/SpotByUser";
 import CurrentUserBookings from "./components/Booking/CurrentUserBooking";
-
+import SearchedSpots from "./components/SearchedSpots";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -32,15 +33,18 @@ function App() {
 // }
 return (
   <>
-    <Navigation isLoaded={isLoaded} />
+    <Navigation isLoaded={isLoaded} searchFunc={[searchTerm, setSearchTerm]}/>
     {isLoaded && (
       <Switch>
-<Route exact path='/spots/current'>
+      <Route exact path='/spots/current'>
           <SpotByUser />
           </Route>
-<Route exact path='/reviews/current'>
+      <Route exact path='/reviews/current'>
           <ReviewByUser />
           </Route>
+        <Route path={"/spots/search"} exact>
+            <SearchedSpots searchFunc={[searchTerm, setSearchTerm]} />
+        </Route>
         <Route exact path="/">
             <SpotBrowser />
           </Route>

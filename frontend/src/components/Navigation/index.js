@@ -8,8 +8,8 @@ import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 import logo from "../../images/airdnd-logo.png"
-
-function Navigation(){
+import SearchBar from '../SearchFunction/SearchBar';
+function Navigation({searchFunc}){
   const sessionUser = useSelector(state => state.session.user);
 
   const [showMenu, setShowMenu] = useState(false);
@@ -80,8 +80,13 @@ function Navigation(){
         <span className="airdnd">AirDnD</span>
         </NavLink>
       </div>
+      <div id='nav-middle'>
+          <div className='search-bar-div'>
+            <SearchBar searchFunc={searchFunc} />
+          </div>
+        </div>
         {sessionLinks}
-</div>
+     </div>
         {/* <div className='Nav_become_host_and_Home_link'>
      <Link to={'/newspot'} className='Nav_become_host_link'> Become Host? </Link>
       </div> */}

@@ -9,8 +9,8 @@ function SearchBar({searchFunc}) {
   // console.log('searchTerm-----', searchTerm)
 
   const handleSubmit = async (e) => {
-    e.preventDefault() 
-    history.push(`/spotss/search`)
+    e.preventDefault()
+    history.push(`/spots/search`)
   }
 
   return (
