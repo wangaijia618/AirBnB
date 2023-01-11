@@ -11,8 +11,8 @@ function CreateBooking({ spot }) {
   const [hasSubmitted, setHasSubmitted] = useState("");
   const [errors, setErrors] = useState([]);
   const history = useHistory();
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date().toISOString().slice(0, 10));
+  const [endDate, setEndDate] = useState(new Date().toISOString().slice(0, 10));
   const { spotId } = useParams();
   let numOfNight = parseInt((new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 3600 * 24))
 

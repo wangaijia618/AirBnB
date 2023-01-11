@@ -89,7 +89,7 @@ const bookingsReducer = (state = {}, action) => {
         case LOAD_ALL_SPOT_BOOKINGS:
             const allBookings = {};
             // console.log("action!!!!!!!!", action)
-            action.bookings.bookings.forEach(booking => {
+            action.bookings.Bookings.forEach(booking => {
                 allBookings[booking.id] = booking
             });
             // console.log("allBookings!!!!!!!!", allBookings)

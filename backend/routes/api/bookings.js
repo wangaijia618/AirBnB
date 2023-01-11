@@ -72,8 +72,8 @@ router.put('/:bookingId', restoreUser, requireAuth, async (req, res, next) =>{
             }
         })
 }
-let today = new Date().toISOString().slice(0, 10)
-
+// let today = new Date().toISOString().slice(0, 10)
+let today = new Date()
 if (startDate < today || endDate < today || startDate > endDate) {
     res.statusCode = 403
         res.json({
@@ -136,8 +136,9 @@ if (user.id === editBooking.userId) {
 router.delete('/:bookingId', requireAuth, async(req, res, next) => {
     const {bookingId} = req.params
     const {user} = req
-    let today = new Date().toISOString().slice(0, 10)
-
+    // let today = new Date().toISOString().slice(0, 10)
+    let today = new Date()
+    console.log("==========", today)
     const deleteBooking = await Booking.findByPk(bookingId)
     if(!deleteBooking){
         res.statusCode = 404

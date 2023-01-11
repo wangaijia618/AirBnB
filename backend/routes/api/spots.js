@@ -529,7 +529,8 @@ router.get('/:spotId/bookings', requireAuth, async(req, res, next) => {
                 "statusCode": 404
             })
         }
-        let today = new Date().toISOString().slice(0,10)
+        // let today = new Date().toISOString().slice(0,10)
+        let today = new Date()
         if(endDate < startDate || startDate < today || endDate < today) {
             res.statusCode = 400
             res.json({
