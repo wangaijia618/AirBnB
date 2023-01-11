@@ -77,12 +77,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 heroku run npm run sequelize db:migrate
 heroku run npm run sequelize db:seed:all
 
-
+cd ..
+to upper level
 <!-- dotenv npx sequelize db:migrate
 dotenv npx sequelize db:migrate:undo
 dotenv npx sequelize db:seed:all
 dotenv npx sequelize db:seed:undo:all -->
+local dev.db setting up => cd back end
+then:
 npx dotenv sequelize db:migrate
+npx dotenv sequelize db:migrate:undo:all
+npx dotenv sequelize db:seed:all
+npx dotenv sequelize db:seed:undo:all
 
 cd backend and npm start, then cd frontend npm start
 Method #1 - Reset via CLI
