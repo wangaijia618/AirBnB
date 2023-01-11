@@ -10,12 +10,14 @@ function ReviewForm({ spotId, onClose, change, reviewId }) {
     const [stars, setStars] = useState(reviewToEdit ? reviewToEdit.stars : 5);
     const [review, setReview] = useState(reviewToEdit ? reviewToEdit.review : "");
     const [errors, setErrors] = useState([]);
+    const user = useSelector(state => state.session)
 console.log("RRRRRRRRRRRRReviewId", reviewId)
+console.log("SSSSSSSSSSSSSSSSpotId", spotId)
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
         if (reviewId) {
-            dispatch(editReview(reviewId, { stars, review }))
+            dispatch(editReview(reviewId, { stars, review }, user))
                 .then(() => onClose())
                 .catch(
                     async (res) => {
@@ -23,8 +25,9 @@ console.log("RRRRRRRRRRRRReviewId", reviewId)
                         if (data) setErrors(data);
                     }
                 );
-        } else {
-            dispatch(createReview(spotId, { stars, review }))
+        }
+        else {
+            dispatch(createReview(spotId, { stars, review }, user))
                 .then(() => onClose())
                 .then(() => dispatch(getOneSpot(spotId)))
                 .then(() => dispatch(getSpotReview(spotId)))
