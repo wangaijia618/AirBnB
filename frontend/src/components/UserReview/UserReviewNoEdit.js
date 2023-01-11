@@ -7,7 +7,7 @@ import "./UserReview.css";
 import ReviewFormModal from '../EditReviewForm';
 
 
-function UserReview({review}) {
+function UserReviewNoEdit({review}) {
   const {spotId} = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -67,15 +67,15 @@ function UserReview({review}) {
 
       <div className='review_content'>{review?.review}</div>
 
-    <span className='reviewDivDelete'>
+    {/* <span className='reviewDivDelete'>
         {currentUser && (
           <span className='reviewDelete'>
-         {/* <button onClick={handleSubmit} className='reviewDeleteButton'>Edit</button> */}
-         <ReviewFormModal user={true} spotId={review.spotId} change='Edit' reviewId={review.id} />
+
+            <ReviewFormModal user={true} spotId={review.spotId} change='Edit' reviewId={review.id} />
             <button onClick={handleDelete} className='reviewDeleteButton'>Delete Review</button>
           </span>
         )}
-       </span>
+       </span> */}
 
         </div>
 
@@ -83,4 +83,4 @@ function UserReview({review}) {
   )
 }
 
-export default UserReview;
+export default UserReviewNoEdit;
