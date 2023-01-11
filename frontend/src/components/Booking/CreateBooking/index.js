@@ -16,6 +16,7 @@ function CreateBooking({ spot }) {
   const { spotId } = useParams();
   let numOfNight = parseInt((new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 3600 * 24))
 
+
   let currentUser
   if (sessionUser && spot) {
     if (sessionUser.id === spot.ownerId) {
@@ -123,10 +124,10 @@ function CreateBooking({ spot }) {
           <span>
             <span>${spot.price}</span>
             <span> x </span>
-            <span id="number-of-night"> {numOfNight}</span>
+            <span id="number-of-night"> {numOfNight ? numOfNight : 0}</span>
             <span>   nights</span>
           </span>
-          <span>${spot.price * numOfNight}</span>
+          <span>${spot.price * (numOfNight ? numOfNight : 0)}</span>
         </div>
 
         <div className='price-calculation-listing'>
@@ -143,7 +144,7 @@ function CreateBooking({ spot }) {
 
         <div className='price-calculation-listing' id="price-calculation-result">
           <span>Total before taxes</span>
-          <span>${spot.price * numOfNight + 300}</span>
+          <span>${spot.price * (numOfNight ? numOfNight : 0) + 300}</span>
         </div>
       </div>
     </>
