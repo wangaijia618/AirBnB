@@ -28,22 +28,28 @@ align-items: flex-start;
 
 }
 .profile_username,
-.profile_email,
+.profile_email{
+    font-size: 20px;
+    padding-left: 13px;
+    color: rgb(85, 74, 74)
+}
+.black_bar{
+    border-bottom: 1px solid black;
+    width: 150px
+}
 .current_spot_link,
 .current_review_link,
+.current_booking_link,
 .logout_button{
 
 font-size: 18px;
 
 }
-.profile_username,
-.profile_email{
 
-    cursor: not-allowed;
-}
 
 .current_spot_link,
-.current_review_link{
+.current_review_link,
+.current_booking_link{
     text-decoration: none;
     color: inherit
 }

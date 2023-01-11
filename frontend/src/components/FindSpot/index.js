@@ -10,7 +10,7 @@ import "./FindSpot.css";
 import EditSpotModal from "../EditSpotForm";
 import CreateBooking from "../Booking/CreateBooking";
 // replaced {spot?countReviews} with {reviewsObj?.length} to update review immidiately
-
+import CheckBooking from "../Booking/CheckBooking";
 const FindSpot = () => {
   let currentUser;
   const {spotId} = useParams();
@@ -82,6 +82,7 @@ return (
             <div className='emptyBorder1'/>
            <div className='descriptSpot'>{spot?.description}</div>
            </div>
+
            <div className='spot_right_info'>
             <div className='spot_right_card_info'>
               <div className='spot_card_header'>
@@ -91,8 +92,12 @@ return (
             </div>
             <CreateBooking spot={spot} />
             </div>
+
             </div>
+
             </div>
+<h2 className='spot-show-calendar'>Check Availability</h2>
+                <CheckBooking spotId={spotId} />
            <div className='emptyBorder'/>
          <div className="bottom_review">
            <span className='bottomAvgCount'>

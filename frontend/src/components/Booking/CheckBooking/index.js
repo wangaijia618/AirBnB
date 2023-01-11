@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Calendar } from 'react-date-range';
-import { thunkLoadBookingsOfSpot } from "../../../store/bookingReducer";
+import { thunkLoadBookingsOfSpot } from "../../../store/bookings";
 import { getDaysArray } from "../../../Util/functions";
 import './CheckBooking.css'
 import 'react-date-range/dist/styles.css';

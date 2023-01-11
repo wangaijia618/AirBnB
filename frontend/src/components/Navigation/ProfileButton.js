@@ -45,14 +45,18 @@ function ProfileButton({ user }) {
      </span>
       { showMenu && (
         <div className="profile-dropdown">
-         <li className="profile_username">{user.username}</li>
-          <li className="profile_email">{user.email}</li>
+         <div className="profile_username">welcome back!</div>
+          <div className="profile_email">{user.username}</div>
+          <div className="black_bar"></div>
           <li>
             <NavLink to={'/spots/current'} className="current_spot_link">Your Spot</NavLink>
           </li>
 
           <li>
             <NavLink to={'/reviews/current'} className="current_review_link"> Your Review</NavLink>
+          </li>
+          <li>
+            <NavLink to={'/bookings/current'} className="current_review_link"> Your Bookings</NavLink>
           </li>
           <li className="logout_button">
           <button className="Logout_button" onClick={logout}>Log Out</button>
