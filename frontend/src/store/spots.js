@@ -73,7 +73,6 @@ export const allSpotsUser = () => async (dispatch) => {
     const res = await csrfFetch('/api/spots/current');
     if (res.ok) {
       const spots = await res.json();
-console.log(res)
       dispatch(readOwnerSpots(spots.Spots));
       return spots
     };
@@ -253,7 +252,9 @@ const spotReducer = (state = initialState, action) => {
             if(newState4.singleSpot.id === action.spotId) newState4.singleSpot={}
             return newState4
         case READ_OWNER_SPOTS:
-            const newState5 = { ...state };
+            // const newState5 = { ...state };
+            const newState5 = {};
+
             let allSpots = {};
             action.spots.forEach(spot => {
                 allSpots[spot.id] = spot;
