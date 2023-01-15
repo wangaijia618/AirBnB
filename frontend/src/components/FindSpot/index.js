@@ -13,7 +13,8 @@ import CreateBooking from "../Booking/CreateBooking";
 import CheckBooking from "../Booking/CheckBooking";
 const FindSpot = () => {
   let currentUser;
-  const {spotId} = useParams();
+  let {spotId} = useParams();
+  spotId = parseInt(spotId)
   const dispatch = useDispatch();
   const history = useHistory();
 // export const allSpotsObj = state => state.spots
@@ -34,7 +35,7 @@ const FindSpot = () => {
     dispatch(getOneSpot(+spotId))
     dispatch(getSpotReview(+spotId))
     .then(() => setIsLoaded(true))
-  }, [dispatch, spotId, reviewsObj.length])
+  }, [dispatch, +spotId, reviewsObj.length])
 
   const handleDelete = async (e) => {
   e.preventDefault();
