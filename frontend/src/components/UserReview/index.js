@@ -57,13 +57,15 @@ function UserReview({review}) {
   // }
 
   return (
-
+    <>
+    {/* <img className ="small-preview" src={review.Spot?.previewImage || "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"}></img> */}
 
       <div className="reviewsContainer">
 
       {/* <div className='reviewName'>Review from  -<span className="reviewer">{review.User.firstName}</span></div> */}
+      <div style={{fontWeight: "bold", fontSize: "20px"}}>{review.Spot.city}, {review.Spot.state}</div>
       <div>Review for {review.Spot.name}</div>
-      
+
 
       <div className='reviewDate'>{date}</div>
 
@@ -81,7 +83,7 @@ function UserReview({review}) {
 
         </div>
 
-
+</>
   )
 }
 

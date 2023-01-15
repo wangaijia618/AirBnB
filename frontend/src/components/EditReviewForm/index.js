@@ -37,7 +37,7 @@ function ReviewFormModal({ user, spotId, change, reviewId }) {
 
     return (
         <>
-            <button className='add-review-btn' onClick={() => setShowModal(true)}>{change}Review</button>
+            <button className='add-review-btn' onClick={() => setShowModal(true)}>{change} Review</button>
             {showModal && (
                 <div className='review-form-modal'>
                     <Modal onClose={() => setShowModal(false)}>
