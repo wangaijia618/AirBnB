@@ -8,12 +8,13 @@ import  EditSpotModal  from '../EditSpotForm'
 const SpotBoxWithButton = ({spot}) => {
     const dispatch = useDispatch();
     const history = useHistory();
-
+    const spots = useSelector(state => state.spots.allSpots)
     const handleDelete = async (e) => {
         e.preventDefault();
         await dispatch(removeSpot(spot.id))
         history.push("/")
       }
+      console.log("allSpotssssssss", spots)
   return (
       <>
           <div className='spotBox'>
@@ -35,7 +36,8 @@ const SpotBoxWithButton = ({spot}) => {
            </div>
            </Link>
            <div className='editDeleteSpot'>
-            <EditSpotModal spot={spot} key={spot.id} />
+            {Object.values(spots).map((spot) => (
+            <EditSpotModal spot={spot} key={spot.id}/>))}
 
               <button type="button" onClick={handleDelete} className='deleteButton'>Delete Spot</button>
             </div>
