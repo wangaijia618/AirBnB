@@ -101,7 +101,7 @@
 
 }
 /* ############################################################## */
-button.add-review-btn {
+/* button.add-review-btn {
     border: 1px solid rgb(0, 0, 0);
     background: transparent;
     height: 50px;
@@ -110,8 +110,24 @@ button.add-review-btn {
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
     cursor: pointer;
-}
+} */
+.add-review-btn {
+    background-color: rgb(233, 0, 0);
+    color: white;
+    border: white solid 1px;
+    margin-right: 10px;
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    height: 30px;
+    width: 130px;
+    margin-top: 5px;
+  }
 
 .add-review-btn:hover {
-    background-color: rgb(247, 247, 247);
+    cursor: pointer;
+    background-color: white;
+    color: rgb(233, 0, 0)
+
 }

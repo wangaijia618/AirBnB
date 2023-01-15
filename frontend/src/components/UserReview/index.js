@@ -61,7 +61,9 @@ function UserReview({review}) {
 
       <div className="reviewsContainer">
 
-      <div className='reviewName'>Review from  -<span className="reviewer">{review.User.firstName}</span></div>
+      {/* <div className='reviewName'>Review from  -<span className="reviewer">{review.User.firstName}</span></div> */}
+      <div>Review for {review.Spot.name}</div>
+      
 
       <div className='reviewDate'>{date}</div>
 
@@ -71,7 +73,7 @@ function UserReview({review}) {
         {currentUser && (
           <span className='reviewDelete'>
          {/* <button onClick={handleSubmit} className='reviewDeleteButton'>Edit</button> */}
-         <ReviewFormModal user={true} spotId={review.spotId} change='Edit' reviewId={review.id} />
+         <ReviewFormModal user={true} spotId={review.spotId} change='Edit' reviewId={review.id}/>
             <button onClick={handleDelete} className='reviewDeleteButton'>Delete Review</button>
           </span>
         )}
