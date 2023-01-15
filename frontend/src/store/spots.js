@@ -259,7 +259,7 @@ const spotReducer = (state = initialState, action) => {
             action.spots.forEach(spot => {
                 allSpots[spot.id] = spot;
             });
-            // console.log('############ALL SPOTS REDUCED', allSpots)
+            // newState5.singleSpot= action.spot
             newState5.allSpots = allSpots;
             return newState5;
         default:

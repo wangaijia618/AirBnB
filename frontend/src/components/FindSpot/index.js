@@ -31,14 +31,14 @@ const FindSpot = () => {
   //   console.log(~~~~~~~~~~~~~~spot)
   const sessionUser = useSelector(state => state.session.user);
   useEffect(() => {
-    dispatch(getOneSpot(spotId))
-    dispatch(getSpotReview(spotId))
+    dispatch(getOneSpot(+spotId))
+    dispatch(getSpotReview(+spotId))
     .then(() => setIsLoaded(true))
   }, [dispatch, spotId, reviewsObj.length])
 
   const handleDelete = async (e) => {
   e.preventDefault();
-  await dispatch(removeSpot(spotId))
+  await dispatch(removeSpot(+spotId))
   history.push("/")
 }
 
@@ -47,8 +47,9 @@ if (sessionUser && spot) {
     currentUser = true;
   } else currentUser = false;
 }
-if(!spot.SpotImages) return null
-if (Object.keys(spot).length === 0) return null
+console.log("????????????", spot)
+// if(!spot.SpotImages) return null
+// if (Object.keys(spot).length === 0) return null
 return (
 <>
     {isLoaded && (
@@ -63,16 +64,17 @@ return (
            </div>
            </div>
 
-            {currentUser && (
+            {/* {currentUser && (
               <div className='editDeleteSpot'>
             <EditSpotModal />
 
               <button type="button" onClick={handleDelete} className='deleteButton'>Delete Spot</button>
             </div>
-             )}
+             )} */}
       </div>
           <div className='imgDivfs'>
-         <img className='imageSpotfs' src={spot?.SpotImages.map(img => img.url)} alt="Image Is Not Available"/> </div>
+         <img className='imageSpotfs' src={spot?.SpotImages.map(img => img.url)} alt="Image Is Not Available"/>
+         </div>
 
             <div className='spot_info_header'>
             <div className='spot_left_info'>

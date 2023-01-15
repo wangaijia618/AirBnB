@@ -5,21 +5,21 @@ import {editSpot, getOneSpot} from "../../store/spots";
 import { Modal } from '../../context/Modal';
 import "./EditSpotForm.css"
 
-const EditSpotForm = ({onClose}) => {
+const EditSpotForm = ({onClose, spot}) => {
   const {spotId} = useParams();
   const dispatch = useDispatch();
   const history = useHistory()
   // const spot1 = useSelector(state => state.spots.allSpots[spot.id])
-const spot = useSelector(state => state.spots.singleSpot)
+// const spot = useSelector(state => state.spots.singleSpot)
   // const [ownerId, setOwnerId] = useState(spot?.ownerId)
-  const [address, setAddress] = useState(spot.address);
-  const [city, setCity] = useState(spot.city);
-  const [state, setState] = useState(spot.state);
-  const [country, setCountry] = useState(spot.country);
-  const [lat, setLat] = useState(spot.lat);
-  const [lng, setLng] = useState(spot.lng);
-  const [name, setName] = useState(spot.name);
-  const [description, setDescription] = useState(spot.description);
+  const [address, setAddress] = useState(spot?.address);
+  const [city, setCity] = useState(spot?.city);
+  const [state, setState] = useState(spot?.state);
+  const [country, setCountry] = useState(spot?.country);
+  const [lat, setLat] = useState(spot?.lat);
+  const [lng, setLng] = useState(spot?.lng);
+  const [name, setName] = useState(spot?.name);
+  const [description, setDescription] = useState(spot?.description);
   const [price, setPrice] = useState(spot.price);
   const [errors, setErrors] = useState([]);
   const [disableToggle, setDisableToggle] = useState(false);
@@ -34,16 +34,16 @@ const spot = useSelector(state => state.spots.singleSpot)
     if (country === '') errors.push("Country is required")
     if (lat === '') errors.push("Latitude is not valid")
     if (lng === '') errors.push("'Longitude is not valid'")
-    if (name === '' || name.length > 50) errors.push("Valid name required")
+    // if (name === '' || name.length > 50) errors.push("Valid name required")
     if (name === '') errors.push("Valid name required")
     if (description === '') errors.push("Description is required")
     if (price === '') errors.push("Price is required")
     setErrors(errors)
 
   }, [address, city, state, country, lat, lng, name, description, price])
-  useEffect(() => {
-    dispatch(getOneSpot(spotId))
-}, [dispatch, spotId]);
+//   useEffect(() => {
+//     dispatch(getOneSpot(spot.id))
+// }, [dispatch, spot.id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -64,7 +64,7 @@ const spot = useSelector(state => state.spots.singleSpot)
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors)
     })
-    history.push(`/spots/${+spotId}`)
+    history.push(`/spots/${spot.id}`)
    }
 
   return (

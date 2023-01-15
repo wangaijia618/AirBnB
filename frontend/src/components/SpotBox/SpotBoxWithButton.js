@@ -5,20 +5,21 @@ import {useDispatch, useSelector} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import  EditSpotModal  from '../EditSpotForm'
 
-const SpotBoxWithButton = ({spot}) => {
+const SpotBoxWithButton = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const spots = useSelector(state => state.spots.allSpots)
-    const handleDelete = async (e) => {
-        e.preventDefault();
-        await dispatch(removeSpot(spot.id))
-        history.push("/")
-      }
+    // const handleDelete = async (e) => {
+    //     e.preventDefault();
+    //     await dispatch(removeSpot(spot.id))
+    //     history.push("/")
+    //   }
       console.log("allSpotssssssss", spots)
   return (
-      <>
+<>
+      {Object.values(spots).map((spot) => (
           <div className='spotBox'>
-          <Link key={spot?.id} className='eachSpot' to={`/spots/${spot?.id}`}>
+          <Link key={spot?.id} spot={spot} className='eachSpot' to={`/spots/${spot?.id}`}>
           {/* <Link className='eachSpot' to={`/spots/${spot?.id}`}> */}
           <div className='imgDiv'>
            <img className='imgSpot' src={spot?.previewImage || "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"} alt="Image Not Available"/>
@@ -35,14 +36,16 @@ const SpotBoxWithButton = ({spot}) => {
            <div className='nightSpot'>night</div>
            </div>
            </Link>
-           <div className='editDeleteSpot'>
-            {Object.values(spots).map((spot) => (
-            <EditSpotModal spot={spot} key={spot.id}/>))}
 
-              <button type="button" onClick={handleDelete} className='deleteButton'>Delete Spot</button>
+           <div className='editDeleteSpot'>
+            {/* {Object.values(spots).map((spot) => ( */}
+            <EditSpotModal spot={spot} key={spot.id}/>
+
+              {/* <button type="button" onClick={handleDelete} className='deleteButton'>Delete Spot</button> */}
             </div>
-           </div>
-    </>
+           </div>))}
+           </>
+
   )
 }
 
