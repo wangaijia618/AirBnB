@@ -1,0 +1,13 @@
+ul { list-style-type: none; }
+
+.spots-index {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    margin-left: 18%;
+    margin-right: 18%;
+    /* background-color: lightblue; */
+    column-gap: 1.62%;
+}
+
+
