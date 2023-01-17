@@ -1,16 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { thunkGetAllCurrentUserBookings, thunkDeleteBooking } from '../../../store/bookings';
 import { Link } from 'react-router-dom';
 import './CurrentUserBooking.css'
-
+import EditBookingModal from '../EditBookingFormModal';
 
 function CurrentUserBookings() {
   const dispatch = useDispatch();
   const bookings = useSelector(state => state.booking)
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
+
 
   useEffect(() => {
     dispatch(thunkGetAllCurrentUserBookings());
@@ -66,6 +67,9 @@ function CurrentUserBookings() {
                     </div>
 
                   </div>
+                  {new Date(booking.endDate) >= new Date() ? (
+                                <EditBookingModal spotId={booking.Spot.id} id={parseInt(booking.id)} />
+                            ) : ''}
                   <div className='delete-booking-button-container'>
                     <button
                       className='delete-booking-button'

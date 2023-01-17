@@ -83,6 +83,20 @@ export const thunkDeleteBooking = (id) => async dispatch => {
     }
 }
 
+export const editBooking = (id, newBooking) => async (dispatch) => {
+    const { startDate, endDate } = newBooking;
+    const response = await csrfFetch(`/api/bookings/${id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+            startDate,
+            endDate,
+        }),
+    });
+    const data = await response.json();
+    dispatch(addBookingToSpot(data));
+    return response;
+};
+
 const bookingsReducer = (state = {}, action) => {
     switch (action.type) {
 
