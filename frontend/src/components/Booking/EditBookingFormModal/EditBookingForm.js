@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { editBooking, thunkLoadBookingsOfSpot } from '../../../store/bookings';
+import { editBooking, thunkLoadBookingsOfSpot, thunkGetAllCurrentUserBookings } from '../../../store/bookings';
 // import '../BookingForm/BookingForm.css';
 import './EditBookingForm.css';
 
@@ -9,7 +9,7 @@ function EditBookingForm({ onClose, spotId, id }) {
     const spot = useSelector(state => state.booking[id].Spot);
     const sessionUser = useSelector(state => state.session.user);
     const booking = useSelector(state => state.booking[id])
-
+console.log("bookingspot", spot)
     const [startDate, setStartDate] = useState(booking.startDate.split(' ')[0])
     const [endDate, setEndDate] = useState(booking.endDate.split(' ')[0]);
     const [errors, setErrors] = useState({});
@@ -20,7 +20,8 @@ function EditBookingForm({ onClose, spotId, id }) {
             setErrors({});
             dispatch(editBooking(id, { startDate, endDate }))
                 .then(() => onClose())
-                .then(() => dispatch(thunkLoadBookingsOfSpot(spotId)))
+                .then(() => dispatch(thunkGetAllCurrentUserBookings()))
+                // .then(() => dispatch(thunkLoadBookingsOfSpot(spotId)))
                 .catch(
                     async (res) => {
                         const data = await res.json();
@@ -78,7 +79,7 @@ function EditBookingForm({ onClose, spotId, id }) {
                     <button type="submit">Update</button>
                 </div>
             </form>
-            <div className='price-cal'>
+            {/* <div className='price-cal'>
                 <p>You won't be charged yet</p>
                 <div className='booking-price'>
                     <div>{(startDate && endDate && calDays(startDate, endDate) > 0) ? (`$${spot.price} x ${calDays(startDate, endDate)} nights`) : (`$${spot.price} x 0 night`)}</div>
@@ -96,7 +97,7 @@ function EditBookingForm({ onClose, spotId, id }) {
             <div className='total-price'>
                 <p>Total before taxes</p>
                 <p>{(startDate && endDate && calDays(startDate, endDate) > 0) ? (`$${(Number(spot.price) * (calDays(startDate, endDate)) * 1.147 + 200).toFixed(0)}`) : `$0`}</p>
-            </div>
+            </div> */}
         </div>
     );
 }

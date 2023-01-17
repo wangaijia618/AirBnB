@@ -52,12 +52,12 @@ export const getSpotReview = (spotId) => async (dispatch) => {
         dispatch(loadAllSpotReview(reviews.Reviews))
     }
 }
-export const updateUserReviews = (id) => async dispatch => {
-  const response = await csrfFetch(`/api/users/${id}/reviews`);
-  const data = await response.json();
-  dispatch(updateReviewsAfterDelete(data.Reviews));
-  return response;
-};
+// export const updateUserReviews = (id) => async dispatch => {
+//   const response = await csrfFetch(`/api/users/${id}/reviews`);
+//   const data = await response.json();
+//   dispatch(updateReviewsAfterDelete(data.Reviews));
+//   return response;
+// };
 
 // get all user review thunk
 export const getUserReview = () => async (dispatch) => {
@@ -110,7 +110,7 @@ export const createReview = (myReviewInfo, spotId, user) => async (dispatch) => 
     }
   };
 
-  export const editReview = (reviewId, updatedReview, user) => async (dispatch) => {
+  export const editReview = (reviewId, updatedReview, user, spot) => async (dispatch) => {
     const { review, stars } = updatedReview;
     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: "PUT",
@@ -122,6 +122,7 @@ export const createReview = (myReviewInfo, spotId, user) => async (dispatch) => 
     const data = await response.json();
       // dispatch(createReview(data));
     data.User = {id: user.user.id, firstName: user.user.firstName, lastName: user.user.lastName}
+    data.Spot = {id: spot.id, city: spot.city, state: spot.state, name: spot.name}
     dispatch(updateReviewsAfterDelete(data));
     return response;
 };

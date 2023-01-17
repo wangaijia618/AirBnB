@@ -1,7 +1,7 @@
 
 
 import React, { useState } from "react";
-import { createReview, editReview, getSpotReview } from '../../store/reviews';
+import { createReview, editReview, getSpotReview, getUserReview } from '../../store/reviews';
 import { useDispatch, useSelector } from "react-redux";
 import './EditReviewForm.css';
 import { getOneSpot } from "../../store/spots";
@@ -9,6 +9,7 @@ import { getOneSpot } from "../../store/spots";
 function ReviewForm({ spotId, onClose, change, reviewId }) {
     const dispatch = useDispatch();
     const reviewToEdit = useSelector(state => state.reviews[reviewId]);
+    const spot = reviewToEdit.Spot
     const [stars, setStars] = useState(reviewToEdit ? reviewToEdit.stars : 5);
     const [review, setReview] = useState(reviewToEdit ? reviewToEdit.review : "");
     const [errors, setErrors] = useState([]);
@@ -19,8 +20,9 @@ console.log("SSSSSSSSSSSSSSSSpotId", spotId)
         e.preventDefault();
         setErrors([]);
         if (reviewId) {
-            dispatch(editReview(reviewId, { stars, review }, user))
+            dispatch(editReview(reviewId, { stars, review }, user, spot))
                 .then(() => onClose())
+                .then(() => getUserReview())
                 .catch(
                     async (res) => {
                         const data = await res.json();
@@ -29,7 +31,7 @@ console.log("SSSSSSSSSSSSSSSSpotId", spotId)
                 );
         }
         else {
-            dispatch(createReview(spotId, { stars, review }, user))
+            dispatch(createReview(spotId, { stars, review }, user, spot))
                 .then(() => onClose())
                 .then(() => dispatch(getOneSpot(spotId)))
                 .then(() => dispatch(getSpotReview(spotId)))

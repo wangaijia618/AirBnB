@@ -67,19 +67,20 @@ function CurrentUserBookings() {
                     </div>
 
                   </div>
-                  {new Date(booking.endDate) >= new Date() ? (
-                                <EditBookingModal spotId={booking.Spot.id} id={parseInt(booking.id)} />
-                            ) : ''}
+
                   <div className='delete-booking-button-container'>
+                    {new Date(booking.endDate) >= new Date() ? (
+                                <EditBookingModal spotId={booking?.Spot?.id} id={booking.id} />
+                            ) : ''}
                     <button
                       className='delete-booking-button'
-                      onClick={(e) => handleDelete(booking.id)}>Delete This Reservation</button>
+                      onClick={(e) => handleDelete(booking.id)}>Delete Reservation</button>
                   </div>
                 </div>
 
                 <div className="booking-card-right">
-                  <Link to={`/spots/${booking.Spot?.id}`}>
-                    <img className="booking-card-image" src={booking.Spot?.previewImage} alt='picture loading' />
+                  <Link to={`/spots/${booking?.Spot?.id}`}>
+                    <img className="booking-card-image" src={booking?.Spot?.previewImage} alt='picture loading' />
                   </Link>
                 </div>
 

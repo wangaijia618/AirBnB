@@ -94,7 +94,8 @@ import ReviewFormModal from '../EditReviewForm';
 
 
 function UserReview({review}) {
-  const {spotId} = useParams();
+  let {spotId} = useParams();
+  spotId = parseInt(spotId)
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
@@ -149,8 +150,8 @@ function UserReview({review}) {
       <div className="reviewsContainer">
 
       {/* <div className='reviewName'>Review from  -<span className="reviewer">{review.User.firstName}</span></div> */}
-      <div style={{fontWeight: "bold", fontSize: "20px"}}>{review.Spot.city}, {review.Spot.state}</div>
-      <div>Review for {review.Spot.name}</div>
+      <div style={{fontWeight: "bold", fontSize: "20px"}}>{review?.Spot?.city}, {review?.Spot?.state}</div>
+      <div>Review for {review?.Spot?.name}</div>
 
 
       <div className='reviewDate'>{date}</div>

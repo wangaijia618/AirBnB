@@ -8,9 +8,9 @@ function EditBookingModal({ spotId, id }) {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>
-                <i className="fa-solid fa-pen-to-square"></i>
-                <p>Edit Booking</p>
+            <button className="delete-booking-button" onClick={() => setShowModal(true)}>
+                {/* <i className="fa-solid fa-pen-to-square"></i> */}
+                Edit Reservation
             </button>
             {showModal && (
                 <div className='edit-booking-modal'>

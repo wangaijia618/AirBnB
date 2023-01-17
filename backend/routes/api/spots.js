@@ -498,7 +498,20 @@ router.get('/:spotId/bookings', requireAuth, async(req, res, next) => {
                 attributes: ['spotId', "startDate", "endDate"],
                 where: {
                     spotId: spotId
-                }
+                },
+                include:[{
+                    model: User,
+                    attributes: ['id','firstName', 'lastName'],
+
+                    },
+                    {
+                        model: Spot,
+                        attributes: {
+                            exclude: ['description','createdAt', 'updatedAt']
+                            // {'previewImage': spotimage.url}
+                        }
+                    },
+                ]
             });
                 res.json({Bookings: notOwnerBooking})
 
@@ -512,7 +525,14 @@ router.get('/:spotId/bookings', requireAuth, async(req, res, next) => {
                     model: User,
                     attributes: ['id','firstName', 'lastName'],
 
-                    }
+                    },
+                    {
+                        model: Spot,
+                        attributes: {
+                            exclude: ['description','createdAt', 'updatedAt']
+                            // {'previewImage': spotimage.url}
+                        }
+                    },
                 ]
 
             });

@@ -4,6 +4,7 @@ const ADD_BOOKING_TO_SPOT = 'spots/addBookingToSpot'
 const LOAD_ALL_SPOT_BOOKINGS = 'spots/loadAllBookingsOfSpot'
 const LOAD_CURRENT_USER_BOOKINGS = 'bookings/loadcurrentBookings'
 const DELETE_BOOKING = 'bookings/deleteBooking'
+const UPDATE_BOOKING = 'bookings/editBooking'
 
 export const addBookingToSpot = (booking) => {
     return {
@@ -32,19 +33,25 @@ export const deleteOneBooking = (id) => {
         id
     };
 };
+export const updateBooking = (payload) => {
+    return {
+        type: UPDATE_BOOKING,
+        payload,
+    }
+  }
 
 export const thunkAddBookingToSpot = (data) => async dispatch => {
     const { id, startDate, endDate } = data
     // console.log('!!!!!!data', data)
     // console.log("days!!!", `${(new Date(endDate).getTime() - new Date(startDate).getTime())/ (1000 * 3600 * 24)}` )
-    const response = await csrfFetch(`/api/spots/${id}/bookings`, {
+    const res = await csrfFetch(`/api/spots/${id}/bookings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ startDate, endDate }),
     })
     // console.log('!!!!!!response', response)
-    if (response.ok) {
-        const booking = await response.json();
+    if (res.ok) {
+        const booking = await res.json();
         dispatch(addBookingToSpot(booking))
         // console.log('booking!!!!!!', booking)
         return booking
@@ -68,7 +75,7 @@ export const thunkGetAllCurrentUserBookings = () => async (dispatch) => {
         const bookings = await response.json();
         // console.log("!!!!!!!!bookings",bookings)
         dispatch(loadCurrentUserBookings(bookings))
-        return bookings
+        // return bookings
     }
 }
 
@@ -85,16 +92,17 @@ export const thunkDeleteBooking = (id) => async dispatch => {
 
 export const editBooking = (id, newBooking) => async (dispatch) => {
     const { startDate, endDate } = newBooking;
-    const response = await csrfFetch(`/api/bookings/${id}`, {
+    const res = await csrfFetch(`/api/bookings/${id}`, {
         method: "PUT",
         body: JSON.stringify({
             startDate,
             endDate,
         }),
     });
-    const data = await response.json();
-    dispatch(addBookingToSpot(data));
-    return response;
+    const data = await res.json();
+    console.log("!!!!!!!#$#$#$#$#$#$@$#@$",data)
+    dispatch(updateBooking(data));
+    return res;
 };
 
 const bookingsReducer = (state = {}, action) => {
@@ -128,7 +136,11 @@ const bookingsReducer = (state = {}, action) => {
             // console.log('!!!action', action)
             delete newState[action.id]
             return newState
+        case UPDATE_BOOKING:
+            let newState2 = {...state}
 
+            newState2[action.payload.id] = action.payload;
+            return newState2;
         default:
             return state;
     }
