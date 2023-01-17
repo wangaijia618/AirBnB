@@ -5,7 +5,7 @@ import {getOneSpot, allSpotsArray, allSpotsObj, removeSpot, editSpot} from '../.
 import {allReviewsArray, getSpotReview} from '../../store/reviews';
 import CreateReviewModal from '../CreateReviewModal';
 import aircover from '../../images/airdnd-aircover.png'
-import UserReview from '../UserReview';
+import UserReviewNoEdit from '../UserReview/UserReviewNoEdit.js';
 import "./FindSpot.css";
 import EditSpotModal from "../EditSpotForm";
 import CreateBooking from "../Booking/CreateBooking";
@@ -109,7 +109,7 @@ return (
            </span>
            <div className='allReviewSpot'>
             {reviewsObj.map(review => (
-              <UserReview className='everyReview' key={review?.id} review={review}/>
+              <UserReviewNoEdit className='everyReview' key={review?.id} review={review}/>
             ))}
            </div>
            </div>
