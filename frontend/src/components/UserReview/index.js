@@ -4,10 +4,10 @@ import { useHistory, useParams, Link } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import { deleteReview, editReview} from "../../store/reviews";
 import "./UserReview.css";
-// import ReviewFormModal from '../ReviewFormModal';
+import ReviewFormModal from '../EditReviewForm';
 
 
-function ReviewUser({review}) {
+function UserReview({review}) {
   const {spotId} = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -70,7 +70,8 @@ function ReviewUser({review}) {
     <span className='reviewDivDelete'>
         {currentUser && (
           <span className='reviewDelete'>
-         <button onClick={handleSubmit} className='reviewDeleteButton'>Edit</button>
+         {/* <button onClick={handleSubmit} className='reviewDeleteButton'>Edit</button> */}
+         <ReviewFormModal user={true} spotId={review.spotId} change='Edit' reviewId={review.id} />
             <button onClick={handleDelete} className='reviewDeleteButton'>Delete Review</button>
           </span>
         )}
@@ -82,4 +83,4 @@ function ReviewUser({review}) {
   )
 }
 
-export default ReviewUser;
+export default UserReview;

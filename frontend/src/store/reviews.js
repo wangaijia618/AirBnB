@@ -86,6 +86,7 @@ export const createReview = (myReviewInfo, spotId, user) => async (dispatch) => 
     if (res.ok) {
       const review = await res.json();
       review.User = {id: user.user.id, firstName: user.user.firstName, lastName: user.user.lastName}
+       //added user here, but can also add user to backend response
       dispatch(addReview(review));
       // console.log("spot: ", spot)
     // return review
@@ -109,7 +110,7 @@ export const createReview = (myReviewInfo, spotId, user) => async (dispatch) => 
     }
   };
 
-  export const editReview = (reviewId, updatedReview) => async (dispatch) => {
+  export const editReview = (reviewId, updatedReview, user) => async (dispatch) => {
     const { review, stars } = updatedReview;
     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: "PUT",
@@ -119,10 +120,12 @@ export const createReview = (myReviewInfo, spotId, user) => async (dispatch) => 
         }),
     });
     const data = await response.json();
-    dispatch(createReview(data));
+      // dispatch(createReview(data));
+    data.User = {id: user.user.id, firstName: user.user.firstName, lastName: user.user.lastName}
+    dispatch(updateReviewsAfterDelete(data));
     return response;
 };
-
+//added user here, but can also add user to backend response
 
 //reducer:
 
@@ -160,11 +163,17 @@ const reviewReducer = (state = initialState, action) =>{
               // console.log("newState from review reducer after ", newState)
             return newState
 
+        // case UPDATE_REVIEWS_DELETE:
+        //     newState = Object.assign({});
+        //     action.payload.map(review => newState[review.id] = review);
+        //     return newState;
         case UPDATE_REVIEWS_DELETE:
-            newState = Object.assign({});
-            action.payload.map(review => newState[review.id] = review);
-            return newState;
-          default:
+           // newState = Object.assign({});
+           newState = {...state}
+           // action.payload.forEach(review => newState[review.id] = review);
+           newState[action.payload.id] = action.payload;
+           return newState;
+         default:
             return state
       }
     };
