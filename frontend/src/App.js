@@ -12,6 +12,7 @@ import ReviewByUser from "./components/ReviewByUser";
 import SpotByUser from "./components/SpotByUser";
 import CurrentUserBookings from "./components/Booking/CurrentUserBooking";
 import SearchedSpots from "./components/SearchedSpots";
+import Footer from "./components/Footer/Footer";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -58,7 +59,9 @@ return (
             <CurrentUserBookings />
           </Route>
       </Switch>
+
     )}
+     <Footer />
   </>
 );
 }
