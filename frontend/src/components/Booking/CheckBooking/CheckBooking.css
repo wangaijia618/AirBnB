@@ -1,11 +1,16 @@
 .reservation-calendar-container {
     display: flex;
-    /* background-color: blue; */
+    margin-left: 300px
 }
 
 .reservation-calendar {
-    padding-right: 3%;
-    width: 50%
+
+    padding-right: 10px;
+    width: 30%;
+
+}
+.spot-show-calendar{
+    margin-left: 300px
 }
 
 @media screen and (max-width: 1200px)  {
