@@ -16,7 +16,7 @@ function Footer() {
                     rel="noopener noreferrer"
                     target="_blank"
                 >
-                    <i className="fa-brands fa-github"></i>
+                    <i className="fa-brands fa-github">Aijia (Ivy) Wang</i>
                 </a>
             </div>
             <div className="connect-with-us-container">
